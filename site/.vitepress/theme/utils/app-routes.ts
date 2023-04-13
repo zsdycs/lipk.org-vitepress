@@ -14,9 +14,9 @@ interface MdFile {
   originalPath: string;
 }
 
-interface Routes {
+export interface Routes {
   path: string;
-  frontmatter?: Record<string, string | number | boolean>;
+  frontmatter?: object;
   children?: Routes[];
 }
 
@@ -49,11 +49,9 @@ const getDirName = (path: string, popDirs: string[] = []) => {
 
 // Load all MD files in a specified directory
 const getMdFiles = (
-  parentPath: string,
   ignoreMDFiles: string[] = []
 ): MdFile[] => {
-  const pattern = "/**/*.md";
-  const solvePath = parentPath + pattern
+  const solvePath = "./**/*.md";
   const files = globSync(solvePath, {
     ignore: ["**/node_modules/**", "**/.vitepress/**", "**/dist/**"],
   }).map((path) => {
@@ -63,62 +61,90 @@ const getMdFiles = (
     ) {
       return undefined;
     }
-    return { path, originalPath: resolve(`${parentPath}../../${path}`) };
+    return { path, originalPath: resolve(`./${path}`) };
   });
-  console.log("----------files: ", files);
-
-  //   remove(files, (file) => file === undefined);
-  //   // Return the ordered list of files, sort by 'path'
-  //   return sortBy(files, ["path"]).map((file) => file?.path || "");
 
   return files as MdFile[];
 };
 
-/**
- * Returns `sidebar` configuration for VitePress calculated using structure of directory and files in given path.
- * @param   {String}    rootDir   - Directory to get configuration for.
- * @param   {Options}    options   - Option to create configuration.
- */
-export const routes = (baseDir = "./", options?: Options) => {
+export const appRoutes = (options?: Options) => {
   const { ignoreDirs, ignoreMDFiles, popDirs } = options || {};
-  const mdFiles = getMdFiles(baseDir, ignoreMDFiles);
+  const mdFiles = getMdFiles(ignoreMDFiles);
 
   const routeList: Routes[] = [];
 
   mdFiles.forEach((item: MdFile) => {
     const { path, originalPath } = item;
-    let dirName = getDirName(path, popDirs);
+    let dirNamePath = `/${getDirName(path, popDirs)}`;
 
-    if (dirName.indexOf('.md') === dirName.length - '.md'.length) {
+    if (dirNamePath.indexOf('.md') === dirNamePath.length - '.md'.length) {
       // 以 '.md' 结尾
-      dirName = '/';
+      dirNamePath = '/';
     }
 
-    console.log('-------dirName: ', dirName);
     if (
       ignoreDirs && 
       ignoreDirs?.length &&
       ignoreDirs.findIndex(
-        (item) => getDirName(item, popDirs) === dirName
+        (item) => getDirName(item, popDirs) === dirNamePath
       ) !== -1
     ) {
       return;
     }
+
     const mdFileName = getName(path);
-    console.log('-------mdFileName: ', mdFileName);
-    // let page = await import(originalPath);
-    // console.log('-------aaa: ', page);
+    let frontmatter = {};
     try {
       const str = fs.readFileSync(originalPath, 'utf8');
-      console.log('-------aaa: ', matter(str, {
-        excerpt: true
-      }));
-      // TODO
+      const { data, } =  matter(str, {
+        excerpt: false
+      });
+
+      frontmatter = data;
     } catch (error) {
-      console.log('-------error: ', error);
+      console.error(error);
     }
-    
+
+    const findRoute = routeList.find((item) => {
+      let isThis = false;
+      if (item.path === dirNamePath) {
+        isThis = true;
+      }
+
+      return isThis;
+    });
+
+    let pagePath = '';
+    if (dirNamePath === '/') {
+      // 一级页面
+      pagePath = `/${mdFileName}`;
+    } else {
+      // 二级页面
+      pagePath = `/${dirNamePath}/${mdFileName}`;
+    }
+
+    if (findRoute) {
+      findRoute.children?.push({
+        path: dirNamePath,
+        children: [
+          {
+            frontmatter,
+            path: pagePath,
+          }
+        ],
+      })
+    } else {
+      routeList.push({
+        path: dirNamePath,
+        children: [
+          {
+            frontmatter,
+            path: pagePath,
+          }
+        ],
+      })
+    }
   });
 
-  return routes;
+  return routeList;
 };

@@ -1,12 +1,12 @@
 <!-- list 列表页 -->
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vitepress'
-import { watch } from 'vue'
+import { useRoute } from 'vitepress'
+import { useData } from '../composables/data'
 
 const route = useRoute()
-const router = useRouter()
-console.log('---------route', route);
-console.log('---------router', router);
+const { theme } = useData()
+console.log('---------route', route.path, '/blog/');
+console.log('--------theme.routes', theme.value.routes);
 
 
 // watch(() => route.path, setHomeClass, {

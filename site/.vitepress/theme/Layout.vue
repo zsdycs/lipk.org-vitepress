@@ -19,7 +19,12 @@ const { site, frontmatter, page } = useData()
     <a href="/">Home</a>
   </template>
   <template v-else-if="page.isNotFound">
-    <!-- 列表页 -->
+    <!-- 404 -->
+    <a href="/">Home</a>
+    404
+    <Content />
+  </template>
+  <template v-else>
     <a href="/">Home</a>
     <Content />
   </template>
