@@ -120,20 +120,16 @@ export const appRoutes = (options?: Options) => {
       pagePath = `/${mdFileName}`;
     } else {
       // 二级页面
-      pagePath = `/${dirNamePath}/${mdFileName}`;
+      pagePath = `${dirNamePath}/${mdFileName}`;
     }
 
     if (findRoute) {
+
       findRoute.children?.push({
-        path: dirNamePath,
-        children: [
-          {
-            frontmatter,
-            path: pagePath,
-          }
-        ],
-      })
-    } else {
+        frontmatter,
+        path: pagePath,
+      });
+    } else if (!findRoute) {
       routeList.push({
         path: dirNamePath,
         children: [
@@ -142,7 +138,7 @@ export const appRoutes = (options?: Options) => {
             path: pagePath,
           }
         ],
-      })
+      });
     }
   });
 

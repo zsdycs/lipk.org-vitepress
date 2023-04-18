@@ -6,7 +6,7 @@ import { useData } from '../composables/data'
 const route = useRoute()
 const { theme } = useData()
 console.log('---------route', route.path, '/blog/');
-console.log('--------theme.routes', theme.value.routes);
+console.log('--------theme.routes', JSON.parse(JSON.stringify(theme.value.routes)));
 
 
 // watch(() => route.path, setHomeClass, {
