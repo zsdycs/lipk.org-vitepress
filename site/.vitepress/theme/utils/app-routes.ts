@@ -16,7 +16,7 @@ interface MdFile {
 
 export interface Routes {
   path: string;
-  frontmatter?: object;
+  frontmatter?: Record<string, any>;
   children?: Routes[];
 }
 
@@ -80,6 +80,8 @@ export const appRoutes = (options?: Options) => {
     if (dirNamePath.indexOf('.md') === dirNamePath.length - '.md'.length) {
       // 以 '.md' 结尾
       dirNamePath = '/';
+    } else {
+      dirNamePath = `/${getDirName(path, popDirs)}/`;
     }
 
     if (
@@ -120,7 +122,7 @@ export const appRoutes = (options?: Options) => {
       pagePath = `/${mdFileName}`;
     } else {
       // 二级页面
-      pagePath = `${dirNamePath}/${mdFileName}`;
+      pagePath = `${dirNamePath}${mdFileName}`;
     }
 
     if (findRoute) {

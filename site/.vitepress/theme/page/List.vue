@@ -2,12 +2,12 @@
 <script setup lang="ts">
 import { useRoute } from 'vitepress'
 import { useData } from '../composables/data'
+import { ref } from 'vue'
+import { routePathList } from '../composables/route-path';
 
 const route = useRoute()
-const { theme } = useData()
-console.log('---------route', route.path, '/blog/');
-console.log('--------theme.routes', JSON.parse(JSON.stringify(theme.value.routes)));
-
+const { theme, frontmatter } = useData()
+const blogPaths = ref(routePathList(theme.value.routes, route))
 
 // watch(() => route.path, setHomeClass, {
 //   immediate: true,
@@ -22,9 +22,19 @@ console.log('--------theme.routes', JSON.parse(JSON.stringify(theme.value.routes
 </script>
 
 <template>
-  <main class="index">
+  <main class="main">
     <article>
-      <Content />
+      <header v-if="frontmatter.title" class="title">
+        <h1>{{ frontmatter.title }}</h1>
+        <h3></h3>
+        <hr id="beginning">
+      </header>
+      <div class="archive">
+        <a class="list" v-for="(item) in blogPaths" :key="item.path" :href="item.path">
+          <span class="title">{{ item.frontmatter?.title }}</span><time class="date">date TODO</time>
+          <p class="summary">summary TODO</p>
+        </a>
+      </div>
     </article>
   </main>
 </template>

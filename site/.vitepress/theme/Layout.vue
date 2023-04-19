@@ -2,8 +2,20 @@
 import { useData } from 'vitepress'
 import Home from './page/Home.vue'
 import List from './page/List.vue'
+import { useRoute } from 'vitepress'
+import { watch } from 'vue'
+import { setHomeClass } from './composables/home-class';
+import { setInitialMode } from './composables/page-mode';
 
-const { site, frontmatter, page } = useData()
+const { site, frontmatter, page, } = useData();
+const route = useRoute();
+
+setInitialMode();
+
+watch(() => route.path, setHomeClass, {
+  immediate: true,
+})
+
 // v-if="page.isNotFound" <NotFound />
 
 </script>

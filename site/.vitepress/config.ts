@@ -12,6 +12,8 @@ export default defineConfigWithTheme<CustomConfig>({
   title: "李鹏坤",
   description: "李鹏坤个人网站",
   outDir: "../dist",
+  lang: 'zh-CN',
+  cleanUrls: true,
   themeConfig: {
     routes,
     vitepressVersion: pkg.version,
