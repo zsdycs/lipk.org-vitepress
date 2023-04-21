@@ -1,4 +1,4 @@
-<!-- 页面色彩模式 -->
+<!-- 页面主题模式 -->
 <script setup lang="ts">
 import { ref } from 'vue'
 import { MODE_TEXT, MODE_ORDER } from '../composables/constant'
@@ -52,6 +52,3 @@ function modeChange() {
   <button @click="modeChange">{{ modeText }}</button>
 </template>
 
-<style scoped>
-@import '../style/index.css';
-</style>
