@@ -10,7 +10,21 @@ import { setInitialMode } from './composables/page-mode';
 const { frontmatter, page, } = useData();
 const route = useRoute();
 
+// 页面主题模式
 setInitialMode();
+
+// 引用文言 TODO
+// 引用参考资料 TODO
+// 无序复选列表 TODO
+// 菜单栏自动隐藏 TODO
+// 评论 TODO
+// 打印 TODO
+// 目录 TODO
+// 图片查看 TODO
+// 编辑本页 TODO
+// 返回顶部 TODO
+// 404页 TODO
+// 字体 TODO
 
 watch(() => route.path, setHomeClass, {
   immediate: true,
@@ -31,7 +45,7 @@ watch(() => route.path, setHomeClass, {
     <a href="/">Home</a>
   </template>
   <template v-else-if="page.isNotFound">
-    <!-- 404 -->
+    <!-- 404页 -->
     <a href="/">Home</a>
     404
     <Content />
