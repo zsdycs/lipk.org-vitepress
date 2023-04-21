@@ -1,6 +1,5 @@
 ---
-title: 关于
-slug: /about
+titleTemplate: '关于 - :title'
 ---
 
 ## 我

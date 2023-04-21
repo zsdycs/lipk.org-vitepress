@@ -1,7 +1,5 @@
 ---
-title: 简历
-date: "2019-12-31"
-slug: /resume
+titleTemplate: '简历 - :title'
 notComment: true
 pictureView: [
   {

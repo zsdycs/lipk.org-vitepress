@@ -11,6 +11,7 @@ const pkg = require("vitepress/package.json");
 export default defineConfigWithTheme<CustomConfig>({
   title: "李鹏坤",
   description: "李鹏坤个人网站",
+  titleTemplate: ':title - 李鹏坤',
   outDir: "./dist",
   srcDir: './site',
   cacheDir: './cache',
