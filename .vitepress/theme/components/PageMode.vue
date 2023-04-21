@@ -4,7 +4,6 @@ import { ref } from 'vue'
 import { MODE_TEXT, MODE_ORDER } from '../composables/constant'
 import { addDarkmodeCSS } from '../composables/page-mode'
 
-
 const modeText = ref('')
 
 // body 背景 延迟载入
@@ -12,9 +11,6 @@ const modeText = ref('')
 // document.body.style.backgroundRepeat = 'repeat';
 
 const modeLS: string | null = localStorage.getItem('page-theme-mode');
-
-
-
 
 if (modeLS) {
   modeText.value = MODE_TEXT[modeLS];
