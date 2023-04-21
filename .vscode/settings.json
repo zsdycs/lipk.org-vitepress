@@ -1,0 +1,103 @@
+{
+  "cSpell.words": [
+    "Adhanom",
+    "aliyun",
+    "allowfullscreen",
+    "Aniplex",
+    "Araxis",
+    "billibili",
+    "BOOTPROTO",
+    "bvid",
+    "Chapek",
+    "CNBC",
+    "COVID",
+    "DEFROUTE",
+    "Deitch",
+    "delonix",
+    "easingthemes",
+    "Entrackr",
+    "facebox",
+    "framespacing",
+    "Fullscreen",
+    "Ghebreyesus",
+    "Giegel",
+    "gtag",
+    "htmlclean",
+    "Hyperloop",
+    "Iger",
+    "IMAX",
+    "infty",
+    "IPADDR",
+    "ipconfig",
+    "Iriddis",
+    "Iridis",
+    "jakejarvis",
+    "kaiti",
+    "Lightbox",
+    "Luchian",
+    "markdownify",
+    "mathbb",
+    "MBZUAI",
+    "minifycss",
+    "minmax",
+    "MMXV",
+    "Mnet",
+    "mouseleave",
+    "msrc",
+    "NAND",
+    "NETMASK",
+    "ONBOOT",
+    "openseadragon",
+    "OTFT",
+    "photoswipe",
+    "plainify",
+    "pswp",
+    "Revivicor",
+    "Snyk",
+    "songti",
+    "sourcetree",
+    "Tedros",
+    "WLAN",
+    "Worldometers",
+    "yahei",
+    "Zayed"
+  ],
+  // The number of spaces a tab is equal to.
+  "editor.tabSize": 2,
+  // Insert spaces when pressing Tab.
+  "editor.insertSpaces": true,
+  // When opening a file, `editor.tabSize` and `editor.insertSpaces` will be detected based on the file contents.
+  "editor.detectIndentation": false,
+  // Columns at which to show vertical rulers
+  "editor.lineNumbers": "on",
+  "editor.rulers": [
+    80
+  ],
+  // The default character set encoding to use when reading and writing files.
+  "files.encoding": "utf8",
+  // The default end of line character.
+  "files.eol": "\n",
+  // When enabled, will trim trailing whitespace when you save a file.
+  "files.trimTrailingWhitespace": true,
+  "files.associations": {
+    "*.html": "html"
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "xlthu.Pangu-Markdown",
+  },
+  "css.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint",
+    "editor.formatOnSave": true,
+  },
+}

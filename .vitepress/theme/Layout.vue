@@ -7,7 +7,7 @@ import { watch } from 'vue'
 import { setHomeClass } from './composables/home-class';
 import { setInitialMode } from './composables/page-mode';
 
-const { site, frontmatter, page, } = useData();
+const { frontmatter, page, } = useData();
 const route = useRoute();
 
 setInitialMode();
