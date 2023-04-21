@@ -51,7 +51,7 @@ const getDirName = (path: string, popDirs: string[] = []) => {
 const getMdFiles = (
   ignoreMDFiles: string[] = []
 ): MdFile[] => {
-  const solvePath = "./**/*.md";
+  const solvePath = "./site/**/*.md";
   const files = globSync(solvePath, {
     ignore: ["**/node_modules/**", "**/.vitepress/**", "**/dist/**"],
   }).map((path) => {

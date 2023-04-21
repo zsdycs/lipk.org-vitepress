@@ -7,9 +7,9 @@
     "gray-matter": "4.0.3"
   },
   "scripts": {
-    "dev": "vitepress dev site",
-    "build": "vitepress build site",
-    "preview": "vitepress preview site"
+    "dev": "vitepress dev .",
+    "build": "vitepress build .",
+    "preview": "vitepress preview ."
   },
   "dependencies": {
     "vue": "3.2.47"
