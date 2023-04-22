@@ -7,7 +7,7 @@
     "vitepress": "1.0.0-alpha.73"
   },
   "scripts": {
-    "dev": "vitepress dev .",
+    "dev": "vitepress dev . --host",
     "build": "vitepress build .",
     "preview": "vitepress preview ."
   },
