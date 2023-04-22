@@ -331,13 +331,15 @@ h3:hover .anchor {
 
 .copyright svg {
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: text-bottom;
   fill: currentColor;
+  margin-left: 5px;
 }
 
 .copyright .version {
   width: 100px;
   height: 17px;
+  vertical-align: middle;
 }
 
 .copyright .travelling {
@@ -360,11 +362,11 @@ h3:hover .anchor {
 .copyright .beian img {
   height: 17px;
   margin-left: 5px;
-  vertical-align: middle;
+  vertical-align: text-bottom;
 }
 
 .copyright .beian a {
-  vertical-align: middle;
+  vertical-align: baseline;
 }
 
 .post-nav {

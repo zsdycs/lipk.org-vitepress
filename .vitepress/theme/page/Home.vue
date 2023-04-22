@@ -1,5 +1,6 @@
 <!-- home 首页 -->
 <script setup lang="ts">
+import Footer from '../components/Footer.vue'
 
 </script>
 
@@ -7,4 +8,5 @@
   <article>
     <Content />
   </article>
+  <Footer />
 </template>
