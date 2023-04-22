@@ -22,19 +22,17 @@ const blogPaths = ref(routePathList(theme.value.routes, route))
 </script>
 
 <template>
-  <main class="main">
-    <article>
-      <header v-if="frontmatter.title" class="title">
-        <h1>{{ frontmatter.title }}</h1>
-        <h3></h3>
-        <hr id="beginning">
-      </header>
-      <div class="archive">
-        <a class="list" v-for="(item) in blogPaths" :key="item.path" :href="item.path">
-          <span class="title">{{ item.frontmatter?.title }}</span><time class="date">date TODO</time>
-          <p class="summary">summary TODO</p>
-        </a>
-      </div>
-    </article>
-  </main>
+  <article class="main">
+    <header v-if="frontmatter.title" class="title">
+      <h1>{{ frontmatter.title }}</h1>
+      <h3></h3>
+      <hr id="beginning">
+    </header>
+    <div class="archive">
+      <a class="list" v-for="(item) in blogPaths" :key="item.path" :href="item.path">
+        <span class="title">{{ item.frontmatter?.title }}</span><time class="date">date TODO</time>
+        <p class="summary">summary TODO</p>
+      </a>
+    </div>
+  </article>
 </template>

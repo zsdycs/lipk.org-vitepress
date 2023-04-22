@@ -1,7 +1,7 @@
-import Layout from './Layout.vue'
-import PageMode from './components/PageMode.vue'
-import type { Theme } from 'vitepress'
-import './style/main.css'
+import Layout from "./Layout.vue";
+import PageMode from "./components/PageMode.vue";
+import type { Theme } from "vitepress";
+import "./style/main.css";
 
 export const theme: Theme = {
   Layout,
@@ -9,8 +9,9 @@ export const theme: Theme = {
     app,
     // app, router, siteData
   }) {
-    app.component('PageMode', PageMode)
-  }
-}
+    document.body.innerHTML = "<main id='app'></main>";
+    app.component("PageMode", PageMode);
+  },
+};
 
-export default theme
+export default theme;

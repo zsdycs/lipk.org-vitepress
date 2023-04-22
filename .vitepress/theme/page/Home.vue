@@ -4,9 +4,7 @@
 </script>
 
 <template>
-  <main class="index">
-    <article>
-      <Content />
-    </article>
-  </main>
+  <article>
+    <Content />
+  </article>
 </template>
