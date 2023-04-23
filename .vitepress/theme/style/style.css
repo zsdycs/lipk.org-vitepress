@@ -294,6 +294,11 @@ button {
 /* 选择器 class id  */
 .list .summary {
   text-indent: 0;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
 }
 
 .anchor {

@@ -1,5 +1,5 @@
 import { type Route } from "vitepress";
-import { type Routes } from "../utils/app-routes.js";
+import { type Routes } from "../../theme";
 
 export const routePathList = (routes: Routes[], route: Route) => {
   let pathList: Routes[] = [];

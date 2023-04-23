@@ -1,5 +1,5 @@
 ---
-home: true
+homePage: true
 title: 'lipk'
 titleTemplate: ':title • 李鹏坤'
 head:

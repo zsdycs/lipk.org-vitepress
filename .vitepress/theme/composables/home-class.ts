@@ -1,4 +1,4 @@
-export function setHomeClass(path: string) {
+export const setHomeClass = (path: string) => {
   const mainElement = document.querySelector("#app");
   if (path === "/") {
     // 首页时: <html> => <html class="home">
@@ -14,4 +14,4 @@ export function setHomeClass(path: string) {
       mainElement.classList.add("paramount");
     }
   }
-}
+};

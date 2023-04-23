@@ -12,3 +12,21 @@ export interface Menu {
   name: string;
   url: string;
 }
+
+export interface Options {
+  ignoreDirs?: string[];
+  ignoreMDFiles?: string[];
+  popDirs?: string[];
+}
+
+export interface MdFile {
+  path: string;
+  originalPath: string;
+}
+
+export interface Routes {
+  path: string;
+  frontmatter?: Record<string, any>;
+  content?: string;
+  children?: Routes[];
+}

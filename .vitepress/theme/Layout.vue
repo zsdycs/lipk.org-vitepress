@@ -41,14 +41,13 @@ watch(() => route.path, setHomeClass, {
 </script>
 
 <template>
-  <template v-if="frontmatter.home">
+  <template v-if="frontmatter.homePage">
     <!-- 首页 -->
     <Home />
   </template>
-  <template v-else-if="frontmatter.list">
+  <template v-else-if="frontmatter.listPage">
     <!-- 列表页 -->
     <List />
-    <a href="/">Home</a>
   </template>
   <template v-else-if="page.isNotFound">
     <!-- 404页 -->
