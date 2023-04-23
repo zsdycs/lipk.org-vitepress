@@ -15,17 +15,17 @@ const nowYear = (new Date()).getUTCFullYear();
   <footer>
     <div class="copyright" v-if="route.path === '/'">
       <span>&copy;{{ theme.since }}-{{ nowYear }} {{ theme.author }}</span>
-      <fragment v-html="SVG_STRING['version']"></fragment>
+      <span v-html="SVG_STRING['version']"></span>
       <a class="svg-link" href="https://github.com/zsdycs" target="_blank" rel="noopener noreferrer"
         title="zsdycs | Github">
-        <fragment v-html="SVG_STRING['fa-github']"></fragment>
+        <span v-html="SVG_STRING['fa-github']"></span>
       </a>
       <a class="svg-link" href="https://www.travellings.cn/go.html" target="_blank" rel="noopener noreferrer"
         title="开往-友链接力">
-        <fragment v-html="SVG_STRING['travelling']"></fragment>
+        <span v-html="SVG_STRING['travelling']"></span>
       </a>
       <span class="beian">
-        <img src="https://lipk.oss-accelerate.aliyuncs.com/images/beian.png" alt="公网安备" width="17" height="17" />
+        <img src="/images/beian.png" alt="公网安备" width="17" height="17" />
         <a target="_blank" rel="noopener noreferrer"
           href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44200002444254">
           粤公网安备 44200002444254 号
