@@ -4,13 +4,13 @@ notComment: true
 pictureView: [
   {
     title: '我的照片',
-    src: 'https://lipk.oss-accelerate.aliyuncs.com/images/resume.jpg',
+    src: '/images/resume.jpg',
   }
 ]
 ---
 
 <figure class="image">
-  <img loading="lazy" src="https://lipk.oss-accelerate.aliyuncs.com/images/resume.jpg" alt="我的照片" title="我的照片" height="150px">
+  <img loading="lazy" src="/images/resume.jpg" alt="我的照片" title="我的照片" height="150px">
   <!-- <figcaption class="image-description notPrint">我的照片</figcaption> -->
 </figure>
 
