@@ -7,3 +7,8 @@ export interface CustomConfig extends UserConfig {
   since?: string;
   author?: string;
 }
+
+export interface Menu {
+  name: string;
+  url: string;
+}

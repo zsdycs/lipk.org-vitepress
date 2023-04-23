@@ -4,6 +4,7 @@ import { useRoute } from 'vitepress'
 import { useData } from '../composables/data'
 import { ref } from 'vue'
 import { routePathList } from '../composables/route-path';
+import Menu from '../components/Menu.vue';
 
 const route = useRoute()
 const { theme, frontmatter } = useData()
@@ -22,6 +23,9 @@ const blogPaths = ref(routePathList(theme.value.routes, route))
 </script>
 
 <template>
+  <header class="masthead">
+    <Menu />
+  </header>
   <article class="main">
     <header v-if="frontmatter.title" class="title">
       <h1>{{ frontmatter.title }}</h1>

@@ -1,4 +1,5 @@
 // 常量
+import { type Menu } from "../../theme";
 
 export const MODE_TEXT: Record<string, string> = {
   "github-light": "浅色",
@@ -25,3 +26,96 @@ export const DARK_MODE: string[] = [
   "icy-dark",
   "photon-dark",
 ];
+
+export const MENU: Record<string, Menu[]> = {
+  default: [
+    {
+      name: "返回",
+      url: "/",
+    },
+    {
+      name: "博客",
+      url: "/blog/",
+    },
+    {
+      name: "菜谱",
+      url: "/food",
+    },
+    {
+      name: "关于",
+      url: "/about",
+    },
+  ],
+  "/blog/": [
+    {
+      name: "返回",
+      url: "/",
+    },
+    {
+      name: "博客",
+      url: "/blog/",
+    },
+    {
+      name: "菜谱",
+      url: "/food",
+    },
+    {
+      name: "关于",
+      url: "/about",
+    },
+  ],
+  "/food": [
+    {
+      name: "返回",
+      url: "/",
+    },
+    {
+      name: "博客",
+      url: "/blog/",
+    },
+    {
+      name: "菜谱",
+      url: "/food",
+    },
+    {
+      name: "关于",
+      url: "/about",
+    },
+  ],
+  "/about": [
+    {
+      name: "返回",
+      url: "/",
+    },
+    {
+      name: "博客",
+      url: "/blog/",
+    },
+    {
+      name: "菜谱",
+      url: "/food",
+    },
+    {
+      name: "关于",
+      url: "/about",
+    },
+  ],
+  "/resume": [
+    {
+      name: "返回",
+      url: "/",
+    },
+    {
+      name: "博客",
+      url: "/blog/",
+    },
+    {
+      name: "菜谱",
+      url: "/food",
+    },
+    {
+      name: "关于",
+      url: "/about",
+    },
+  ],
+};
