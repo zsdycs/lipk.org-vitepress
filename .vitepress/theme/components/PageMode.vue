@@ -7,7 +7,7 @@ import { addDarkmodeCSS } from '../composables/page-mode'
 const modeText = ref('')
 
 // body 背景 延迟载入
-// document.body.style.background = 'url(https://lipk.oss-accelerate.aliyuncs.com/images/geometry.png)';
+// document.body.style.background = 'url(/images/geometry.png)';
 // document.body.style.backgroundRepeat = 'repeat';
 
 const modeLS: string | null = localStorage.getItem('page-theme-mode');
