@@ -1,5 +1,5 @@
 import { type UserConfig } from "vitepress";
-import { type Routes } from "./theme/utils/app-routes.js";
+// import { type Routes } from "./theme/utils/app-routes.js";
 
 export interface CustomConfig extends UserConfig {
   routes: Routes[];
@@ -26,6 +26,7 @@ export interface MdFile {
 
 export interface Routes {
   path: string;
+  originalPath: string;
   frontmatter?: Record<string, any>;
   content?: string;
   children?: Routes[];

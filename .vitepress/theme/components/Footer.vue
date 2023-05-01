@@ -14,6 +14,7 @@ const nowYear = (new Date()).getUTCFullYear();
 <template>
   <footer>
     <div class="copyright" v-if="route.path === '/'">
+      <!-- 首页 -->
       <span>&copy;{{ theme.since }}-{{ nowYear }} {{ theme.author }}</span>
       <span v-html="SVG_STRING['version']"></span>
       <a class="svg-link" href="https://github.com/zsdycs" target="_blank" rel="noopener noreferrer"

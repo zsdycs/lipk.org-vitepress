@@ -3,7 +3,8 @@ import { globSync } from "glob";
 import fs from "fs";
 import matter from "gray-matter";
 import type { Routes, Options, MdFile } from "../../theme";
-import { createMarkdownRenderer } from "vitepress";
+// import { createMarkdownRenderer } from "vitepress";
+// import pc from "picocolors";
 
 const sliceIfEndsWith = (str: string, substr: string) => {
   if (str.endsWith(substr)) {
@@ -50,13 +51,16 @@ const getMdFiles = (ignoreMDFiles: string[] = []): MdFile[] => {
   return files as MdFile[];
 };
 
-export const appRoutes = (options?: Options) => {
+export const appRoutes = (options?: Options): Routes[] => {
   const { ignoreDirs, ignoreMDFiles, popDirs } = options || {};
+  // console.log("创建路由中……");
+
   const mdFiles = getMdFiles(ignoreMDFiles);
+  // console.log(`已获取所有文章，共 ${pc.green(mdFiles.length)} 篇`);
 
   const routeList: Routes[] = [];
-
-  mdFiles.forEach(async (item: MdFile) => {
+  for (let i = 0; i < mdFiles.length; i++) {
+    const item: MdFile = mdFiles[i];
     const { path, originalPath } = item;
     let dirNamePath = `/${getDirName(path, popDirs)}`;
 
@@ -74,67 +78,97 @@ export const appRoutes = (options?: Options) => {
         (item) => getDirName(item, popDirs) === dirNamePath
       ) !== -1
     ) {
-      return;
+      continue;
     }
 
     const mdFileName = getName(path);
     let frontmatter = {};
-    let content = null;
+    // let content = null;
     try {
       const src = fs.readFileSync(originalPath, "utf8");
       const { data } = matter(src, {
         excerpt: false,
       });
-      const md = await createMarkdownRenderer(
-        src,
-        (global as any).VITEPRESS_CONFIG
-      );
+      // const md = await createMarkdownRenderer(
+      //   src,
+      //   (global as any).VITEPRESS_CONFIG
+      // );
 
       frontmatter = data;
-      content = md.render(src);
+      // content = md.render(src);
+
+      const findRoute = routeList.find((item) => {
+        let isThis = false;
+        if (item.path === dirNamePath) {
+          isThis = true;
+        }
+
+        return isThis;
+      });
+
+      let pagePath = "";
+      if (dirNamePath === "/") {
+        // 一级页面
+        pagePath = `/${mdFileName}`;
+      } else {
+        // 二级页面
+        pagePath = `${dirNamePath}${mdFileName}`;
+      }
+      // console.clear();
+      // console.log(`生成路由: ${pc.green(mdFileName)}`);
+
+      if (findRoute) {
+        findRoute.children?.push({
+          frontmatter,
+          // content,
+          originalPath,
+          path: pagePath,
+        });
+        // 按文件名排序
+        findRoute.children?.sort((currentChild, nextChild) => {
+          const currentDate = new Date(currentChild.frontmatter?.date);
+          const nextDate = new Date(nextChild.frontmatter?.date);
+          const currentDateNum = Number(currentDate);
+          const nextDateNum = Number(nextDate);
+
+          return nextDateNum - currentDateNum;
+        });
+      } else if (!findRoute) {
+        routeList.push({
+          path: dirNamePath,
+          children: [
+            {
+              frontmatter,
+              // content,
+              originalPath,
+              path: pagePath,
+            },
+          ],
+          originalPath,
+        });
+      }
     } catch (error) {
       console.error(error);
     }
-
-    const findRoute = routeList.find((item) => {
-      let isThis = false;
-      if (item.path === dirNamePath) {
-        isThis = true;
-      }
-
-      return isThis;
-    });
-
-    let pagePath = "";
-    if (dirNamePath === "/") {
-      // 一级页面
-      pagePath = `/${mdFileName}`;
-    } else {
-      // 二级页面
-      pagePath = `${dirNamePath}${mdFileName}`;
-    }
-
-    if (findRoute) {
-      findRoute.children?.push({
-        frontmatter,
-        content,
-        originalPath,
-        path: pagePath,
-      });
-    } else if (!findRoute) {
-      routeList.push({
-        path: dirNamePath,
-        children: [
-          {
-            frontmatter,
-            content,
-            originalPath,
-            path: pagePath,
-          },
-        ],
-      });
-    }
-  });
+  }
 
   return routeList;
 };
+
+// export const generateRoutes = () => {
+//   const fileName = "routes.ts";
+//   const filePath = ".vitepress";
+//   const routes = appRoutes({ popDirs: ["site"] });
+
+//   if (fs.existsSync(filePath)) {
+//     fs.writeFileSync(
+//       `${filePath}/${fileName}`,
+//       `
+//     import type { Routes } from "./theme";
+//     export const routes: Routes[] = ${JSON.stringify(routes)};
+//     `
+//     );
+//   }
+
+//   return routes;
+// };

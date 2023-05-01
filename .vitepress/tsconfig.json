@@ -10,10 +10,20 @@
     "resolveJsonModule": true,
     "verbatimModuleSyntax": true,
     "jsx": "preserve",
-    "lib": ["esnext", "dom", "dom.iterable"],
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable"
+    ],
     "baseUrl": ".",
     "declaration": true
   },
-  "include": ["**/*.ts", "**/*.d.ts", "**/*.vue"],
-  "exclude": ["cache"]
+  "include": [
+    "**/*.ts",
+    "**/*.d.ts",
+    "**/*.vue"
+  ],
+  "exclude": [
+    "cache"
+  ]
 }

@@ -1,6 +1,6 @@
 import { defineConfigWithTheme } from "vitepress";
-import { type CustomConfig } from "./theme";
-import { appRoutes } from "./theme/utils/app-routes.js";
+import type { CustomConfig } from "./theme";
+import { appRoutes } from "./theme/utils/app-routes";
 import { head } from "./theme/utils/head";
 import pkg from "vitepress/package.json";
 
