@@ -299,6 +299,8 @@ button {
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
+  margin-block-start: 12px !important;
+  margin-block-end: 0px !important;
 }
 
 .anchor {

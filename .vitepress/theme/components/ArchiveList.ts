@@ -2,6 +2,7 @@ import { h, defineComponent } from "vue";
 import type { VNode } from "vue";
 import type { Routes } from "../../theme";
 import type { HeadConfig } from "vitepress";
+import { parseTime } from "../utils";
 
 interface Props {
   list: Routes[];
@@ -42,7 +43,7 @@ export default defineComponent({
         currentDate
           ? h("time", {
               class: "date",
-              innerHTML: currentDate,
+              innerHTML: parseTime(currentDate, "{m}-{d}"),
             })
           : "",
         descriptionMeta && descriptionMeta?.[1]?.["content"]
