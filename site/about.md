@@ -1,5 +1,6 @@
 ---
-titleTemplate: '关于 - :title'
+title: '关于'
+# titleTemplate: '关于 - :title'
 ---
 
 ## 我

@@ -1,5 +1,6 @@
 ---
-titleTemplate: '简历 - :title'
+title: '简历'
+# titleTemplate: '简历 - :title'
 notComment: true
 pictureView: [
   {
