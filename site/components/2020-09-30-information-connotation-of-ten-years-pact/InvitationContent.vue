@@ -3,9 +3,9 @@
 import { onMounted, onUnmounted } from 'vue';
 
 let titleEleDisplay = '';
-const titleEle = document.querySelector<HTMLImageElement>('header.title');
 
 onMounted(() => {
+  const titleEle = document.querySelector<HTMLImageElement>('header.title');
   if (titleEle) {
     titleEleDisplay = titleEle.style.display;
     titleEle.style.display = 'none';
@@ -13,6 +13,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  const titleEle = document.querySelector<HTMLImageElement>('header.title');
   if (titleEle) {
     titleEle.style.display = titleEleDisplay;
   }
