@@ -2,6 +2,7 @@
 import { useData } from 'vitepress'
 import Home from './page/Home.vue'
 import List from './page/List.vue'
+import BlogContent from './page/BlogContent.vue'
 import { useRoute } from 'vitepress'
 import { watch } from 'vue'
 import { setHomeClass } from './composables/home-class';
@@ -56,7 +57,6 @@ watch(() => route.path, setHomeClass, {
     <Content />
   </template>
   <template v-else>
-    <a href="/">Home</a>
-    <Content />
+    <BlogContent />
   </template>
 </template>

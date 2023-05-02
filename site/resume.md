@@ -2,6 +2,7 @@
 title: '简历'
 # titleTemplate: '简历 - :title'
 notComment: true
+notPostNav: true
 pictureView: [
   {
     title: '我的照片',

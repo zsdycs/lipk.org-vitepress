@@ -6,6 +6,7 @@ export interface CustomConfig extends UserConfig {
   vitepressVersion?: string;
   since?: string;
   author?: string;
+  slogan?: string;
 }
 
 export interface Menu {

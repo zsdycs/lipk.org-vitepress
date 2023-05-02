@@ -8,5 +8,5 @@ import Footer from '../components/Footer.vue'
   <article>
     <Content />
   </article>
-  <Footer />
+  <Footer mode="home" />
 </template>

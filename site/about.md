@@ -1,6 +1,7 @@
 ---
 title: '关于'
 # titleTemplate: '关于 - :title'
+notPostNav: true
 ---
 
 ## 我

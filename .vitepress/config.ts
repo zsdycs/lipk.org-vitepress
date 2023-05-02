@@ -20,5 +20,6 @@ export default defineConfigWithTheme<CustomConfig>({
     vitepressVersion: pkg.version,
     since: "2018",
     author: "李鹏坤",
+    slogan: "执手相看，对影成双",
   },
 });

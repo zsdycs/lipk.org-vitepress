@@ -379,7 +379,7 @@ h3:hover .anchor {
 .post-nav {
   display: flex;
   justify-content: space-between;
-  margin-top: 25px;
+  /* margin-top: 25px; */
   font-weight: 700;
 }
 
