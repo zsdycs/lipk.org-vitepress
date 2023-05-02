@@ -5,7 +5,7 @@ slug: 'to-my-good-friend-dxy'
 pictureView: [
   {
     title: '新婚快乐',
-    src: 'https://lipk.oss-accelerate.aliyuncs.com/images/2019-02-21-To-my-good-friend-dxy.jpg',
+    src: '/images/2019-02-21-To-my-good-friend-dxy.jpg',
   }
 ]
 ---
@@ -49,7 +49,7 @@ pictureView: [
 
 ---
 
-![新婚快乐](https://lipk.oss-accelerate.aliyuncs.com/images/2019-02-21-To-my-good-friend-dxy.jpg)
+![新婚快乐](/images/2019-02-21-To-my-good-friend-dxy.jpg)
 
 ---
 

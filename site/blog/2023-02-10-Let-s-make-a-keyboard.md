@@ -6,14 +6,14 @@ tableOfContents: true
 pictureView: [
   {
     title: '标准键盘配列',
-    src: 'https://lipk.oss-accelerate.aliyuncs.com/images/2023-02-10-Let-s-make-a-keyboard(1).jpg',
+    src: '/images/2023-02-10-Let-s-make-a-keyboard(1).jpg',
     w: 477,
     h: 1089,
   },
 ]
 coverPicture: {
   title: '标准键盘配列',
-  src: 'https://lipk.oss-accelerate.aliyuncs.com/images/2023-02-10-Let-s-make-a-keyboard(1).jpg',
+  src: '/images/2023-02-10-Let-s-make-a-keyboard(1).jpg',
 }
 ---
 
@@ -81,7 +81,7 @@ ATmega32U4 的最小系统最少需要 4 颗电容和一颗晶振。
 
 当我们决定了“按键配列”是怎么样的时候，才能着手设计电路的原理图和电路板的设计图。
 
-![标准键盘配列](https://lipk.oss-accelerate.aliyuncs.com/images/2023-02-10-Let-s-make-a-keyboard(1).jpg)
+![标准键盘配列](/images/2023-02-10-Let-s-make-a-keyboard(1).jpg)
 
 ## 外壳
 

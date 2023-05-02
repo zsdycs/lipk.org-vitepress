@@ -5,20 +5,20 @@ slug: 'vm-ware-virtual-machine-network-settings'
 pictureView: [
   {
     title: 'VMware 提供的各种网络连接方式',
-    src: 'https://lipk.oss-accelerate.aliyuncs.com/images/2021-06-20-VMware-virtual-machine-network-settings(1).jpg',
+    src: '/images/2021-06-20-VMware-virtual-machine-network-settings(1).jpg',
   },
   {
     title: 'VMnet8 适配器设置和 WLAN IP',
-    src: 'https://lipk.oss-accelerate.aliyuncs.com/images/2021-06-20-VMware-virtual-machine-network-settings(2).jpg',
+    src: '/images/2021-06-20-VMware-virtual-machine-network-settings(2).jpg',
   },
   {
     title: 'VMnet8 适配器设置和 WLAN IP',
-    src: 'https://lipk.oss-accelerate.aliyuncs.com/images/2021-06-20-VMware-virtual-machine-network-settings(3).jpg',
+    src: '/images/2021-06-20-VMware-virtual-machine-network-settings(3).jpg',
   },
 ]
 coverPicture: {
   title: 'VMware 提供的各种网络连接方式',
-  src: 'https://lipk.oss-accelerate.aliyuncs.com/images/2021-06-20-VMware-virtual-machine-network-settings.jpg',
+  src: '/images/2021-06-20-VMware-virtual-machine-network-settings.jpg',
 }
 ---
 
@@ -26,7 +26,7 @@ coverPicture: {
 
 VMware 提供了多种网络连接方式，这里仅介绍 NAT，因为这是常用的连接方式中，设置比较麻烦的。
 
-![VMware 提供的各种网络连接方式](https://lipk.oss-accelerate.aliyuncs.com/images/2021-06-20-VMware-virtual-machine-network-settings(1).jpg)
+![VMware 提供的各种网络连接方式](/images/2021-06-20-VMware-virtual-machine-network-settings(1).jpg)
 
 为了让虚拟机中的 Linux 连上网，要看本机当前联网的 IP 是在那个网段。使用 `ipconfig`，要注意当前本机使用的网络连接方式。网线连接看以太网 IP，WiFi 看 WLAN IP。
 
@@ -41,7 +41,7 @@ VMware 提供了多种网络连接方式，这里仅介绍 NAT，因为这是常
 
 要设置 VMnet8 适配器 IP 设置为 192.168.31.0 ~ 192.168.31.255 之间的非重复 IP。这里设置为了 192.168.31.99。
 
-![VMnet8 适配器设置和 WLAN IP](https://lipk.oss-accelerate.aliyuncs.com/images/2021-06-20-VMware-virtual-machine-network-settings(2).jpg)
+![VMnet8 适配器设置和 WLAN IP](/images/2021-06-20-VMware-virtual-machine-network-settings(2).jpg)
 
 Linux 网卡设置，IP 设置为 192.168.31.0 ~ 192.168.31.255 之间的非重复 IP。
 
@@ -80,7 +80,7 @@ VMware nat 设置指的是 VMware 的设置，路径如下：
 
 面板 > 编辑 > 虚拟网络编辑器 > 更改设置
 
-![VMware nat 设置](https://lipk.oss-accelerate.aliyuncs.com/images/2021-06-20-VMware-virtual-machine-network-settings(3).jpg)
+![VMware nat 设置](/images/2021-06-20-VMware-virtual-machine-network-settings(3).jpg)
 
 上图的**重点设置**如下：
 

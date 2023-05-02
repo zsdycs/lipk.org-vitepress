@@ -5,7 +5,7 @@ slug: 'interstellar-replay'
 pictureView: [
   {
     title: '片场入口',
-    src: 'https://lipk.oss-accelerate.aliyuncs.com/images/2020-08-02-Movie-replay.jpeg',
+    src: '/images/2020-08-02-Movie-replay.jpeg',
   }
 ]
 ---
@@ -14,4 +14,4 @@ pictureView: [
 
 终于补上了电影票，实在是太开心了。
 
-![片场入口](https://lipk.oss-accelerate.aliyuncs.com/images/2020-08-02-Movie-replay.jpeg)
+![片场入口](/images/2020-08-02-Movie-replay.jpeg)

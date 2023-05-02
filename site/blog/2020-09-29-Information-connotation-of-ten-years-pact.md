@@ -213,13 +213,13 @@ slug: 'information-connotation-of-ten-years-pact'
         </div>
         <img
           class="user-img"
-          src="https://lipk.oss-accelerate.aliyuncs.com/images/lipk.jpg"
+          src="/images/lipk.jpg"
         />
       </div>
       <div class="admin-group">
         <img
           class="admin-img"
-          src="https://lipk.oss-accelerate.aliyuncs.com/images/2020-09-30-Information-connotation-of-ten-years-pact-dyq.jpg"
+          src="/images/2020-09-30-Information-connotation-of-ten-years-pact-dyq.jpg"
         />
         <div class="admin-msg">
           <div class="user-name">
@@ -236,7 +236,7 @@ slug: 'information-connotation-of-ten-years-pact'
       <div class="admin-group">
         <img
           class="admin-img"
-          src="https://lipk.oss-accelerate.aliyuncs.com/images/2020-09-30-Information-connotation-of-ten-years-pact-dyq.jpg"
+          src="/images/2020-09-30-Information-connotation-of-ten-years-pact-dyq.jpg"
         />
         <div class="admin-msg">
           <div class="user-name">
@@ -247,7 +247,7 @@ slug: 'information-connotation-of-ten-years-pact'
             <p class="map admin-reply">
               <iframe
                 class="map"
-                src="https://apis.map.qq.com/tools/poimarker?type=0&marker=coord:22.615581,113.283550;title:“十年之约”活动地点；addr: 东升镇鸿珠商店&key=7KWBZ-Z6YKU-7LLVY-27DKJ-FPST7-CEBSK&referer=lipk.org-web"
+                src="https://apis.map.qq.com/tools/poimarker?type=0&marker=coord:22.615581,113.283550;title:“十年之约”活动地点&addr=东升镇鸿珠商店&key=7KWBZ-Z6YKU-7LLVY-27DKJ-FPST7-CEBSK&referer=lipk.org-web"
                 scrolling="no"
                 border="0"
                 frameborder="no"
@@ -266,13 +266,13 @@ slug: 'information-connotation-of-ten-years-pact'
         </div>
         <img
           class="user-img"
-          src="https://lipk.oss-accelerate.aliyuncs.com/images/lipk.jpg"
+          src="/images/lipk.jpg"
         />
       </div>
       <div class="admin-group">
         <img
           class="admin-img"
-          src="https://lipk.oss-accelerate.aliyuncs.com/images/2020-09-30-Information-connotation-of-ten-years-pact-ljy.jpg"
+          src="/images/2020-09-30-Information-connotation-of-ten-years-pact-ljy.jpg"
         />
         <div class="admin-msg">
           <div class="user-name">
@@ -289,7 +289,7 @@ slug: 'information-connotation-of-ten-years-pact'
       <div class="admin-group">
         <img
           class="admin-img"
-          src="https://lipk.oss-accelerate.aliyuncs.com/images/2020-09-30-Information-connotation-of-ten-years-pact-lqf.jpg"
+          src="/images/2020-09-30-Information-connotation-of-ten-years-pact-lqf.jpg"
         />
         <div class="admin-msg">
           <div class="user-name">
@@ -306,7 +306,7 @@ slug: 'information-connotation-of-ten-years-pact'
       <div class="admin-group">
         <img
           class="admin-img"
-          src="https://lipk.oss-accelerate.aliyuncs.com/images/2020-09-30-Information-connotation-of-ten-years-pact-ylp.jpg"
+          src="/images/2020-09-30-Information-connotation-of-ten-years-pact-ylp.jpg"
         />
         <div class="admin-msg">
           <div class="user-name">
@@ -321,7 +321,7 @@ slug: 'information-connotation-of-ten-years-pact'
       <div class="admin-group">
         <img
           class="admin-img"
-          src="https://lipk.oss-accelerate.aliyuncs.com/images/2020-09-30-Information-connotation-of-ten-years-pact-ljr.jpg"
+          src="/images/2020-09-30-Information-connotation-of-ten-years-pact-ljr.jpg"
         />
         <div class="admin-msg">
           <div class="user-name">
@@ -336,7 +336,7 @@ slug: 'information-connotation-of-ten-years-pact'
       <div class="admin-group">
         <img
           class="admin-img"
-          src="https://lipk.oss-accelerate.aliyuncs.com/images/2020-09-30-Information-connotation-of-ten-years-pact-dyq.jpg"
+          src="/images/2020-09-30-Information-connotation-of-ten-years-pact-dyq.jpg"
         />
         <div class="admin-msg">
           <div class="user-name">
@@ -355,7 +355,7 @@ slug: 'information-connotation-of-ten-years-pact'
         </div>
         <img
           class="user-img"
-          src="https://lipk.oss-accelerate.aliyuncs.com/images/lipk.jpg"
+          src="/images/lipk.jpg"
         />
       </div>
     </div>

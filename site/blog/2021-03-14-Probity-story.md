@@ -5,7 +5,7 @@ slug: 'probity-story'
 pictureView: [
   {
     title: '向日葵',
-    src: 'https://lipk.oss-accelerate.aliyuncs.com/images/2021-03-14-Probity-story.jpg',
+    src: '/images/2021-03-14-Probity-story.jpg',
   }
 ]
 ---
@@ -30,7 +30,7 @@ pictureView: [
 
 看着这个村长离去的背影，老王叹了一口气。
 
-![向日葵](https://lipk.oss-accelerate.aliyuncs.com/images/2021-03-14-Probity-story.jpg)
+![向日葵](/images/2021-03-14-Probity-story.jpg)
 
 在去开村长大会的路上老王和老张恰巧顺路聊了起来，老张说：“这几年分红越来越少了说是政府加强对农业用地规划的管理，村尾那几百亩的荒地不能租给企业做厂房，少了租金收入。我听说今天开会是要分红的。”
 

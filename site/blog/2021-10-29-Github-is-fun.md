@@ -5,39 +5,39 @@ slug: 'github-is-fun'
 pictureView: [
   {
     title: 'HelloGithub 的抽奖推文',
-    src: 'https://lipk.oss-accelerate.aliyuncs.com/images/2021-10-29-Github-is-fun(1).jpg',
+    src: '/images/2021-10-29-Github-is-fun(1).jpg',
     w: 1125,
     h: 2023,
   },
   {
     title: '推文抽奖信息（得奖后通知我，加了卤蛋好友）',
-    src: 'https://lipk.oss-accelerate.aliyuncs.com/images/2021-10-29-Github-is-fun(2).jpg',
+    src: '/images/2021-10-29-Github-is-fun(2).jpg',
   },
   {
     title: '好看的 GitHub 贴纸',
-    msrc: 'https://lipk.oss-accelerate.aliyuncs.com/images/2021-10-29-Github-is-fun(3).jpg',
-    src: 'https://lipk.oss-accelerate.aliyuncs.com/preview/2021-10-29-Github-is-fun(3).jpg',
+    msrc: '/images/2021-10-29-Github-is-fun(3).jpg',
+    src: '/preview/2021-10-29-Github-is-fun(3).jpg',
     w: 4032,
     h: 2256,
   },
   {
     title: '官方周边-章鱼猫马克杯-右视图',
-    msrc: 'https://lipk.oss-accelerate.aliyuncs.com/images/2021-10-29-Github-is-fun(4).jpg',
-    src: 'https://lipk.oss-accelerate.aliyuncs.com/preview/2021-10-29-Github-is-fun(4).jpg',
+    msrc: '/images/2021-10-29-Github-is-fun(4).jpg',
+    src: '/preview/2021-10-29-Github-is-fun(4).jpg',
     w: 3024,
     h: 3024,
   },
   {
     title: '官方周边-章鱼猫马克杯-左视图',
-    msrc: 'https://lipk.oss-accelerate.aliyuncs.com/images/2021-10-29-Github-is-fun(5).jpg',
-    src: 'https://lipk.oss-accelerate.aliyuncs.com/preview/2021-10-29-Github-is-fun(5).jpg',
+    msrc: '/images/2021-10-29-Github-is-fun(5).jpg',
+    src: '/preview/2021-10-29-Github-is-fun(5).jpg',
     w: 3024,
     h: 3024,
   }
 ]
 coverPicture: {
   title: '好看的 GitHub 贴纸',
-  src: 'https://lipk.oss-accelerate.aliyuncs.com/images/2021-10-29-Github-is-fun(3).jpg',
+  src: '/images/2021-10-29-Github-is-fun(3).jpg',
 }
 ---
 
@@ -61,23 +61,23 @@ coverPicture: {
 
 “卤蛋”将 Github 送他的礼物，抽奖送出给粉丝，我是极其钦佩！真真切切的佩服。“独乐乐不如众乐乐”的胸怀真的是太气派了。
 
-![HelloGithub 的抽奖推文](https://lipk.oss-accelerate.aliyuncs.com/images/2021-10-29-Github-is-fun(1).jpg)
+![HelloGithub 的抽奖推文](/images/2021-10-29-Github-is-fun(1).jpg)
 
 在 695 位参与者中获得得奖身份，10 ÷ 695 ≈ 0.014，真的很不可思议，太奇妙了。看到公众号留言消息是在中午午休时分，大概十二点二十几的样子，立刻加了好友，得知可以在衣服和杯子间选择时毫不犹豫选择了杯子，而且衣服也没有我的码，到我这里只有 S、M、XL 了。😅
 
-![推文抽奖信息（得奖后通知我，加了卤蛋好友）](https://lipk.oss-accelerate.aliyuncs.com/images/2021-10-29-Github-is-fun(2).jpg)
+![推文抽奖信息（得奖后通知我，加了卤蛋好友）](/images/2021-10-29-Github-is-fun(2).jpg)
 
 本以为是一小叠贴纸，收到的是厚厚的一叠，都是一对一对的，3M 的胶，是比较厚实的，非常很好看。这里是所有贴纸，铺满了一个床上书桌。
 
-![好看的 GitHub 贴纸](https://lipk.oss-accelerate.aliyuncs.com/images/2021-10-29-Github-is-fun(3).jpg)
+![好看的 GitHub 贴纸](/images/2021-10-29-Github-is-fun(3).jpg)
 
 杯子拿起来把手很舒服，因为把手很宽，手可以放进去把杯子提起来。黑色的章鱼猫标志低调内敛，杯口圆润，杯子内侧的陶瓷釉面平滑而且有光泽，工艺精湛。看了看底部，贴有“MADE IN CHINA”的黑色小贴纸，这杯子，可绕了地球好几圈啊~如今可到我手上了！
 
-![官方周边-章鱼猫马克杯-右视图](https://lipk.oss-accelerate.aliyuncs.com/images/2021-10-29-Github-is-fun(4).jpg)
+![官方周边-章鱼猫马克杯-右视图](/images/2021-10-29-Github-is-fun(4).jpg)
 
 因为我手大的原因，杯子看起来比较小，但实际上，杯口可以把罐装可乐放进去。
 
-![官方周边-章鱼猫马克杯-左视图](https://lipk.oss-accelerate.aliyuncs.com/images/2021-10-29-Github-is-fun(5).jpg)
+![官方周边-章鱼猫马克杯-左视图](/images/2021-10-29-Github-is-fun(5).jpg)
 
 ### 来自 Github 本身的乐趣
 
