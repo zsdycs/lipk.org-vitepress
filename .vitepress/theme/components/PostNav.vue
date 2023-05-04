@@ -67,12 +67,12 @@ function setPostNavRoute() {
   if (currentRouteIndex > 0 && currentRouteIndex < routesLength) {
     lastRoute.value = routes[currentRouteIndex + 1];
     nextRoute.value = routes[currentRouteIndex - 1];
-    lastTitle.value = lastRoute.value.frontmatter?.title || '';
-    nextTitle.value = nextRoute.value.frontmatter?.title || '';
+    lastTitle.value = lastRoute?.value?.frontmatter?.title || '';
+    nextTitle.value = nextRoute?.value?.frontmatter?.title || '';
   } else if (currentRouteIndex === 0) {
     // 第一篇
     lastRoute.value = routes[currentRouteIndex + 1];
-    lastTitle.value = lastRoute.value.frontmatter?.title || '';
+    lastTitle.value = lastRoute?.value?.frontmatter?.title || '';
     nextRoute.value = null;
     nextTitle.value = ''
   } else if (currentRouteIndex === routesLength) {
@@ -80,7 +80,7 @@ function setPostNavRoute() {
     lastRoute.value = null;
     lastTitle.value = '';
     nextRoute.value = routes[currentRouteIndex - 1];
-    nextTitle.value = nextRoute.value.frontmatter?.title || ''
+    nextTitle.value = nextRoute?.value?.frontmatter?.title || ''
   }
 }
 
