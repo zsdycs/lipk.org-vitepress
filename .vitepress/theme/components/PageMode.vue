@@ -38,7 +38,7 @@ function modeChange() {
   modeText.value = MODE_TEXT[MODE_ORDER[nowDarkmode]];
   addDarkmodeCSS(MODE_ORDER[nowDarkmode]);
   // 与 beaudar 通信
-  if (localStorage.getItem('beaudar') === 'true' && beaudar && beaudar.contentWindow) {
+  if (beaudar?.contentWindow) {
     beaudar.contentWindow.postMessage(message, 'https://beaudar.lipk.org');
   }
 };

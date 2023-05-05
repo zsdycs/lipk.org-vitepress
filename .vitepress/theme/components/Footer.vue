@@ -3,6 +3,7 @@
 import { useData } from '../composables/data'
 import { SVG_STRING } from '../composables/svg-resources';
 import PostNav from '../components/PostNav.vue'
+import Beaudar from "../components/Beaudar.vue";
 
 const props = defineProps<{
   mode: string, // 模式 home, common
@@ -47,8 +48,8 @@ const nowYear = (new Date()).getUTCFullYear();
     <!-- 导航 -->
     <PostNav v-if="postNav" />
 
-    <div v-if="comment">{{ 'comment TODO' }}</div>
-    <section v-if="comment" id="beaudar" class="comments"></section>
+    <!-- 表达 评论 -->
+    <Beaudar v-if="comment" class="comments"></Beaudar>
 
     <!-- mode === 'common' 常规 -->
     <hr v-if="props.mode === 'common'">
@@ -72,6 +73,5 @@ const nowYear = (new Date()).getUTCFullYear();
         </a>
       </span>
     </div>
-    <!-- mode === 'withComments' 带评论 TODO -->
   </footer>
 </template>
