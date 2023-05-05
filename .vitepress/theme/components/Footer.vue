@@ -49,7 +49,7 @@ const nowYear = (new Date()).getUTCFullYear();
     <PostNav v-if="postNav" />
 
     <!-- 表达 评论 -->
-    <Beaudar v-if="comment" class="comments"></Beaudar>
+    <Beaudar v-if="comment" />
 
     <!-- mode === 'common' 常规 -->
     <hr v-if="props.mode === 'common'">
