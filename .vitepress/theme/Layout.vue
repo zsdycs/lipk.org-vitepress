@@ -3,6 +3,7 @@ import { useData } from 'vitepress'
 import Home from './page/Home.vue'
 import List from './page/List.vue'
 import BlogContent from './page/BlogContent.vue'
+import NotFound from './page/NotFound.vue'
 import { useRoute } from 'vitepress'
 import { watch } from 'vue'
 import { setHomeClass } from './composables/home-class';
@@ -30,7 +31,6 @@ consoleInfo();
 // 图片查看 TODO
 // 编辑本页 TODO
 // 返回顶部 TODO
-// 404页 TODO
 // 字体 TODO
 
 watch(() => route.path, setHomeClass, {
@@ -52,9 +52,7 @@ watch(() => route.path, setHomeClass, {
   </template>
   <template v-else-if="page.isNotFound">
     <!-- 404页 -->
-    <a href="/">Home</a>
-    404
-    <Content />
+    <NotFound />
   </template>
   <template v-else>
     <BlogContent />
