@@ -25,7 +25,6 @@ consoleInfo();
 // 引用参考资料 TODO
 // 无序复选列表 TODO
 // 菜单栏自动隐藏 TODO
-// 评论 TODO
 // 打印 TODO
 // 目录 TODO
 // 图片查看 TODO
