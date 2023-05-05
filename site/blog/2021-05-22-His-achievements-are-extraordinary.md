@@ -16,7 +16,7 @@ coverPicture: {
 ---
 
 <figure class="image">
-  <img loading="lazy" src="/images/2021-05-22-His-achievements-are-extraordinary.jpg" alt="袁隆平（1930-2021）" title="袁隆平（1930-2021）" height="291px">
+  <img loading="lazy" src="/images/2021-05-22-His-achievements-are-extraordinary.jpg" alt="袁隆平（1930-2021）" title="袁隆平（1930-2021）" height="291">
   <figcaption class="image-description">袁隆平（1930-2021）</figcaption>
 </figure>
 

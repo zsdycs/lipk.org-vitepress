@@ -12,7 +12,7 @@ pictureView: [
 ---
 
 <figure class="image">
-  <img loading="lazy" src="/images/resume.jpg" alt="我的照片" title="我的照片" height="150px">
+  <img loading="lazy" src="/images/resume.jpg" alt="我的照片" title="我的照片" height="150">
   <!-- <figcaption class="image-description notPrint">我的照片</figcaption> -->
 </figure>
 
