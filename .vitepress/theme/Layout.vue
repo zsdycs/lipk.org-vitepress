@@ -21,7 +21,6 @@ registerSW();
 // 控制台信息
 consoleInfo();
 
-// 引用文言 TODO
 // 引用参考资料 TODO
 // 无序复选列表 TODO
 // 菜单栏自动隐藏 TODO

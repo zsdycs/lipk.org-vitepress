@@ -6,6 +6,7 @@ import Meta from '../components/Meta.vue';
 import Footer from '../components/Footer.vue';
 import { watch, ref } from 'vue';
 import { useRoute } from 'vitepress';
+import { setRightQuotes } from '../composables/right-quote';
 
 const { frontmatter } = useData()
 const route = useRoute();
@@ -18,6 +19,10 @@ let footerPostNav = ref(true);
 watch(() => route.path, setFooter, {
   immediate: true,
 });
+
+watch(() => route.path, setRightQuotes, {
+  immediate: true,
+})
 
 function setFooter() {
   if (frontmatter.value.notComment === true) {
