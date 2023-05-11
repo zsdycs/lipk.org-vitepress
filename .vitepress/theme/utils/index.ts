@@ -87,3 +87,30 @@ export const parseTime = (
   });
   return time_str;
 };
+
+/**
+ * 节流
+ * @param {Function} func 执行函数
+ * @param {number} wait 延迟执行时间
+ * @param {number} runTime 执行间隔
+ */
+export const throttle = (func: Function, wait: number, runTime: number) => {
+  let startTime = Number(new Date());
+  let timeout: number | null = null;
+
+  return function () {
+    const current = Number(new Date());
+
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    // 如果达到了规定的触发时间间隔，触发 func
+    if (current - startTime >= runTime) {
+      // @ts-ignore
+      func.apply(this, arguments);
+      startTime = current;
+    } else {
+      timeout = setTimeout(func, wait);
+    }
+  };
+};

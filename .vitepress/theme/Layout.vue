@@ -10,6 +10,9 @@ import { setHomeClass } from './composables/home-class';
 import { setInitialMode } from './composables/page-mode';
 import { registerSW } from './composables/register-sw';
 import { consoleInfo } from './composables/console-info';
+import { useEventListener } from './composables/event-listener'
+import { throttle } from './utils'
+import { getScrollDirection } from './composables/get-scroll-direction'
 
 const { frontmatter, page, } = useData();
 const route = useRoute();
@@ -23,7 +26,6 @@ consoleInfo();
 
 // 引用参考资料 TODO
 // 无序复选列表 TODO
-// 菜单栏自动隐藏 TODO
 // 打印 TODO
 // 目录 TODO
 // 图片查看 TODO
@@ -34,6 +36,10 @@ consoleInfo();
 watch(() => route.path, setHomeClass, {
   immediate: true,
 })
+
+useEventListener(document, 'scroll', throttle(getScrollDirection, 500, 200));
+
+useEventListener(document, 'resize', throttle(getScrollDirection, 500, 200));
 
 // v-if="page.isNotFound" <NotFound />
 
