@@ -220,6 +220,10 @@ article {
   background-color: var(--article-bg-color);
 }
 
+header.title {
+  text-align: center;
+}
+
 /* 组织内容
 <p> <hr> <pre> <blockquote> <ol> <ul> <li> <dl> <dt> <dd> <figure> <figcaption> <div>
 */
