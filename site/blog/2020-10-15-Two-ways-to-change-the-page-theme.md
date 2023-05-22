@@ -2,6 +2,10 @@
 title: '改变页面主题的两种方式'
 date: '2020-10-15'
 slug: 'two-ways-to-change-the-page-theme'
+head:
+  - - meta
+    - name: description
+      content: 今天在看谷歌文档时觉得文档边上的目录很好看，于是打开了 F12 看 CSS 是怎么写的，发现了一个改变页面主题的新方法。
 ---
 
 ## 第一种设置 theme 属性

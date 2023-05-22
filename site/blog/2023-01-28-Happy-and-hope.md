@@ -2,6 +2,10 @@
 title: '快乐和希望'
 date: '2023-01-28'
 slug: 'happy-and-hope'
+head:
+  - - meta
+    - name: description
+      content: 一生其实很快就过去了 都说人生苦短 其实大部分时间都是在吃苦
 ---
 
 一生其实很快就过去了

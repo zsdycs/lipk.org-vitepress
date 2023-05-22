@@ -2,6 +2,10 @@
 title: '静态页面字体子集化'
 date: '2022-11-28'
 slug: 'subset-static-page-fonts'
+head:
+  - - meta
+    - name: description
+      content: 觉得“思源宋体”很好看，所以本站之前都是通过请求“use.typekit.net/kwz5xar.js”加载“思源宋体”的，但是由于 typekit.net 是 Adobe 的服务，在网络稍差时会加载失败，而且也不是自托管的，难免有一些不信任。
 ---
 
 > 觉得“思源宋体”很好看，所以本站之前都是通过请求“use.typekit.net/kwz5xar.js”加载“思源宋体”的，但是由于 typekit.net 是 Adobe 的服务，在网络稍差时会加载失败，而且也不是自托管的，难免有一些不信任。

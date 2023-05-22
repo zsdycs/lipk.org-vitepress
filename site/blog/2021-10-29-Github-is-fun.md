@@ -39,6 +39,10 @@ coverPicture: {
   title: '好看的 GitHub 贴纸',
   src: '/images/2021-10-29-Github-is-fun(3).jpg',
 }
+head:
+  - - meta
+    - name: description
+      content: 前几天，HelloGithub（微信号：Github520）搞活动，留言抽奖，送 Github 周边。有幸获奖，以此文，分享喜悦。
 ---
 
 > 前几天，HelloGithub（微信号：Github520）搞活动，留言抽奖，送 Github 周边。有幸获奖，以此文，分享喜悦。

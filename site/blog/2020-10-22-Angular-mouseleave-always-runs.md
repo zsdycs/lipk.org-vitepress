@@ -8,6 +8,10 @@ pictureView: [
     src: '/images/2020-10-22-Angular-mouseleave-always-runs.jpg',
   }
 ]
+head:
+  - - meta
+    - name: description
+      content: 项目有个需求，鼠标悬停在表格上时，显示一个悬浮框，实现后如图所示。
 ---
 
 项目有个需求，鼠标悬停在表格上时，显示一个悬浮框，实现后如图所示：

@@ -2,6 +2,10 @@
 title: 'JS 异步流程控制'
 date: '2020-12-28'
 slug: 'JS-asynchronous'
+head:
+  - - meta
+    - name: description
+      content: 异步事件；Callback 回调的写法（兼容 IE）；Promise 的写法；Async/Await 的写法；
 ---
 
 ## 异步事件

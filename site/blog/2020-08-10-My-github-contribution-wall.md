@@ -28,6 +28,10 @@ pictureView: [
     src: '/images/2020-08-10-My-github-contribution-wall(6).jpg',
   }
 ]
+head:
+  - - meta
+    - name: description
+      content: 很多人都以为，是男人的话，都不喜欢被绿。其实不然，我就很喜欢绿我自己的 Github 贡献墙。
 ---
 
 ## 我绿自己

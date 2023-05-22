@@ -2,6 +2,10 @@
 title: 'Body，你背景图咋淡入哇？'
 date: '2020-04-16'
 slug: 'body-background-image-fade-in'
+head:
+  - - meta
+    - name: description
+      content: 今天偶然看到本站在加载页面时的一个问题。
 ---
 
 ## 缘由

@@ -8,6 +8,10 @@ pictureView: [
     src: '/images/2020-05-01-Java-on-spring.jpg',
   }
 ]
+head:
+  - - meta
+    - name: description
+      content: 首先，Spring 显而易见不代表 Java 技术的巅峰，它只是一个 Java 的开发框架。
 ---
 
 > **问**：[Spring 是否代表着目前 Java 技术的顶峰，未来的 Java 将如何发展？](https://www.zhihu.com/question/387902282/answer/1193954645)

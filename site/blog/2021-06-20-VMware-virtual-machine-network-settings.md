@@ -20,6 +20,10 @@ coverPicture: {
   title: 'VMware 提供的各种网络连接方式',
   src: '/images/2021-06-20-VMware-virtual-machine-network-settings.jpg',
 }
+head:
+  - - meta
+    - name: description
+      content: 将 VMware 虚拟机里的 Linux 于本机相连，并使虚拟机的 Linux 联网。相信这应该是 Linux 课程中必定会有的内容。
 ---
 
 将 VMware 虚拟机里的 Linux 于本机相连，并使虚拟机的 Linux 联网。相信这应该是 Linux 课程中必定会有的内容。

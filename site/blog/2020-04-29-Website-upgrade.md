@@ -2,6 +2,10 @@
 title: '网站升级'
 date: '2020-04-29'
 slug: 'website-upgrade'
+head:
+  - - meta
+    - name: description
+      content: 最近几天网站我做了很多修改。
 ---
 
 最近几天网站我做了很多修改。

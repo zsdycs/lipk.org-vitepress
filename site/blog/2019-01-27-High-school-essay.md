@@ -2,6 +2,10 @@
 title: '一篇高中的作文'
 date: '2019-01-27'
 slug: 'high-school-essay'
+head:
+  - - meta
+    - name: description
+      content: 当时市里有个创新作文大赛，召集了两个班写了一个主题为“最美的句子”的作文，那时不知道是不是因为看了余秋雨的文化苦旅……
 ---
 
 ## 前言

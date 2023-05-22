@@ -2,6 +2,10 @@
 title: '为什么要进行浏览器兼容性测试'
 date: '2020-12-09'
 slug: 'why-do-browser-compatibility-tests'
+head:
+  - - meta
+    - name: description
+      content: “浏览器兼容性测试”的由来，得从 web 的发展说起。
 ---
 
 “浏览器兼容性测试”的由来，得从 web 的发展说起。

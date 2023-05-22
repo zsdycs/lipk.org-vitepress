@@ -2,6 +2,10 @@
 title: '常用浏览器跨域设置'
 date: '2020-06-24'
 slug: 'browser-cross-domain'
+head:
+  - - meta
+    - name: description
+      content: 右键快捷方式「目标」添加 --user-data-dir="C:/Chrome dev session" --disable-web-security，要注意“--”前有空格。
 ---
 
 ## Chrome

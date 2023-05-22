@@ -2,6 +2,10 @@
 title: '使用 Hooks 和 Context 替代 Redux（Typescript 版）'
 date: '2021-06-11'
 slug: 'use-hooks-and-context-instead-of-redux-typescript-version'
+head:
+  - - meta
+    - name: description
+      content: 在上一篇文写道，我如何在严格的 ESLint 配置下夹缝生存。这一篇就是我在不使用 Redux 且在严格的 ESLint 配置下夹缝生存。
 ---
 
 ## 版本信息

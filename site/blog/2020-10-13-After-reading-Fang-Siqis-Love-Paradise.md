@@ -2,6 +2,10 @@
 title: '《房思琪的恋爱乐园》一书'
 date: '2020-10-13'
 slug: 'after-reading-Fang-Siqis-Love-Paradise'
+head:
+  - - meta
+    - name: description
+      content: 这本书内容一句话概括，“补习老师诱奸女学生的故事”。
 ---
 
 这本书内容一句话概括，“补习老师诱奸女学生的故事”。

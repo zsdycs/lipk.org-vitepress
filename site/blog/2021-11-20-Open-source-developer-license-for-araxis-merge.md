@@ -22,6 +22,10 @@ pictureView: [
     h: 895,
   },
 ]
+head:
+  - - meta
+    - name: description
+      content: 代码比较工具中，我认为“Araxis merge”是最好用的。想购买官方的许可证，结果在浏览软件许可证列表时，发现如果有开源贡献的开发者，可以联系他们。
 ---
 
 代码比较工具中，我认为“Araxis merge”是最好用的。

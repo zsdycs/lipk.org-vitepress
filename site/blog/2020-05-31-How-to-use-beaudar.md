@@ -2,6 +2,10 @@
 title: '使用评论插件 Beaudar'
 date: '2020-05-31'
 slug: 'how-to-use-beaudar'
+head:
+  - - meta
+    - name: description
+      content: 很多人的博客都会有评论功能。对于大多数静态博客来说，评论是读者与博主建立联系的唯一桥梁。
 ---
 
 很多人的博客都会有评论功能。对于大多数静态博客来说，评论是读者与博主建立联系的唯一桥梁。

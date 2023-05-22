@@ -2,6 +2,10 @@
 title: '开源的，安全的'
 date: '2021-06-22'
 slug: 'open-source-equals-security'
+head:
+  - - meta
+    - name: description
+      content: 因为开源，所以安全。越接触开源社区，越深以为然。可能有人会问，代码人人都看到了，不就可以找到攻击的漏洞了吗？事实上，人性本善，邪不胜正。
 ---
 
 因为开源，所以安全。

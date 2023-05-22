@@ -2,6 +2,10 @@
 title: '你不用那么着急'
 date: '2019-02-28'
 slug: 'do-not-worry'
+head:
+  - - meta
+    - name: description
+      content: 夜已经深了，我关了灯，躺在床上，继续听着电话。米霞略微有点着急，连说了两遍。
 ---
 
 夜已经深了，我关了灯，躺在床上，继续听着电话。

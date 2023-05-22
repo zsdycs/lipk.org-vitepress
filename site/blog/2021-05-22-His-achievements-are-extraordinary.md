@@ -13,6 +13,10 @@ coverPicture: {
   title: '袁隆平（1930-2021）',
   src: '/images/2021-05-22-His-achievements-are-extraordinary.jpg',
 }
+head:
+  - - meta
+    - name: description
+      content: 他成就非凡，牵动着我们。
 ---
 
 <figure class="image">

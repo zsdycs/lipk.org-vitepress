@@ -201,6 +201,10 @@ pictureView: [
     src: '/images/2021-01-02-Current-Affairs-Review/01-01.jpg',
   }
 ]
+head:
+  - - meta
+    - name: description
+      content: 2020 成为过去了。沐浴在冬日的暖阳里，回顾过去的一年，有很多将被历史记载的时刻，那些感动成为了珍贵的回忆。
 ---
 
 2020 成为过去了。

@@ -8,6 +8,10 @@ pictureView: [
     src: '/images/2019-02-21-To-my-good-friend-dxy.jpg',
   }
 ]
+head:
+  - - meta
+    - name: description
+      content: 展信佳 今天是你的大喜日子，恭喜你， DXY 。
 ---
 
 展信佳

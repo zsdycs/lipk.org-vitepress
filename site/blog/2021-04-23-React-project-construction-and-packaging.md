@@ -3,6 +3,10 @@ title: 'React 项目构建和打包'
 date: '2021-04-23'
 slug: 'react-project-construction-and-packaging'
 tableOfContents: true
+head:
+  - - meta
+    - name: description
+      content: React 项目构建的方式；打包方式；
 ---
 
 ## 一、React 项目构建的方式

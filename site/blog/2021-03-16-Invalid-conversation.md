@@ -2,6 +2,10 @@
 title: '无效的对话'
 date: '2021-03-16'
 slug: 'invalid-conversation'
+head:
+  - - meta
+    - name: description
+      content: 当交谈双方各执己“见”，并且在对问题本身没有很好的补充描述时，就会出现“无效的对话”。
 ---
 
 当交谈双方各执己“见”，并且在对问题本身没有很好的补充描述时，就会出现“无效的对话”。

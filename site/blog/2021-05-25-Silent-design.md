@@ -2,6 +2,10 @@
 title: '令人无语的设计 '
 date: '2021-05-25'
 slug: 'silent-design'
+head:
+  - - meta
+    - name: description
+      content: 第一次使用 react 开发。有个需求：使用“Context、useContext、useReducer”替代 Redux 做状态管理。
 ---
 
 第一次使用 react 开发。

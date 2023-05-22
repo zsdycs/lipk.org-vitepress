@@ -2,6 +2,10 @@
 title: '我的一个朋友'
 date: '2019-02-08'
 slug: 'a-friend-of-mine'
+head:
+  - - meta
+    - name: description
+      content: “一下子就过去了七天” “那你怎么现在想起来了” “其实很多次我都想过来说说话的，可是又觉得说那些东西有点太矫情了”
 ---
 
 “一下子就过去了七天”

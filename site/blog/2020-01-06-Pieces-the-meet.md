@@ -2,6 +2,10 @@
 title: '碎片之遇见'
 date: '2020-01-06'
 slug: 'pieces-the-meet'
+head:
+  - - meta
+    - name: description
+      content: 这是一个发生在一个怪诞世界的故事。时间是深夜。在一个漆黑的房间中，放满了各种各样的机器，线缆凌乱。
 ---
 
 ## 引子

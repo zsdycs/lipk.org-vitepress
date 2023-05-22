@@ -3,6 +3,10 @@ title: '解决 ESLint 报错'
 date: '2021-06-11'
 slug: 'solve-eslint-error'
 tableOfContents: true
+head:
+  - - meta
+    - name: description
+      content: 以下，在 React 项目引入 ESLint，而且配置得十分严格时，可能会用到。什么？十分严格是多严格？
 ---
 
 以下，在 React 项目引入 ESLint，而且配置得十分严格时，可能会用到。

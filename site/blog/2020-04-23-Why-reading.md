@@ -8,6 +8,10 @@ pictureView: [
     src: '/images/2020-04-23-Why-reading.jpg',
   }
 ]
+head:
+  - - meta
+    - name: description
+      content: 今天是世界读书日，你今天阅读了吗？
 ---
 
 今天是世界读书日，你今天阅读了吗？

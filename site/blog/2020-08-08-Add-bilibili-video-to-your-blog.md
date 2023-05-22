@@ -12,6 +12,10 @@ pictureView: [
     src: '/images/2020-08-08-Add-bilibili-video-to-your-blog(2).jpg',
   }
 ]
+head:
+  - - meta
+    - name: description
+      content: 今天在逛博客时看到有篇博客把 B 站的视频添加到了文章里，非常新奇。
 ---
 
 今天在逛博客时看到有篇博客把 B 站的视频添加到了文章里，非常新奇。

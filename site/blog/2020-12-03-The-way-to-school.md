@@ -16,6 +16,10 @@ pictureView: [
     src: '/images/2020-12-03-The-way-to-school(3).jpg',
   }
 ]
+head:
+  - - meta
+    - name: description
+      content: 在没有各种工具前，会有足够的时间，产生很多想法，有足够的耐心思考事情。
 ---
 
 在没有各种工具前，会有足够的时间，产生很多想法，有足够的耐心思考事情。

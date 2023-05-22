@@ -3,6 +3,10 @@ title: '学会记录'
 date: '2020-03-30'
 slug: 'learn-to-record'
 tableOfContents: true
+head:
+  - - meta
+    - name: description
+      content: 老师总是会提醒我们，要做笔记。后来，我自己主动做笔记。
 ---
 
 老师总是会提醒我们，要做笔记。

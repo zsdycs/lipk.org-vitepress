@@ -2,6 +2,10 @@
 title: 'JS 中数组的深拷贝和浅拷贝'
 date: '2021-04-13'
 slug: 'deep-copy-and-shallow-copy-of-array-in-js'
+head:
+  - - meta
+    - name: description
+      content: 深拷贝和浅拷贝是 JS 基础，很多人（包括我）可能理解两者的区别，但是，碰到关于这个知识点的考题，仍然可能会做错。
 ---
 
 深拷贝和浅拷贝是 JS 基础，很多人（包括我）可能理解两者的区别，但是，碰到关于这个知识点的考题，仍然可能会做错。

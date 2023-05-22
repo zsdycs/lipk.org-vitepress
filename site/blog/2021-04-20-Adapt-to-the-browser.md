@@ -2,6 +2,10 @@
 title: '优雅地适配浏览器'
 date: '2021-04-20'
 slug: 'adapt-to-the-browser'
+head:
+  - - meta
+    - name: description
+      content: 前阶段，心血来潮，想用 Agora.io 的音视频 api 写一个 web 应用，发现“全屏”和“退出全屏”的功能要适配各个浏览器十分麻烦，各个浏览器的 api 都有自己的名称。
 ---
 
 前阶段，心血来潮，想用 [Agora.io](https://www.agora.io/cn) 的音视频 api 写一个 [web 应用](https://github.com/zsdycs/room)，发现“全屏”和“退出全屏”的功能要适配各个浏览器十分麻烦，各个浏览器的 api 都有自己的名称。有时候真的搞不懂，同样一个用法，为什么各个浏览器都有不同的方法名称，如：`requestFullscreen`，W3C 规范就是 `requestFullscreen` 这个名字，而各家浏览器有私有名称，所以就有多个不同名称相同功能的方法：

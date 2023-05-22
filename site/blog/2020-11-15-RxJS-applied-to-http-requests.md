@@ -2,6 +2,10 @@
 title: 'RxJS 应用于 http 请求'
 date: '2020-11-15'
 slug: 'RxJS-applied-to-http-requests'
+head:
+  - - meta
+    - name: description
+      content: RxJS 是一个专门处理“异步”或“事件”的函数库。
 ---
 
 ## 一、RxJS 概述

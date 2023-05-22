@@ -2,6 +2,10 @@
 title: 'Beaudar（表达） 安全评估报告'
 date: '2020-07-16'
 slug: 'beaudar-safety-assessment-report'
+head:
+  - - meta
+    - name: description
+      content: 本文为“Beaudar - 表达”于“全国互联网安全管理服务平台”提交的安全评估报告。
 ---
 
 > 本文为 [Beaudar - 表达](https://beaudar.lipk.org) 于 [全国互联网安全管理服务平台](http://www.beian.gov.cn/) 提交的安全评估报告。

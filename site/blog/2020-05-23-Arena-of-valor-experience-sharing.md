@@ -2,6 +2,10 @@
 title: '牛魔、宫本怎么玩？'
 date: '2020-05-23'
 slug: 'arena-of-valor-experience-sharing'
+head:
+  - - meta
+    - name: description
+      content: 玩了好几年王者荣耀，也是时候跟朋友们分享自己的一些经验。绝对娱乐与主观的出装思路及打法分享。
 ---
 
 > 玩了好几年王者荣耀，也是时候跟朋友们分享自己的一些经验。

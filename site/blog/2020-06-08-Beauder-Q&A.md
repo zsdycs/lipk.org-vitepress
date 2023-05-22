@@ -2,6 +2,10 @@
 title: '关于 Beaudar 的 Q&A'
 date: '2020-06-08'
 slug: 'beauder-qa'
+head:
+  - - meta
+    - name: description
+      content: 无法从 GitHub 获取数据；token 请求失败；缺少 "beaudar.json" 配置 或 不允许 xxx 发布到 xxx/xxx
 ---
 
 ### Q：无法从 GitHub 获取数据

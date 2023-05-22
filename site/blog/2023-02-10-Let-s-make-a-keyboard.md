@@ -15,6 +15,10 @@ coverPicture: {
   title: '标准键盘配列',
   src: '/images/2023-02-10-Let-s-make-a-keyboard(1).jpg',
 }
+head:
+  - - meta
+    - name: description
+      content: 本教程搭配开源键盘库 zsdycs/ginpun 阅读更佳~ 组成机械键盘的部件主要有 4 个。
 ---
 
 > 本教程搭配开源键盘库 [zsdycs/ginpun](https://github.com/zsdycs/ginpun) 阅读更佳~
