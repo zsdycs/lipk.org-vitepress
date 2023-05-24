@@ -1,0 +1,35 @@
+{
+  "name": "font-handle",
+  "version": "0.0.1",
+  "description": "",
+  "main": "gulp-cp-file.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "b3b": "^0.0.1",
+    "browser-x": "^0.0.1-beta7",
+    "buffer-to-vinyl": "^1.0.0",
+    "code-points": "^2.0.0-1",
+    "colors": "^1.1.2",
+    "concat-stream": "^2.0.0",
+    "css-font-parser": "^0.2.3",
+    "fonteditor-core": "^2.1.9",
+    "gulp": "^4.0.2",
+    "gulp-connect": "^5.7.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-util": "^3.0.8",
+    "gutil": "^1.6.4",
+    "is-otf": "^0.1.2",
+    "is-svg": "^4.2.1",
+    "is-ttf": "^0.2.2",
+    "lodash": "^4.17.10",
+    "pako": "^2.0.3",
+    "replace-ext": "^2.0.0",
+    "stream-combiner": "^0.2.1",
+    "ttf2woff2": "^4.0.1",
+    "vinyl-fs": "^3.0.3"
+  }
+}
