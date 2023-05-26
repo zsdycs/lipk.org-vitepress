@@ -18,9 +18,8 @@ export const saveRoutes = (data: saveRoutesParams) => {
     routesStr = routesData;
   }
 
-  if (fs.existsSync(filePath)) {
-    fs.writeFileSync(`${filePath}/${fileName}`, routesStr);
-  } else {
-    throw Error(`文件保存的路径 filePath: ${filePath} 不存在`);
+  if (!fs.existsSync(filePath)) {
+    fs.mkdirSync(filePath);
   }
+  fs.writeFileSync(`${filePath}/${fileName}`, routesStr);
 };
