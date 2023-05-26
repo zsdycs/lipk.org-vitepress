@@ -4,7 +4,7 @@
   "description": "",
   "main": "gulp-cp-file.js",
   "scripts": {
-    "start": "gulp"
+    "make": "node make.js"
   },
   "author": "",
   "license": "MIT",
