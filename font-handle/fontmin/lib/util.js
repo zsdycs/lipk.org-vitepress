@@ -5,10 +5,10 @@
 
 /* eslint-env node */
 
-var fs = require('fs');
-var path = require('path');
-var _ = require('lodash');
-var codePoints = require('code-points');
+const fs = require('fs');
+const path = require('path');
+const _ = require('lodash');
+const codePoints = require('code-points');
 
 /**
  * getFontFolder
@@ -16,11 +16,13 @@ var codePoints = require('code-points');
  * @return {string} fontFolder
  */
 function getFontFolder() {
-    return path.resolve({
-        win32: '/Windows/fonts',
-        darwin: '/Library/Fonts',
-        linux: '/usr/share/fonts/truetype'
-    }[process.platform]);
+  return path.resolve(
+    {
+      win32: '/Windows/fonts',
+      darwin: '/Library/Fonts',
+      linux: '/usr/share/fonts/truetype',
+    }[process.platform],
+  );
 }
 
 /**
@@ -30,7 +32,7 @@ function getFontFolder() {
  * @return {Array}      fonts
  */
 function getFonts() {
-    return fs.readdirSync(getFontFolder());
+  return fs.readdirSync(getFontFolder());
 }
 
 /**
@@ -43,30 +45,28 @@ function getFonts() {
  * @return {string}     pure text
  */
 function getPureText(str) {
+  // fix space
+  const emptyTextMap = {};
 
-    // fix space
-    var emptyTextMap = {};
+  function replaceEmpty(word) {
+    emptyTextMap[word] = 1;
+    return '';
+  }
 
-    function replaceEmpty (word) {
-        emptyTextMap[word] = 1;
-        return '';
-    }
+  const pureText = String(str)
+    .trim()
+    .replace(/[\s]/g, replaceEmpty)
+    // .replace(/[\f]/g, '')
+    // .replace(/[\b]/g, '')
+    // .replace(/[\n]/g, '')
+    // .replace(/[\t]/g, '')
+    // .replace(/[\r]/g, '')
+    .replace(/[\u2028]/g, '')
+    .replace(/[\u2029]/g, '');
 
-    var pureText = String(str)
-        .trim()
-        .replace(/[\s]/g, replaceEmpty)
-        // .replace(/[\f]/g, '')
-        // .replace(/[\b]/g, '')
-        // .replace(/[\n]/g, '')
-        // .replace(/[\t]/g, '')
-        // .replace(/[\r]/g, '')
-        .replace(/[\u2028]/g, '')
-        .replace(/[\u2029]/g, '');
+  const emptyText = Object.keys(emptyTextMap).join('');
 
-    var emptyText = Object.keys(emptyTextMap).join('');
-
-    return pureText + emptyText;
-
+  return pureText + emptyText;
 }
 
 /**
@@ -78,11 +78,8 @@ function getPureText(str) {
  * @return {string}     uniq text
  */
 function getUniqText(str) {
-    return _.uniq(
-        str.split('')
-    ).join('');
+  return _.uniq(str.split('')).join('');
 }
-
 
 /**
  * basic chars
@@ -91,7 +88,7 @@ function getUniqText(str) {
  *
  * @type {string}
  */
-var basicText = String.fromCharCode.apply(this, _.range(33, 126));
+const basicText = String.fromCharCode.apply(this, _.range(33, 126));
 
 /**
  * get subset text
@@ -100,16 +97,15 @@ var basicText = String.fromCharCode.apply(this, _.range(33, 126));
  * @return {string}      subset text
  */
 function getSubsetText(opts) {
+  let text = opts.text || '';
 
-    var text = opts.text || '';
+  // trim
+  text && opts.trim && (text = getPureText(text));
 
-    // trim
-    text && opts.trim && (text = getPureText(text));
+  // basicText
+  opts.basicText && (text += basicText);
 
-    // basicText
-    opts.basicText && (text += basicText);
-
-    return text;
+  return text;
 }
 
 /**
@@ -119,7 +115,7 @@ function getSubsetText(opts) {
  * @return {Array}      unicodes
  */
 function string2unicodes(str) {
-    return _.uniq(codePoints(str));
+  return _.uniq(codePoints(str));
 }
 
 exports.getFontFolder = getFontFolder;

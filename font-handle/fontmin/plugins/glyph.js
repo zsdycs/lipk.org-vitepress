@@ -5,15 +5,15 @@
 
 /* eslint-env node */
 
-var _ = require('lodash');
-var isTtf = require('is-ttf');
-var through = require('through2');
-var TTF = require('fonteditor-core').TTF;
-var TTFReader = require('fonteditor-core').TTFReader;
-var TTFWriter = require('fonteditor-core').TTFWriter;
-var b2ab = require('b3b').b2ab;
-var ab2b = require('b3b').ab2b;
-var util = require('../lib/util');
+const _ = require('lodash');
+const isTtf = require('is-ttf');
+const through = require('through2');
+const { TTF } = require('fonteditor-core');
+const { TTFReader } = require('fonteditor-core');
+const { TTFWriter } = require('fonteditor-core');
+const { b2ab } = require('b3b');
+const { ab2b } = require('b3b');
+const util = require('../lib/util');
 
 /**
  * getSubsetGlyfs
@@ -23,9 +23,9 @@ var util = require('../lib/util');
  * @return {Array}     glyfs array
  */
 function getSubsetGlyfs(ttf, subset) {
-  var glyphs = [];
+  let glyphs = [];
 
-  var indexList = ttf.findGlyf({
+  const indexList = ttf.findGlyf({
     unicode: subset || [],
   });
 
@@ -53,7 +53,7 @@ function minifyFontObject(ttfObject, subset, plugin) {
   }
 
   // new TTF Object
-  var ttf = new TTF(ttfObject);
+  const ttf = new TTF(ttfObject);
 
   // get target glyfs then set
   ttf.setGlyf(getSubsetGlyfs(ttf, subset));
@@ -76,15 +76,15 @@ function minifyFontObject(ttfObject, subset, plugin) {
 function minifyTtf(contents, opts) {
   opts = opts || {};
 
-  var ttfobj = contents;
+  let ttfobj = contents;
 
   if (Buffer.isBuffer(contents)) {
     ttfobj = new TTFReader(opts).read(b2ab(contents));
   }
 
-  var miniObj = minifyFontObject(ttfobj, opts.subset, opts.use);
+  const miniObj = minifyFontObject(ttfobj, opts.subset, opts.use);
 
-  var ttfBuffer = ab2b(new TTFWriter(opts).write(miniObj));
+  const ttfBuffer = ab2b(new TTFWriter(opts).write(miniObj));
 
   return {
     object: miniObj,
@@ -107,14 +107,14 @@ module.exports = function (opts) {
   opts = _.extend({ hinting: true, trim: true }, opts);
 
   // prepare subset
-  var subsetText = util.getSubsetText(opts);
+  const subsetText = util.getSubsetText(opts);
   opts.subset = util.string2unicodes(subsetText);
 
   return through.ctor(
     {
       objectMode: true,
     },
-    function (file, enc, cb) {
+    (file, enc, cb) => {
       // check null
       if (file.isNull()) {
         cb(null, file);
@@ -135,7 +135,7 @@ module.exports = function (opts) {
 
       try {
         // write file buffer
-        var miniTtf = minifyTtf(file.ttfObject || file.contents, opts);
+        const miniTtf = minifyTtf(file.ttfObject || file.contents, opts);
 
         file.contents = miniTtf.buffer;
         file.ttfObject = miniTtf.object;

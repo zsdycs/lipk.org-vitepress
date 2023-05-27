@@ -5,12 +5,12 @@
 
 /* eslint-env node */
 
-var combine = require('stream-combiner');
-var concat = require('concat-stream');
-var EventEmitter = require('events').EventEmitter;
-var inherits = require('util').inherits;
-var bufferToVinyl = require('buffer-to-vinyl');
-var vfs = require('vinyl-fs');
+const combine = require('stream-combiner');
+const concat = require('concat-stream');
+const { EventEmitter } = require('events');
+const { inherits } = require('util');
+const bufferToVinyl = require('buffer-to-vinyl');
+const vfs = require('vinyl-fs');
 
 /**
  * Initialize Fontmin
@@ -87,7 +87,7 @@ Fontmin.prototype.use = function (plugin) {
 Fontmin.prototype.run = function (cb) {
   cb = cb || function () {};
 
-  var stream = this.createStream();
+  const stream = this.createStream();
 
   stream.on('error', cb);
   stream.pipe(concat(cb.bind(null, null)));
@@ -152,8 +152,8 @@ Fontmin.plugins = [
 ];
 
 // export pkged plugins
-Fontmin.plugins.forEach(function (plugin) {
-  Fontmin[plugin] = require('./plugins/' + plugin);
+Fontmin.plugins.forEach((plugin) => {
+  Fontmin[plugin] = require(`./plugins/${plugin}`);
 });
 
 /**

@@ -5,15 +5,15 @@
 
 /* eslint-env node */
 
-var isOtf = require('is-otf');
-var through = require('through2');
-var otf2ttfobject = require('fonteditor-core').otf2ttfobject;
-var TTFWriter = require('fonteditor-core').TTFWriter;
-var b2ab = require('b3b').b2ab;
-var ab2b = require('b3b').ab2b;
-var replaceExt = require('replace-ext');
-var _ = require('lodash');
-var util = require('../lib/util');
+const isOtf = require('is-otf');
+const through = require('through2');
+const { otf2ttfobject } = require('fonteditor-core');
+const { TTFWriter } = require('fonteditor-core');
+const { b2ab } = require('b3b');
+const { ab2b } = require('b3b');
+const replaceExt = require('replace-ext');
+const _ = require('lodash');
+const util = require('../lib/util');
 
 /**
  * otf2ttf fontmin plugin
@@ -26,7 +26,7 @@ module.exports = function (opts) {
   opts = _.extend({ clone: false, hinting: true }, opts);
 
   // prepare subset
-  var subsetText = util.getSubsetText(opts);
+  const subsetText = util.getSubsetText(opts);
   opts.subset = util.string2unicodes(subsetText);
 
   return through.ctor(
@@ -61,8 +61,8 @@ module.exports = function (opts) {
       file.path = replaceExt(file.path, '.ttf');
 
       // ttf info
-      var ttfBuffer;
-      var ttfObj;
+      let ttfBuffer;
+      let ttfObj;
 
       // try otf2ttf
       try {
