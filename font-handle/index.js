@@ -1,10 +1,10 @@
 const { existsSync, writeFileSync, mkdirSync, readFileSync } = require("fs");
 const Fontmin = require("./fontmin/index");
 
-const SiteStaticPath = "../site/public/"; // 网站的静态目录路径
-const SiteStaticFontSourcePath = "../site/public/fontSource/"; // 网站的字体目录路径
-const RoutesJsonFilePath = "../routes.json"; // 路由文件
-const FontSourcePath = "./fontSource/"; // 字体文件的位置
+const SiteStaticPath = "./site/public/"; // 网站的静态目录路径
+const SiteStaticFontSourcePath = "./site/public/fontSource/"; // 网站的字体目录路径
+const RoutesJsonFilePath = "./routes.json"; // 路由文件
+const FontSourcePath = "./font-handle/fontSource/"; // 字体文件的位置
 const FontSourcesFileName = "fontSources.json"; // 字体列表 json 文件名
 const CachePath = "./cache/"; // 字体处理过程的缓存路径
 const PageFontSourcesFileName = "pageFontSources.json"; // 页面的路由、文件映射 json
@@ -146,8 +146,11 @@ const handleFontSource = async ({
     `${fontSourceSavePath}${resultFileName}`,
     readFileSync(cacheFile)
   );
+
+  console.log(`生成文件: ${resultFileName}`);
 };
 
+console.log(`fontmin 处理中……`);
 // 循环 路由列表 和 字体列表 处理
 for (let i = 0; i < routeList.length; i++) {
   const itemRoute = routeList[i];
