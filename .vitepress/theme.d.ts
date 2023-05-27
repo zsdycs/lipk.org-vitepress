@@ -32,3 +32,12 @@ export interface Routes {
   content?: string;
   children?: Routes[];
 }
+
+export interface PageFontSource extends Record<string, any> {
+  path: string;
+}
+
+export interface FontSource {
+  fileName: string;
+  name: string;
+}

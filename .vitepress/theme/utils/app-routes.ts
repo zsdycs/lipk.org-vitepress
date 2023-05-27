@@ -147,6 +147,14 @@ export const appRoutes = (options?: Options): Routes[] => {
           originalPath,
         });
       }
+
+      // 修复 / 的源文件不是 index.md 的问题
+      if (dirNamePath === "/" && originalPath.includes("index")) {
+        const indexRoute = routeList.find((item) => item.path === dirNamePath);
+        if (indexRoute) {
+          indexRoute.originalPath = originalPath;
+        }
+      }
     } catch (error) {
       console.error(error);
     }

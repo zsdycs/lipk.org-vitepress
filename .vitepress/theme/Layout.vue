@@ -13,6 +13,7 @@ import { consoleInfo } from './composables/console-info';
 import { useEventListener } from './composables/event-listener'
 import { throttle } from './utils'
 import { getScrollDirection } from './composables/get-scroll-direction'
+import { loadFont } from './composables/font-face'
 
 const { frontmatter, page, } = useData();
 const route = useRoute();
@@ -23,6 +24,8 @@ setInitialMode();
 registerSW();
 // 控制台信息
 consoleInfo();
+// 加载字体
+loadFont(route.path);
 
 // 引用参考资料 TODO
 // 无序复选列表 TODO
@@ -31,7 +34,6 @@ consoleInfo();
 // 图片查看 TODO
 // 编辑本页 TODO
 // 返回顶部 TODO
-// 字体 TODO
 
 watch(() => route.path, setHomeClass, {
   immediate: true,

@@ -1,13 +1,20 @@
 const { existsSync, writeFileSync, mkdirSync, readFileSync } = require("fs");
 const Fontmin = require("./fontmin/index");
 
+// 根据路由中的 pageFilePath 读取 md 文件的内容
+// 通过 md 内容抓取字体，字体的文件名使用 “fontName-base64(path).ttf” 的格式
+// 通过路由 json 给每一个路由生成一个唯一标识，此标识用于匹配字体文件
+// 将带有字体标识和 path 的 array 保存成为 json
+// 每个页面请求这个 json，匹配页面的 path 得到页面字体的文件名，然后请求字体加载
+
 const SiteStaticPath = "./site/public/"; // 网站的静态目录路径
 const SiteStaticFontSourcePath = "./site/public/fontSource/"; // 网站的字体目录路径
 const RoutesJsonFilePath = "./routes.json"; // 路由文件
-const FontSourcePath = "./font-handle/fontSource/"; // 字体文件的位置
+const FontSourcePath = "./site/public/fullFontSource/"; // 字体文件的位置
 const FontSourcesFileName = "fontSources.json"; // 字体列表 json 文件名
 const CachePath = "./cache/"; // 字体处理过程的缓存路径
 const PageFontSourcesFileName = "pageFontSources.json"; // 页面的路由、文件映射 json
+const CommonContentFilePath = "./font-handle/common.txt"; // 网站通用内容文字
 
 // 字体列表
 const FontSourceList = [
@@ -28,6 +35,10 @@ const FontSourceList = [
     fileName: "SourceHanSerifCN-Light.ttf",
   },
   {
+    name: "SourceHanSerifCN-SemiBold",
+    fileName: "SourceHanSerifCN-SemiBold.ttf",
+  },
+  {
     name: "SourceHanSerifCN-Medium",
     fileName: "SourceHanSerifCN-Medium.ttf",
   },
@@ -35,10 +46,6 @@ const FontSourceList = [
   //   name: "SourceHanSerifCN-Regular",
   //   fileName: "SourceHanSerifCN-Regular.ttf",
   // },
-  {
-    name: "SourceHanSerifCN-SemiBold",
-    fileName: "SourceHanSerifCN-SemiBold.ttf",
-  },
 ];
 
 // 将字体列表保存到网站的静态目录中 fontSources.json {
@@ -159,13 +166,24 @@ for (let i = 0; i < routeList.length; i++) {
     const itemFontFile = fontSourceFileList[j];
     const { name: fontName, fontSourceFilePath } = itemFontFile;
 
-    const resultFileName = `${fontName}-${Buffer.from(
+    const resultFileName = `${fontName}.${Buffer.from(
       routePath,
       "utf8"
     ).toString("base64")}.ttf`;
 
+    // md 文件的内容
+    const mdFileContent = readFileSync(pageFilePath, "utf-8");
+    // 网站通用内容
+    const commonContent = readFileSync(CommonContentFilePath, "utf-8");
+    const blogListContent = routesJson;
+    let text = mdFileContent + commonContent;
+
+    if (routePath === "/blog/") {
+      text = mdFileContent + commonContent + blogListContent;
+    }
+
     handleFontSource({
-      text: readFileSync(pageFilePath, "utf-8"), // 文字内容
+      text, // 页面的文字内容
       sourceFile: fontSourceFilePath, // 字体的源路径
       cachePath: CachePath, // 字体的缓存路径
       resultFileName, // 目标字体文件名称
@@ -192,11 +210,3 @@ if (!existsSync(SiteStaticPath)) {
   mkdirSync(SiteStaticPath);
 }
 writeFileSync(`${SiteStaticPath}/${PageFontSourcesFileName}`, routeListJson);
-
-// 根据路由中的 pageFilePath 读取 md 文件的内容
-// 通过 md 内容抓取字体，字体的文件名使用 “fontName-base64(path).ttf” 的格式
-
-// 通过路由 json 给每一个路由生成一个唯一标识，此标识用于匹配字体文件
-
-// 将带有字体标识和 path 的 array 保存成为 json
-// 每个页面请求这个 json，匹配页面的 path 得到页面字体的文件名，然后请求字体加载

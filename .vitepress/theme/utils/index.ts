@@ -114,3 +114,61 @@ export const throttle = (func: Function, wait: number, runTime: number) => {
     }
   };
 };
+
+export const blobToBase64 = (blob: Blob): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.readAsDataURL(blob);
+
+    reader.onload = () => resolve(reader.result as string);
+
+    reader.onerror = (error) => reject(error);
+  });
+};
+
+interface ResponseTarget<T> extends EventTarget {
+  response: T;
+}
+
+export const ajaxGetBlob = (url: string): Promise<Blob> => {
+  return new Promise((resolve) => {
+    const xhrSemiBold: XMLHttpRequest = new XMLHttpRequest();
+    xhrSemiBold.open("GET", url, true);
+    xhrSemiBold.responseType = "blob";
+    xhrSemiBold.send();
+    xhrSemiBold.onload = (event: ProgressEvent) => {
+      if (event?.currentTarget) {
+        const currentTarget = event.currentTarget as ResponseTarget<Blob>;
+        resolve(currentTarget?.response);
+      }
+    };
+  });
+};
+
+export const ajaxGetJson = <T>(url: string): Promise<T> => {
+  return new Promise((resolve) => {
+    const xhrSemiBold: XMLHttpRequest = new XMLHttpRequest();
+    xhrSemiBold.open("GET", url, true);
+    xhrSemiBold.responseType = "json";
+    xhrSemiBold.send();
+    xhrSemiBold.onload = (event: ProgressEvent) => {
+      if (event?.currentTarget) {
+        const currentTarget = event.currentTarget as ResponseTarget<T>;
+        resolve(currentTarget?.response);
+      }
+    };
+  });
+};
+
+export const addBlobFontFace = (response: Blob) => {
+  blobToBase64(response).then((base64) => {
+    const lightFont = new FontFace("source-han-serif-sc", `url(${base64})`, {
+      display: "swap",
+      // weight: '100',
+    });
+    lightFont.load().then(() => {
+      document.fonts.add(lightFont);
+    });
+  });
+};
