@@ -1,7 +1,11 @@
+import { inBrowser } from "vitepress";
 import { onMounted } from "vue";
 
 export const setRightQuotes = () => {
   onMounted(() => {
+    if (!inBrowser) {
+      return;
+    }
     const quotes = document.getElementsByTagName("blockquote");
     for (let i = 0; i < quotes.length; i++) {
       const quote = quotes[i];

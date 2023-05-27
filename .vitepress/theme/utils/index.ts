@@ -1,3 +1,5 @@
+import { inBrowser } from "vitepress";
+
 /**
  * 文字内容是否超过元素宽度
  * @param {String} content 内容
@@ -9,7 +11,9 @@ export const isTextExceedElementWidth = (
   width: string | number,
   fontSize: string | number
 ): boolean => {
-  let resultWidth: number;
+  if (!inBrowser) {
+    return false;
+  }
   const div = document.createElement("div");
   div.style.fontSize = `${fontSize}px`;
   div.style.visibility = "hidden";
@@ -20,13 +24,10 @@ export const isTextExceedElementWidth = (
     div.innerText = content;
   }
   document.body.appendChild(div);
-  resultWidth = parseFloat(window.getComputedStyle(div).width);
+  const resultWidth = parseFloat(window.getComputedStyle(div).width);
   document.body.removeChild(div);
-  if (resultWidth > Number(width)) {
-    return true;
-  } else {
-    return false;
-  }
+
+  return resultWidth > Number(width);
 };
 
 /**
@@ -133,6 +134,9 @@ interface ResponseTarget<T> extends EventTarget {
 
 export const ajaxGetBlob = (url: string): Promise<Blob> => {
   return new Promise((resolve) => {
+    if (!inBrowser) {
+      return;
+    }
     const xhrSemiBold: XMLHttpRequest = new XMLHttpRequest();
     xhrSemiBold.open("GET", url, true);
     xhrSemiBold.responseType = "blob";
@@ -148,6 +152,9 @@ export const ajaxGetBlob = (url: string): Promise<Blob> => {
 
 export const ajaxGetJson = <T>(url: string): Promise<T> => {
   return new Promise((resolve) => {
+    if (!inBrowser) {
+      return;
+    }
     const xhrSemiBold: XMLHttpRequest = new XMLHttpRequest();
     xhrSemiBold.open("GET", url, true);
     xhrSemiBold.responseType = "json";
@@ -162,6 +169,9 @@ export const ajaxGetJson = <T>(url: string): Promise<T> => {
 };
 
 export const addBlobFontFace = (response: Blob) => {
+  if (!inBrowser) {
+    return;
+  }
   blobToBase64(response).then((base64) => {
     const lightFont = new FontFace("source-han-serif-sc", `url(${base64})`, {
       display: "swap",

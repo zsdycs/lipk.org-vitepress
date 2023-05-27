@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
+import { inBrowser, useData } from 'vitepress'
 import Home from './page/Home.vue'
 import List from './page/List.vue'
 import BlogContent from './page/BlogContent.vue'
@@ -39,9 +39,12 @@ watch(() => route.path, setHomeClass, {
   immediate: true,
 })
 
-useEventListener(document, 'scroll', throttle(getScrollDirection, 500, 200));
 
-useEventListener(document, 'resize', throttle(getScrollDirection, 500, 200));
+if (inBrowser) {
+  useEventListener(document, 'scroll', throttle(getScrollDirection, 500, 200));
+
+  useEventListener(document, 'resize', throttle(getScrollDirection, 500, 200));
+}
 
 // v-if="page.isNotFound" <NotFound />
 

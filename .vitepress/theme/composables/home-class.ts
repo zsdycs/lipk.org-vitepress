@@ -1,4 +1,9 @@
+import { inBrowser } from "vitepress";
+
 export const setHomeClass = (path: string) => {
+  if (!inBrowser) {
+    return;
+  }
   const mainElement = document.querySelector("#app");
   if (path === "/") {
     // 首页时: <html> => <html class="home">

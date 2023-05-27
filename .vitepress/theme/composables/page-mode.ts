@@ -1,9 +1,13 @@
+import { inBrowser } from "vitepress";
 import { DARK_MODE } from "./constant";
 
 // 设置 mode 初始值
 export const setInitialMode = () => {
-  const modeLS: string | null = localStorage.getItem("page-theme-mode");
-  if (modeLS == null) {
+  let modeLS: string | null = null;
+  if (inBrowser) {
+    modeLS = localStorage.getItem("page-theme-mode");
+  }
+  if (modeLS == null && inBrowser) {
     const hours = new Date();
     // 如果时间是晚上 18 点到早上 6 点，自动黑夜
     if (hours.getHours() >= 18 || hours.getHours() <= 6) {
@@ -20,6 +24,9 @@ export const setInitialMode = () => {
 
 // 判断加载相应模式 CSS
 export const addDarkmodeCSS = (mode: string | null) => {
+  if (!inBrowser) {
+    return;
+  }
   if (mode) {
     document.documentElement.setAttribute("theme", mode);
     document.documentElement.setAttribute(

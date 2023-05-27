@@ -1,6 +1,6 @@
 <!-- 表达 评论 -->
 <script setup lang="ts">
-import { useRoute } from 'vitepress'
+import { inBrowser, useRoute } from 'vitepress'
 import { watch, ref, onMounted } from 'vue'
 
 const route = useRoute();
@@ -14,6 +14,9 @@ onMounted(() => {
 })
 
 function setComments() {
+  if (!inBrowser) {
+    return
+  }
   if (comments?.value) {
     const script = document.createElement('script');
     script.src = 'https://beaudar.lipk.org/client.js';
@@ -49,17 +52,19 @@ function beaudarEnd() {
         element.type === 'attributes' &&
         (element.target as Element).className === 'beaudar'
       ) {
-        const message = {
-          type: 'set-theme',
-          theme: localStorage.getItem('page-theme-mode'),
-        };
-        const beaudar = document.querySelector<HTMLIFrameElement>('#beaudar iframe');
-        if (beaudar?.contentWindow) {
-          // 与 beaudar 通信
-          beaudar.contentWindow.postMessage(
-            message,
-            'https://beaudar.lipk.org',
-          );
+        if (inBrowser) {
+          const message = {
+            type: 'set-theme',
+            theme: localStorage.getItem('page-theme-mode'),
+          };
+          const beaudar = document.querySelector<HTMLIFrameElement>('#beaudar iframe');
+          if (beaudar?.contentWindow) {
+            // 与 beaudar 通信
+            beaudar.contentWindow.postMessage(
+              message,
+              'https://beaudar.lipk.org',
+            );
+          }
         }
       }
     });

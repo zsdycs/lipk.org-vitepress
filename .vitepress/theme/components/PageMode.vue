@@ -3,6 +3,7 @@
 import { ref } from 'vue'
 import { MODE_TEXT, MODE_ORDER } from '../composables/constant'
 import { addDarkmodeCSS } from '../composables/page-mode'
+import { inBrowser } from 'vitepress';
 
 const modeText = ref('')
 
@@ -10,7 +11,10 @@ const modeText = ref('')
 // document.body.style.background = 'url(/images/geometry.png)';
 // document.body.style.backgroundRepeat = 'repeat';
 
-const modeLS: string | null = localStorage.getItem('page-theme-mode');
+let modeLS: string | null = null;
+if (inBrowser) {
+  modeLS = localStorage.getItem('page-theme-mode')
+}
 
 if (modeLS) {
   modeText.value = MODE_TEXT[modeLS];
@@ -18,6 +22,9 @@ if (modeLS) {
 
 // 切换黑夜白天模式
 function modeChange() {
+  if (!inBrowser) {
+    return;
+  }
   const nowDarkmode = localStorage.getItem('page-theme-mode') || 'github-light';
   const beaudar = document.querySelector<HTMLIFrameElement>('#beaudar iframe');
   const message = {

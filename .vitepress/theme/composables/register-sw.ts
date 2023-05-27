@@ -1,5 +1,7 @@
+import { inBrowser } from "vitepress";
+
 export const registerSW = () => {
-  if ("serviceWorker" in navigator) {
+  if (inBrowser && "serviceWorker" in navigator) {
     navigator.serviceWorker.register("/sw.js");
   }
 };

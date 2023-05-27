@@ -3,13 +3,17 @@
 import Menu from '../components/Menu.vue';
 import Footer from '../components/Footer.vue';
 import { ref } from 'vue';
+import { inBrowser } from 'vitepress';
 
 const footerMode = "common" // 常规
 
 const footerComment = ref(true);
 const footerPostNav = ref(false);
-const locationPathname = ref(window.location.pathname);
+const locationPathname = ref('');
 
+if (inBrowser) {
+  locationPathname.value = window.location.pathname;
+}
 
 </script>
 

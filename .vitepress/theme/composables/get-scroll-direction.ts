@@ -1,7 +1,17 @@
-let oldPageYOffset = window.pageYOffset;
-const documentElementClientHeight = document.documentElement.clientHeight;
+import { inBrowser } from "vitepress";
+
+let oldPageYOffset = -1;
+let documentElementClientHeight = -1;
+
+if (inBrowser) {
+  oldPageYOffset = window.pageYOffset;
+  documentElementClientHeight = document.documentElement.clientHeight;
+}
 
 export function getScrollDirection() {
+  if (!inBrowser) {
+    return;
+  }
   const $ = document.querySelector.bind(document);
   const menu: HTMLElement | null = $("header.masthead");
   const fixedBtn: HTMLElement | null = $("#fixed-button");
