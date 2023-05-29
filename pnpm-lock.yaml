@@ -21,6 +21,9 @@ devDependencies:
   concat-stream:
     specifier: 2.0.0
     version: registry.npmmirror.com/concat-stream@2.0.0
+  cross-env:
+    specifier: 7.0.3
+    version: registry.npmmirror.com/cross-env@7.0.3
   fonteditor-core:
     specifier: 2.1.11
     version: registry.npmmirror.com/fonteditor-core@2.1.11
@@ -1223,6 +1226,16 @@ packages:
     name: corser
     version: 2.0.1
     engines: {node: '>= 0.4.0'}
+    dev: true
+
+  registry.npmmirror.com/cross-env@7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cross-env/-/cross-env-7.0.3.tgz}
+    name: cross-env
+    version: 7.0.3
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: registry.npmmirror.com/cross-spawn@7.0.3
     dev: true
 
   registry.npmmirror.com/cross-spawn@7.0.3:

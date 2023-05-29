@@ -5,6 +5,7 @@
     "buffer-to-vinyl": "1.1.0",
     "code-points": "2.0.0-1",
     "concat-stream": "2.0.0",
+    "cross-env": "7.0.3",
     "fonteditor-core": "2.1.11",
     "glob": "10.2.6",
     "gray-matter": "4.0.3",
@@ -25,9 +26,9 @@
   "scripts": {
     "dev": "vitepress dev . --host",
     "build:vp": "vitepress build .",
-    "build": "npm run make-font && npm run version && npm run build:vp",
+    "build": "cross-env NODE_ENV=production && npm run make-font && npm run version && npm run build:vp",
     "preview": "npm run build && http-server --port 5173 ./dist",
-    "preview:vp": "vitepress preview .",
+    "preview:vp": "cross-env NODE_ENV=production && vitepress preview .",
     "make-font": "node ./font-handle/index.js",
     "version": "node ./version.js"
   },
