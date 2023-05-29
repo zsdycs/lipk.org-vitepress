@@ -25,10 +25,11 @@
   "scripts": {
     "dev": "vitepress dev . --host",
     "build:vp": "vitepress build .",
-    "build": "npm run make-font && npm run build:vp",
+    "build": "npm run make-font && npm run version && npm run build:vp",
     "preview": "npm run build && http-server --port 5173 ./dist",
     "preview:vp": "vitepress preview .",
-    "make-font": "node ./font-handle/index.js"
+    "make-font": "node ./font-handle/index.js",
+    "version": "node ./version.js"
   },
   "dependencies": {
     "vue": "3.3.4"
