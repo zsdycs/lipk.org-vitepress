@@ -29,7 +29,9 @@ export const loadFont = async (routePath: string) => {
       const fontFileName = currentPageFontSource[fontName] as string;
       // 添加 await 确保依次加载
       await ajaxGetBlob(`/fontSource/${fontFileName}`).then((response) => {
-        addBlobFontFace(response);
+        if (response) {
+          addBlobFontFace(response);
+        }
       });
     }
   }
@@ -46,7 +48,9 @@ export const loadFont = async (routePath: string) => {
     Promise.all(fullFontPromiseList).then((responseList) => {
       for (let i = 0; i < responseList.length; i++) {
         const itemResponse = responseList[i];
-        addBlobFontFace(itemResponse);
+        if (itemResponse) {
+          addBlobFontFace(itemResponse);
+        }
       }
       isFullFontFileLoaded = true;
     });
