@@ -4,6 +4,9 @@ import { useData } from '../composables/data'
 import { SVG_STRING } from '../composables/svg-resources';
 import PostNav from '../components/PostNav.vue'
 import Beaudar from "../components/Beaudar.vue";
+import LastUpdated from '../components/LastUpdated.vue';
+import { computed } from 'vue';
+import { useEditLink } from '../composables/edit-link';
 
 const props = defineProps<{
   mode: string, // 模式 home, common
@@ -11,9 +14,13 @@ const props = defineProps<{
   postNav?: boolean, // 是否显示导航
 }>();
 
-const { theme } = useData();
-
+const { theme, frontmatter, page } = useData();
 const nowYear = (new Date()).getUTCFullYear();
+const editLink = useEditLink();
+
+const hasEditInfo = computed(() => {
+  return theme.value.editLink && page.value.lastUpdated && !frontmatter.value.notEditInfo;
+});
 
 </script>
 
@@ -41,8 +48,25 @@ const nowYear = (new Date()).getUTCFullYear();
     </div>
 
     <!-- 结束线 -->
-    <div id="eof" v-if="postNav || comment">
-      <hr>
+    <div id="eof" v-if="(postNav || comment) && !hasEditInfo">
+      <hr class="full-width">
+    </div>
+
+    <!-- 本页编辑信息 -->
+    <div v-if="hasEditInfo" class="edit-info">
+      <!-- 编辑本页 -->
+      <div class="edit-link">
+        <a :href="editLink.url" :title="editLink.text" target="_blank">
+          {{ editLink.text }}
+        </a>
+      </div>
+      <!-- 页面 md 文件最后更新时间 -->
+      <LastUpdated />
+    </div>
+
+    <!-- 编辑信息分割线 -->
+    <div class="edit-info-line" v-if="(postNav || comment) && hasEditInfo">
+      <hr class="full-width">
     </div>
 
     <!-- 导航 -->
@@ -52,7 +76,7 @@ const nowYear = (new Date()).getUTCFullYear();
     <Beaudar v-if="comment" />
 
     <!-- mode === 'common' 常规 -->
-    <hr v-if="props.mode === 'common'">
+    <hr class="full-width" v-if="props.mode === 'common'">
     <div class="copyright" v-if="props.mode === 'common'">
       <span class="slogan" v-if="theme.slogan">{{ theme.slogan }}</span>
       <span>&copy;{{ theme.since }}-{{ nowYear }} {{ theme.author }}</span>

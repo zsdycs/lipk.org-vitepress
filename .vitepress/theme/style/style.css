@@ -709,7 +709,7 @@ a.header-anchor:hover {
 }
 
 #eof::after {
-  margin-left: 10px;
+  /* margin-left: 10px; */
   content: '';
 }
 
@@ -718,6 +718,34 @@ a.header-anchor:hover {
   font-weight: 100;
   line-height: 1em;
   text-align: center;
+}
+
+.edit-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.edit-info-line {
+  font-weight: 100;
+  text-align: center;
+}
+
+.edit-info-line hr {
+  margin: 14px 0px 50px 0px;
+  /* color: transparent; */
+}
+
+.full-width {
+  max-width: 100%;
+  width: 100%;
+}
+
+.last-updated {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--blockquote-color);
 }
 
 #TableOfContents {

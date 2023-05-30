@@ -241,15 +241,12 @@ a:hover {
   border-bottom: 1px solid var(--a-color);
 }
 
-.copyright a {
-  color: var(--html-color);
-}
-
 a.list,
 .post-nav a,
 .copyright a,
 .menu button,
-#TableOfContents li {
+#TableOfContents li,
+.edit-link a {
   color: var(--html-color);
 }
 
@@ -290,7 +287,8 @@ button:focus-visible {
 }
 
 .post-nav a:hover,
-.copyright a:hover {
+.copyright a:hover,
+.edit-link a:hover {
   color: var(--a-color);
   border-bottom: 1px solid var(--a-color);
 }
@@ -392,7 +390,8 @@ th {
   background: var(--masthead-bg-color);
 }
 
-#eof {
+#eof,
+.split-line {
   color: var(--eof-color);
 }
 

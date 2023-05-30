@@ -9,6 +9,7 @@ pictureView: [
     src: '/images/resume.jpg',
   }
 ]
+notEditInfo: true
 ---
 
 <figure class="image">

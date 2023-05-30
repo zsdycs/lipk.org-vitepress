@@ -12,7 +12,8 @@
               "title": "我的照片",
               "src": "/images/resume.jpg"
             }
-          ]
+          ],
+          "notEditInfo": true
         },
         "originalPath": "D:\\Code\\lipk.org-test\\site\\resume.md",
         "path": "/resume"
@@ -38,7 +39,8 @@
               }
             ]
           ],
-          "notComment": true
+          "notComment": true,
+          "notEditInfo": true
         },
         "originalPath": "D:\\Code\\lipk.org-test\\site\\index.md",
         "path": "/index"
@@ -69,7 +71,8 @@
         "frontmatter": {
           "title": "博客",
           "notComment": true,
-          "listPage": true
+          "listPage": true,
+          "notEditInfo": true
         },
         "originalPath": "D:\\Code\\lipk.org-test\\site\\blog\\index.md",
         "path": "/blog/index"

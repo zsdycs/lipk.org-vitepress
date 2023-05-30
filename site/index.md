@@ -10,6 +10,7 @@ head:
     - name: keywords
       content: 李鹏坤，执手对影成双，个人网站首页
 notComment: true
+notEditInfo: true
 ---
 
 # 你好，我是李鹏坤。

@@ -1,12 +1,34 @@
 import { type UserConfig } from "vitepress";
 // import { type Routes } from "./theme/utils/app-routes.js";
 
+export interface EditLink {
+  /**
+   * Pattern for edit link.
+   *
+   * @example 'https://github.com/zsdycs/lipk.org-test/blob/master/site/:path'
+   * @example ({ filePath }) => { ... }
+   */
+  pattern: string | ((payload: PageData) => string);
+
+  /**
+   * Custom text for edit link.
+   *
+   * @default '编辑本页'
+   */
+  text?: string;
+}
+
 export interface CustomConfig extends UserConfig {
   routes: Routes[];
   vitepressVersion?: string;
   since?: string;
   author?: string;
   slogan?: string;
+  editLink?: EditLink;
+  /**
+   * @default '最后更新时间'
+   */
+  lastUpdatedText?: string;
 }
 
 export interface Menu {
