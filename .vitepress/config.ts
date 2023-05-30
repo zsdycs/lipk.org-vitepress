@@ -38,4 +38,7 @@ export default defineConfigWithTheme<CustomConfig>({
     author: "李鹏坤",
     slogan: "执手相看，对影成双",
   },
+  markdown: {
+    lineNumbers: true,
+  },
 });

@@ -1,3 +1,8 @@
+:root {
+  --font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --code-font-size: 14px;
+}
+
 body,
 button {
   font-family:
@@ -17,9 +22,9 @@ button {
     'Segoe UI Symbol';
 }
 
-code {
+/* code {
   font-family: Consolas, Courier, 'Courier New', 'STKaiti', 'KaiTi', 'SimKai', monospace;
-}
+} */
 
 .slogan {
   font-family: '楷体', cursive;
@@ -80,10 +85,10 @@ blockquote {
   font-size: 0.9em;
 }
 
-pre,
+/* pre,
 code {
   font-size: 13px;
-}
+} */
 
 .image-description {
   font-size: 12px;
@@ -156,10 +161,10 @@ aside.index #info li {
     font-size: 0.7em;
   }
 
-  pre,
+  /* pre,
   code {
     font-size: 10px;
-  }
+  } */
 
   .slogan {
     font-size: 80%;

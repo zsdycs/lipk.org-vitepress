@@ -9,10 +9,10 @@
     --blockquote-color: #5d5d5d;
     --blockquote-border-color: #c8c8c8;
     --a-color: #000;
-    --code-color: #000;
+    /* --code-color: #000;
     --code-bg-color: #ebedf0;
     --code-highlight-bg-color: #272827;
-    --code-highlight-color: #f8f8f2;
+    --code-highlight-color: #f8f8f2; */
     --ins-color: #777;
     --del-color: gray;
     --thead-bg-color: #f6f8fa;
