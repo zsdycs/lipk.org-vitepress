@@ -6,38 +6,6 @@
 - 目录结构：
 
 ```markdown
-lipk.org
-│
-├─ content # Markdown 资源文件夹
-│  ├─ _index.md # 首页
-│  ├─ about.md # 关于
-│  ├─ resume.md # 简历
-│  ├─ food.md # 菜谱
-│  └─ blog # 博客 Markdown 文件夹
-│     ├─ _index.md # 博客入口
-│     └─ ......
-├─ layouts # 页面模板文件夹
-│  ├─ _default # 默认结构
-│  │  └─ ......
-│  ├─ partials # 模板结构块
-│  │  └─ ......
-│  └─404.html 404 # 页面
-├─ static # 站点资源文件夹
-│  ├─ favicon.ico # 站点图标
-│  ├─ css
-│  │  └─ ......
-│  ├─ images
-│  │  └─ ......
-│  └─ js
-│     └─ ......
-├─ .gitignore git # 提交忽略配置
-├─ beaudar.json # Beaudar 配置
-├─ config.toml # 网站配置
-├─ gulpfile.js # gulp 打包配置
-├─ LICENSE # 版权声明
-├─ package.json # node 配置
-└─ README # 源代码说明
-
 lipk.org-test
 │
 ├─ .github             # GitHub 配置文件夹
