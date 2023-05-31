@@ -1,12 +1,14 @@
 <!-- 页面菜单 -->
 <script setup lang="ts">
+import { useData } from '../composables/data';
 import PageMode from '../components/PageMode.vue'
-import { MENU } from '../composables/constant';
 import { useRoute } from 'vitepress'
 
 const route = useRoute();
+const { theme } = useData();
 
-const currentMenu = MENU[route.path] || MENU.default;
+const menu = theme.value.menu;
+const currentMenu = menu[route.path] || menu.default;
 
 </script>
 

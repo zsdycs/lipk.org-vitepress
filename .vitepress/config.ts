@@ -3,6 +3,7 @@ import type { CustomConfig, Routes } from "./theme";
 import { head } from "./theme/utils/head";
 import pkg from "vitepress/package.json";
 import { readFileSync } from "fs";
+import { MENU } from "./theme/composables/constant";
 
 const RoutesJsonFilePath = "./routes.json";
 const routesJson = readFileSync(RoutesJsonFilePath, "utf-8");
@@ -28,6 +29,7 @@ export default defineConfigWithTheme<CustomConfig>({
       text: "在 GitHub 编辑此页",
     },
     lastUpdatedText: "本页最后更新时间",
+    menu: MENU,
   },
   lastUpdated: true,
   markdown: {

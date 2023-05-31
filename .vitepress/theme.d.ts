@@ -29,6 +29,7 @@ export interface CustomConfig extends UserConfig {
    * @default '最后更新时间'
    */
   lastUpdatedText?: string;
+  menu: Record<string, Menu[]>;
 }
 
 export interface Menu {
