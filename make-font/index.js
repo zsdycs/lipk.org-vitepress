@@ -14,7 +14,7 @@ const FontSourcePath = "./site/public/fullFontSource/"; // 字体文件的位置
 const FontSourcesFileName = "fontSources.json"; // 字体列表 json 文件名
 const CachePath = "./cache/"; // 字体处理过程的缓存路径
 const PageFontSourcesFileName = "pageFontSources.json"; // 页面的路由、文件映射 json
-const CommonContentFilePath = "./font-handle/common.txt"; // 网站通用内容文字
+const CommonContentFilePath = "./make-font/common.txt"; // 网站通用内容文字
 
 // 字体列表
 const FontSourceList = [
@@ -61,7 +61,7 @@ saveFontSources();
 
 // 读取路由 json {
 // const routesJsonFile = path.relative("./", RoutesJsonFilePath);
-const routesJson = readFileSync(RoutesJsonFilePath);
+const routesJson = readFileSync(RoutesJsonFilePath, "utf-8");
 const routes = JSON.parse(routesJson);
 // 读取路由 json }
 

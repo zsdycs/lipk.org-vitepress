@@ -1,12 +1,9 @@
-import { sep, resolve } from "path";
-import { globSync } from "glob";
-import fs from "fs";
-import matter from "gray-matter";
-import type { Routes, Options, MdFile } from "../../theme";
-// import { createMarkdownRenderer } from "vitepress";
-// import pc from "picocolors";
+const { sep, resolve } = require("path");
+const { globSync } = require("glob");
+const { readFileSync } = require("fs");
+const matter = require("gray-matter");
 
-const sliceIfEndsWith = (str: string, substr: string) => {
+const sliceIfEndsWith = (str, substr) => {
   if (str.endsWith(substr)) {
     return str.slice(0, str.length - substr.length);
   } else {
@@ -15,7 +12,7 @@ const sliceIfEndsWith = (str: string, substr: string) => {
 };
 
 // // handle md file name
-const getName = (path: string) => {
+const getName = (path) => {
   let name = path.split(sep).pop() || path;
   name = sliceIfEndsWith(name, ".md");
 
@@ -23,7 +20,7 @@ const getName = (path: string) => {
 };
 
 // handle dir name
-const getDirName = (path: string, popDirs: string[] = []) => {
+const getDirName = (path, popDirs = []) => {
   let name = "";
   const pathSplitList = path.split(sep);
   do {
@@ -34,7 +31,7 @@ const getDirName = (path: string, popDirs: string[] = []) => {
 };
 
 // Load all MD files in a specified directory
-const getMdFiles = (ignoreMDFiles: string[] = []): MdFile[] => {
+const getMdFiles = (ignoreMDFiles = []) => {
   const solvePath = "./site/**/*.md";
   const files = globSync(solvePath, {
     ignore: [
@@ -47,19 +44,19 @@ const getMdFiles = (ignoreMDFiles: string[] = []): MdFile[] => {
     return { path, originalPath: resolve(`./${path}`) };
   });
 
-  return files as MdFile[];
+  return files;
 };
 
-export const appRoutes = (options?: Options): Routes[] => {
+const generateRoutes = (options = {}) => {
   const { ignoreDirs, ignoreMDFiles, popDirs } = options || {};
-  // console.log("创建路由中……");
+  console.log("创建路由中……");
 
   const mdFiles = getMdFiles(ignoreMDFiles);
-  // console.log(`已获取所有文章，共 ${pc.green(mdFiles.length)} 篇`);
+  console.log(`已获取所有文章，共 ${mdFiles.length} 篇`);
 
-  const routeList: Routes[] = [];
+  const routeList = [];
   for (let i = 0; i < mdFiles.length; i++) {
-    const item: MdFile = mdFiles[i];
+    const item = mdFiles[i];
     const { path, originalPath } = item;
     let dirNamePath = `/${getDirName(path, popDirs)}`;
 
@@ -82,19 +79,12 @@ export const appRoutes = (options?: Options): Routes[] => {
 
     const mdFileName = getName(path);
     let frontmatter = {};
-    // let content = null;
     try {
-      const src = fs.readFileSync(originalPath, "utf8");
+      const src = readFileSync(originalPath, "utf8");
       const { data } = matter(src, {
         excerpt: false,
       });
-      // const md = await createMarkdownRenderer(
-      //   src,
-      //   (global as any).VITEPRESS_CONFIG
-      // );
-
       frontmatter = data;
-      // content = md.render(src);
 
       const findRoute = routeList.find((item) => {
         let isThis = false;
@@ -113,8 +103,6 @@ export const appRoutes = (options?: Options): Routes[] => {
         // 二级页面
         pagePath = `${dirNamePath}${mdFileName}`;
       }
-      // console.clear();
-      // console.log(`生成路由: ${pc.green(mdFileName)}`);
 
       if (findRoute) {
         findRoute.children?.push({
@@ -162,20 +150,6 @@ export const appRoutes = (options?: Options): Routes[] => {
   return routeList;
 };
 
-// export const generateRoutes = () => {
-//   const fileName = "routes.ts";
-//   const filePath = ".vitepress";
-//   const routes = appRoutes({ popDirs: ["site"] });
-
-//   if (fs.existsSync(filePath)) {
-//     fs.writeFileSync(
-//       `${filePath}/${fileName}`,
-//       `
-//     import type { Routes } from "./theme";
-//     export const routes: Routes[] = ${JSON.stringify(routes)};
-//     `
-//     );
-//   }
-
-//   return routes;
-// };
+module.exports = {
+  generateRoutes,
+};

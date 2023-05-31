@@ -24,13 +24,14 @@
     "vitepress": "1.0.0-beta.1"
   },
   "scripts": {
-    "dev": "vitepress dev . --host",
+    "make-routes": "node ./make-routes/index.js",
+    "dev": "npm run make-routes && vitepress dev . --host",
     "build:vp": "vitepress build .",
-    "build": "cross-env NODE_ENV=production && npm run build:vp && npm run make-font && npm run version && npm run build:vp",
+    "make-font": "node ./make-font/index.js",
+    "version": "node ./version.js",
+    "build": "cross-env NODE_ENV=production && npm run make-routes && npm run make-font && npm run version && npm run build:vp",
     "preview": "npm run build && http-server --port 5173 ./dist",
-    "preview:vp": "cross-env NODE_ENV=production && vitepress preview .",
-    "make-font": "node ./font-handle/index.js",
-    "version": "node ./version.js"
+    "preview:vp": "cross-env NODE_ENV=production && vitepress preview ."
   },
   "dependencies": {
     "vue": "3.3.4"

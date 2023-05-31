@@ -1,12 +1,6 @@
-import fs from "fs";
+const { existsSync, mkdirSync, writeFileSync } = require("fs");
 
-interface saveRoutesParams {
-  routesStr: any;
-  filePath: string;
-  fileName: string;
-}
-
-export const saveRoutes = (data: saveRoutesParams) => {
+const saveRoutes = (data) => {
   const { routesStr: routesData, filePath, fileName } = data;
   let routesStr = "";
 
@@ -18,8 +12,12 @@ export const saveRoutes = (data: saveRoutesParams) => {
     routesStr = routesData;
   }
 
-  if (!fs.existsSync(filePath)) {
-    fs.mkdirSync(filePath);
+  if (!existsSync(filePath)) {
+    mkdirSync(filePath);
   }
-  fs.writeFileSync(`${filePath}/${fileName}`, routesStr);
+  writeFileSync(`${filePath}/${fileName}`, routesStr);
+};
+
+module.exports = {
+  saveRoutes,
 };
