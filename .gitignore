@@ -3,3 +3,5 @@
 **/node_modules
 **/site/public/fontSource
 **/.temp
+routes.json
+**/composables/version-svg.ts
