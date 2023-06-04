@@ -22,6 +22,10 @@ button {
     'Segoe UI Symbol';
 }
 
+a.footnote-backref {
+  font-family: initial;
+}
+
 /* code {
   font-family: Consolas, Courier, 'Courier New', 'STKaiti', 'KaiTi', 'SimKai', monospace;
 } */

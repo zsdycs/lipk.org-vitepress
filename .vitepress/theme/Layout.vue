@@ -27,8 +27,6 @@ consoleInfo();
 // 加载字体
 loadFont(route.path);
 
-// 引用参考资料 TODO
-// 无序复选列表 TODO
 
 // 打印 TODO
 // 图片查看 TODO

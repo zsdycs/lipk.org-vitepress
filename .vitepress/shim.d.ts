@@ -15,3 +15,21 @@ declare module "@theme/index" {
   const theme: Theme;
   export default theme;
 }
+
+declare module "markdown-it-footnote";
+{
+  const plugin: MarkdownIt.PluginSimple;
+  export default plugin;
+}
+
+declare module "markdown-it-image-figures";
+{
+  const plugin: MarkdownIt.PluginSimple;
+  export default plugin;
+}
+
+declare module "markdown-it-task-lists";
+{
+  const plugin: MarkdownIt.PluginSimple;
+  export default plugin;
+}

@@ -4,6 +4,9 @@ import { head } from "./theme/utils/head";
 import pkg from "vitepress/package.json";
 import { readFileSync } from "fs";
 import { MENU } from "./theme/composables/constant";
+import footnotePlugin from "markdown-it-footnote";
+import imagePlugin from "markdown-it-image-figures";
+import taskListPlugin from "markdown-it-task-lists";
 
 const RoutesJsonFilePath = "./routes.json";
 const routesJson = readFileSync(RoutesJsonFilePath, "utf-8");
@@ -34,5 +37,17 @@ export default defineConfigWithTheme<CustomConfig>({
   lastUpdated: true,
   markdown: {
     lineNumbers: true,
+    config: (md) => {
+      // 引用参考资料
+      md.use(footnotePlugin);
+      // 图片
+      md.use(imagePlugin, {
+        dataType: true,
+        figcaption: "alt",
+        lazy: true,
+      });
+      //  任务列表
+      md.use(taskListPlugin);
+    },
   },
 });

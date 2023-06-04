@@ -136,7 +136,9 @@ li {
   content: '•\00a\000a0\00a0';
 }
 
-figure.image {
+figure.image,
+figure[data-type=image]
+ {
   margin: 0;
   text-align: center;
 }

@@ -1,4 +1,22 @@
 {
+  "name": "lipk.org-test",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zsdycs/lipk.org-test.git"
+  },
+  "scripts": {
+    "make-routes": "node ./make-routes/index.js",
+    "version": "node ./make-version/index.js",
+    "dev": "npm run make-routes && npm run version && vitepress dev . --host",
+    "build:vp": "vitepress build .",
+    "make-font": "node ./make-font/index.js",
+    "build": "cross-env NODE_ENV=production && npm run make-routes && npm run make-font && npm run version && npm run build:vp",
+    "preview": "npm run build && http-server --port 5173 ./dist",
+    "preview:vp": "cross-env NODE_ENV=production && vitepress preview ."
+  },
+  "dependencies": {
+    "vue": "3.3.4"
+  },
   "devDependencies": {
     "@types/node": "20.2.5",
     "b3b": "0.0.1",
@@ -14,6 +32,9 @@
     "is-svg": "4.2.1",
     "is-ttf": "0.2.2",
     "lodash": "4.17.21",
+    "markdown-it-footnote": "3.0.3",
+    "markdown-it-image-figures": "2.1.1",
+    "markdown-it-task-lists": "2.1.1",
     "pako": "2.1.0",
     "replace-ext": "2.0.0",
     "stream-combiner": "0.2.2",
@@ -22,18 +43,5 @@
     "typescript": "5.0.4",
     "vinyl-fs": "3.0.3",
     "vitepress": "1.0.0-beta.1"
-  },
-  "scripts": {
-    "make-routes": "node ./make-routes/index.js",
-    "version": "node ./make-version/index.js",
-    "dev": "npm run make-routes && npm run version && vitepress dev . --host",
-    "build:vp": "vitepress build .",
-    "make-font": "node ./make-font/index.js",
-    "build": "cross-env NODE_ENV=production && npm run make-routes && npm run make-font && npm run version && npm run build:vp",
-    "preview": "npm run build && http-server --port 5173 ./dist",
-    "preview:vp": "cross-env NODE_ENV=production && vitepress preview ."
-  },
-  "dependencies": {
-    "vue": "3.3.4"
   }
 }
