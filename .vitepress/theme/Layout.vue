@@ -27,8 +27,8 @@ consoleInfo();
 // 加载字体
 loadFont(route.path);
 
-
 // 打印 TODO
+// 目录 TODO
 // 图片查看 TODO
 // 编辑本页 TODO
 // 返回顶部 TODO
@@ -43,8 +43,6 @@ if (inBrowser) {
 
   useEventListener(document, 'resize', throttle(getScrollDirection, 500, 200));
 }
-
-// v-if="page.isNotFound" <NotFound />
 
 </script>
 

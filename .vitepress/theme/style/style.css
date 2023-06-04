@@ -822,7 +822,8 @@ p.billibili {
 iframe.billibili {
   width: 100%;
   height: 480px;
-  margin-bottom: -38px;
+  margin-bottom: -16px;
+  margin-top: -16px;
 }
 
 .image-description {
