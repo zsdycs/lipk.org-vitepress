@@ -1,4 +1,4 @@
-import { Watermark } from "@pansy/watermark";
+import watermarkPkg, { Watermark } from "../lib/watermark/index.js";
 import { parseTime, copyTextToClipboard } from "../utils/index";
 import { inBrowser } from "vitepress";
 
@@ -29,7 +29,8 @@ const watermarkConfig = {
 
 let watermark: Watermark | null = null;
 if (inBrowser) {
-  watermark = new Watermark({
+  const { Watermark: WM } = watermarkPkg;
+  watermark = new WM({
     ...watermarkConfig,
   });
 }
@@ -37,7 +38,7 @@ if (inBrowser) {
 // 打印
 export const printPage = (obj: any) => {
   const { path, theme, frontmatter } = obj;
-  if (inBrowser && watermark) {
+  if (inBrowser) {
     let title = "";
     if (theme.value.author && frontmatter.value.title) {
       title = `${frontmatter.value.title}-${theme.value.author}`;
@@ -47,13 +48,13 @@ export const printPage = (obj: any) => {
     const watermarkTextList = [currentTimeStr, window.location.href, title];
     const watermarkText = watermarkTextList.join(" ");
 
-    watermark.update({
+    watermark?.update({
       ...watermarkConfig,
       text: watermarkText,
       blindText: watermarkText,
     });
 
-    watermark.hide();
+    watermark?.hide();
 
     // 打印：打印时加载水印，以保留打印信息
     window.onbeforeprint = () => {

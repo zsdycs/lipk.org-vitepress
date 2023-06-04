@@ -6,9 +6,6 @@ dependencies:
     version: registry.npmmirror.com/vue@3.3.4
 
 devDependencies:
-  '@pansy/watermark':
-    specifier: ^2.3.0
-    version: registry.npmmirror.com/@pansy/watermark@2.3.0
   '@types/node':
     specifier: 20.2.5
     version: registry.npmmirror.com/@types/node@20.2.5
@@ -596,12 +593,6 @@ packages:
     dependencies:
       mkdirp: registry.npmmirror.com/mkdirp@1.0.4
       rimraf: registry.npmmirror.com/rimraf@3.0.2
-    dev: true
-
-  registry.npmmirror.com/@pansy/watermark@2.3.0:
-    resolution: {integrity: sha512-eVq5XD0BGkAkp0I36WgupRJOnEf+d3mJzy4HJUOUx4XzpZAk6fCRu1OKodTx+64FegEhfAMr7QpbUMTmdXrDPQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@pansy/watermark/-/watermark-2.3.0.tgz}
-    name: '@pansy/watermark'
-    version: 2.3.0
     dev: true
 
   registry.npmmirror.com/@pkgjs/parseargs@0.11.0:
