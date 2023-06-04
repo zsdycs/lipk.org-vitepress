@@ -751,9 +751,12 @@ a.header-anchor:hover {
   width: 100%;
 }
 
+.edit-link {
+  margin-right: 10px;
+}
+
 .last-updated {
-  font-size: 14px;
-  font-weight: 500;
+  margin-left: 10px;
   color: var(--blockquote-color);
 }
 
