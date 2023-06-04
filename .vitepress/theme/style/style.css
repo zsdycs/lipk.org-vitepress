@@ -1,6 +1,6 @@
 /* var */
 :root {
-  --header-anchor-symbol: '🔗';
+  --header-anchor-symbol: "🔗";
 }
 
 /* 根元素
@@ -133,14 +133,21 @@ li {
 }
 
 .masthead .menu li li::before {
-  content: '•\00a\000a0\00a0';
+  content: "•\00a\000a0\00a0";
 }
 
 figure.image,
-figure[data-type=image]
- {
+figure[data-type="image"] {
   margin: 0;
   text-align: center;
+}
+
+figcaption.image-description,
+figure[data-type="image"] figcaption {
+  margin: 0;
+  line-height: 17px;
+  text-align: center;
+  opacity: 0.7;
 }
 
 /* 文字形式
@@ -148,7 +155,7 @@ figure[data-type=image]
   <sub> <sup> <i> <b> <u> <mark> <ruby> <rt> <rp> <bdi> <bdo> <span> <br> <wbr>
  */
 
-div[class*='language-'] {
+div[class*="language-"] {
   position: relative;
   margin: 16px -24px;
   background-color: var(--code-block-bg);
@@ -158,26 +165,26 @@ div[class*='language-'] {
 }
 
 @media (min-width: 640px) {
-  div[class*='language-'] {
+  div[class*="language-"] {
     border-radius: 8px;
     margin: 16px 0;
   }
 }
 
 @media (max-width: 639px) {
-  li div[class*='language-'] {
+  li div[class*="language-"] {
     border-radius: 8px 0 0 8px;
   }
 }
 
-div[class*='language-'] + div[class*='language-'],
-div[class$='-api'] + div[class*='language-'],
-div[class*='language-'] + div[class$='-api'] > div[class*='language-'] {
+div[class*="language-"] + div[class*="language-"],
+div[class$="-api"] + div[class*="language-"],
+div[class*="language-"] + div[class$="-api"] > div[class*="language-"] {
   margin-top: -8px;
 }
 
-[class*='language-'] pre,
-[class*='language-'] code {
+[class*="language-"] pre,
+[class*="language-"] code {
   direction: ltr;
   text-align: left;
   white-space: pre;
@@ -193,7 +200,7 @@ div[class*='language-'] + div[class$='-api'] > div[class*='language-'] {
   hyphens: none;
 }
 
-[class*='language-'] pre {
+[class*="language-"] pre {
   position: relative;
   z-index: 1;
   margin: 0;
@@ -202,7 +209,7 @@ div[class*='language-'] + div[class$='-api'] > div[class*='language-'] {
   overflow-x: auto;
 }
 
-[class*='language-'] code {
+[class*="language-"] code {
   display: block;
   padding: 0 24px;
   width: fit-content;
@@ -213,8 +220,8 @@ div[class*='language-'] + div[class$='-api'] > div[class*='language-'] {
   transition: color 0.5s;
 }
 
-[class*='language-'] code .highlighted {
-  background-color: rgba(0, 0, 0, .5);
+[class*="language-"] code .highlighted {
+  background-color: rgba(0, 0, 0, 0.5);
   transition: background-color 0.5s;
   margin: 0 -24px;
   padding: 0 24px;
@@ -222,15 +229,15 @@ div[class*='language-'] + div[class$='-api'] > div[class*='language-'] {
   display: inline-block;
 }
 
-[class*='language-'] code .highlighted.error {
-  background-color: rgba(244, 63, 94, .2);
+[class*="language-"] code .highlighted.error {
+  background-color: rgba(244, 63, 94, 0.2);
 }
 
-[class*='language-'] code .highlighted.warning {
-  background-color: rgba(234, 179, 8, .2);
+[class*="language-"] code .highlighted.warning {
+  background-color: rgba(234, 179, 8, 0.2);
 }
 
-[class*='language-'] code .diff {
+[class*="language-"] code .diff {
   transition: background-color 0.5s;
   margin: 0 -24px;
   padding: 0 24px;
@@ -238,47 +245,47 @@ div[class*='language-'] + div[class$='-api'] > div[class*='language-'] {
   display: inline-block;
 }
 
-[class*='language-'] code .diff::before {
+[class*="language-"] code .diff::before {
   position: absolute;
   left: 10px;
 }
 
-[class*='language-'] .has-focused-lines .line:not(.has-focus) {
+[class*="language-"] .has-focused-lines .line:not(.has-focus) {
   filter: blur(0.095rem);
   opacity: 0.4;
   transition: filter 0.35s, opacity 0.35s;
 }
 
-[class*='language-'] .has-focused-lines .line:not(.has-focus) {
+[class*="language-"] .has-focused-lines .line:not(.has-focus) {
   opacity: 0.7;
   transition: filter 0.35s, opacity 0.35s;
 }
 
-[class*='language-']:hover .has-focused-lines .line:not(.has-focus) {
+[class*="language-"]:hover .has-focused-lines .line:not(.has-focus) {
   filter: blur(0);
   opacity: 1;
 }
 
-[class*='language-'] code .diff.remove {
-  background-color: rgba(244, 63, 94, .2);
+[class*="language-"] code .diff.remove {
+  background-color: rgba(244, 63, 94, 0.2);
   opacity: 0.7;
 }
 
-[class*='language-'] code .diff.remove::before {
-  content: '-';
+[class*="language-"] code .diff.remove::before {
+  content: "-";
   color: #f43f5e;
 }
 
-[class*='language-'] code .diff.add {
-  background-color: rgba(16, 185, 129, .2);
+[class*="language-"] code .diff.add {
+  background-color: rgba(16, 185, 129, 0.2);
 }
 
-[class*='language-'] code .diff.add::before {
-  content: '+';
+[class*="language-"] code .diff.add::before {
+  content: "+";
   color: #10b981;
 }
 
-div[class*='language-'].line-numbers-mode {
+div[class*="language-"].line-numbers-mode {
   padding-left: 32px;
 }
 
@@ -298,7 +305,7 @@ div[class*='language-'].line-numbers-mode {
   transition: border-color 0.5s, color 0.5s;
 }
 
-[class*='language-'] > button.copy {
+[class*="language-"] > button.copy {
   direction: ltr;
   position: absolute;
   top: 12px;
@@ -319,26 +326,26 @@ div[class*='language-'].line-numbers-mode {
   transition: border-color 0.25s, background-color 0.25s, opacity 0.25s;
 }
 
-[class*='language-']:hover > button.copy,
-[class*='language-'] > button.copy:focus {
+[class*="language-"]:hover > button.copy,
+[class*="language-"] > button.copy:focus {
   opacity: 1;
 }
 
-[class*='language-'] > button.copy:hover,
-[class*='language-'] > button.copy.copied {
+[class*="language-"] > button.copy:hover,
+[class*="language-"] > button.copy.copied {
   border-color: #2e2e31;
   background-color: #1e1e20;
 }
 
-[class*='language-'] > button.copy.copied,
-[class*='language-'] > button.copy:hover.copied {
+[class*="language-"] > button.copy.copied,
+[class*="language-"] > button.copy:hover.copied {
   border-radius: 0 4px 4px 0;
   background-color: #1e1e20;
   background-image: var(--icon-copied);
 }
 
-[class*='language-'] > button.copy.copied::before,
-[class*='language-'] > button.copy:hover.copied::before {
+[class*="language-"] > button.copy.copied::before,
+[class*="language-"] > button.copy:hover.copied::before {
   position: relative;
   top: -1px;
   left: -65px;
@@ -353,13 +360,13 @@ div[class*='language-'].line-numbers-mode {
   text-align: center;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(235, 235, 245, .6);
+  color: rgba(235, 235, 245, 0.6);
   background-color: #1e1e20;
   white-space: nowrap;
-  content: 'Copied';
+  content: "Copied";
 }
 
-[class*='language-'] > span.lang {
+[class*="language-"] > span.lang {
   position: absolute;
   top: 2px;
   right: 8px;
@@ -371,8 +378,8 @@ div[class*='language-'].line-numbers-mode {
   transition: color 0.4s, opacity 0.4s;
 }
 
-[class*='language-']:hover > button.copy + span.lang,
-[class*='language-'] > button.copy:focus + span.lang {
+[class*="language-"]:hover > button.copy + span.lang,
+[class*="language-"] > button.copy:focus + span.lang {
   opacity: 0;
 }
 
@@ -707,12 +714,12 @@ a.header-anchor:hover {
 
 #eof::before {
   margin-right: 10px;
-  content: '';
+  content: "";
 }
 
 #eof::after {
   /* margin-left: 10px; */
-  content: '';
+  content: "";
 }
 
 #eof {
@@ -824,13 +831,6 @@ iframe.billibili {
   height: 480px;
   margin-bottom: -16px;
   margin-top: -16px;
-}
-
-.image-description {
-  margin: 0;
-  line-height: 17px;
-  text-align: center;
-  opacity: 0.7;
 }
 
 #fixed-button {
@@ -1003,7 +1003,7 @@ iframe.billibili {
   }
 
   .masthead .menu li li a::before {
-    content: '•\00a0\00a0\00a0';
+    content: "•\00a0\00a0\00a0";
   }
 
   h1,

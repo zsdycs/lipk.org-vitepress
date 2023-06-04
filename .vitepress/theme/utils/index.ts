@@ -182,3 +182,21 @@ export const addBlobFontFace = (response: Blob) => {
     });
   });
 };
+
+/**
+ * 将字符串放到粘贴板中
+ * @param {string} text 字符串
+ */
+export const copyTextToClipboard = (text: string) => {
+  const textArea = document.createElement("textarea");
+  textArea.style.cssText = `position:fixed;top:0;left:0;width:2em;height:2em;padding:0;border:none;outline:none;box-shadow:none;background:transparent`;
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.select();
+  try {
+    document.execCommand("copy");
+  } catch (err) {
+    console.error(err);
+  }
+  document.body.removeChild(textArea);
+};

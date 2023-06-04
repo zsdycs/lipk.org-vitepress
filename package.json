@@ -18,6 +18,7 @@
     "vue": "3.3.4"
   },
   "devDependencies": {
+    "@pansy/watermark": "^2.3.0",
     "@types/node": "20.2.5",
     "b3b": "0.0.1",
     "buffer-to-vinyl": "1.1.0",

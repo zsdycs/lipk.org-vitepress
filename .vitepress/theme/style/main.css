@@ -1,4 +1,6 @@
 @import './theme.css';
 @import './fonts.css';
 @import './style.css';
-@import './index.css';
+@import './print.css';
+/* @import './photoswipe.css'; */
+@import './index-page.css';

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { inBrowser, useData } from 'vitepress'
+import { inBrowser } from 'vitepress'
+import { useData } from './composables/data'
 import Home from './page/Home.vue'
 import List from './page/List.vue'
 import BlogContent from './page/BlogContent.vue'
@@ -14,8 +15,9 @@ import { useEventListener } from './composables/event-listener'
 import { throttle } from './utils'
 import { getScrollDirection } from './composables/get-scroll-direction'
 import { loadFont } from './composables/font-face'
+import { printPage } from './composables/print'
 
-const { frontmatter, page, } = useData();
+const { frontmatter, page, theme } = useData();
 const route = useRoute();
 
 // 页面主题模式
@@ -27,7 +29,6 @@ consoleInfo();
 // 加载字体
 loadFont(route.path);
 
-// 打印 TODO
 // 目录 TODO
 // 图片查看 TODO
 // 编辑本页 TODO
@@ -35,7 +36,18 @@ loadFont(route.path);
 
 watch(() => route.path, setHomeClass, {
   immediate: true,
-})
+});
+
+watch(() => route.path, () => {
+  printPage({
+    path: route.path,
+    frontmatter,
+    theme,
+  })
+}, {
+  immediate: true,
+});
+
 
 
 if (inBrowser) {

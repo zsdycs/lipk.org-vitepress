@@ -1,25 +1,15 @@
 :root {
-  --font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
   --code-font-size: 14px;
 }
 
 body,
 button {
-  font-family:
-    'source-han-serif-sc',
-    'Source Han Serif SC',
-    'Source Han Serif CN',
-    'Source Han Serif TC',
-    'Source Han Serif TW',
-    'Source Han Serif',
-    'Songti SC',
-    'Microsoft YaHei',
-    'Times New Roman',
-    'times',
-    serif,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol';
+  font-family: "source-han-serif-sc", "Source Han Serif SC",
+    "Source Han Serif CN", "Source Han Serif TC", "Source Han Serif TW",
+    "Source Han Serif", "Songti SC", "Microsoft YaHei", "Times New Roman",
+    "times", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 a.footnote-backref {
@@ -31,11 +21,12 @@ a.footnote-backref {
 } */
 
 .slogan {
-  font-family: '楷体', cursive;
+  font-family: "楷体", cursive;
   font-size: 100%;
 }
 
-#eof, .split-line {
+#eof,
+.split-line {
   font-family: Microsoft Yahei, sans-serif;
 }
 
@@ -94,7 +85,8 @@ code {
   font-size: 13px;
 } */
 
-.image-description {
+figcaption.image-description,
+figure[data-type="image"] figcaption {
   font-size: 12px;
 }
 
@@ -174,7 +166,8 @@ aside.index #info li {
     font-size: 80%;
   }
 
-  .image-description {
+  figcaption.image-description,
+  figure[data-type="image"] figcaption {
     font-size: 10px;
   }
 
