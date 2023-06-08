@@ -9,7 +9,7 @@ import { useRoute } from "vitepress";
 import { watch } from "vue";
 import { setHomeClass } from "./composables/home-class";
 import { setInitialMode } from "./composables/page-mode";
-import { registerSW } from "./composables/register-sw";
+// import { registerSW } from "./composables/register-sw";
 import { consoleInfo } from "./composables/console-info";
 import { useEventListener } from "./composables/event-listener";
 import { throttle } from "./utils";
@@ -23,7 +23,7 @@ const route = useRoute();
 // 页面主题模式
 setInitialMode();
 // 注册 PWA
-registerSW();
+// registerSW();
 // 控制台信息
 consoleInfo();
 // 加载字体
