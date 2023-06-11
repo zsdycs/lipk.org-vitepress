@@ -34,11 +34,13 @@ notEditInfo: true
 
 ## 工作经历
 
-- 2021 . 10 ~ 至今
-  - **北京中软国际科技服务有限公司**-苏州京东工业，Web 前端开发工程师。
+- 2021 . 02 ~ 至今
+  - **苏州申智核智能科技有限公司**，中级前端开发工程师。
+- 2021 . 10 ~ 2021 . 02
+  - **苏州京东工品汇信息科技有限公司**，中级前端开发工程师。
   <!-- - Vue + 公司内部 UI 框架，使用 Git 进行协同办公。 -->
 - 2019 . 06 ~ 2021 . 10
-  - **方舟信息技术（苏州）有限公司**，Web 前端开发工程师。
+  - **方舟信息技术（苏州）有限公司**，初级前端开发工程师。
   <!-- - Angular + Ant Design、Angular + 公司内部 UI 框架、Ruby + Rails + JQ + PostgreSQL 以及 Vue + Ant Design 等，使用 Git 进行协同办公。 -->
 - 2018 . 09 ~ 2019 . 04
   - **用友网络科技股份（苏州）有限公司**，Web 前端开发实习生。
@@ -93,10 +95,10 @@ notEditInfo: true
 ## 计算机水平
 
 - 开发工具：VS Code ~~VS、DW、Axure、Eclipse~~。
-- 框架：Vue、Angular、React、Express、Koa、Ant Design、Semantic UI 等以下编程语言实现的框架。
+- 框架：Vue、Angular、React、Express、Koa、Ant Design、Semantic UI 等，JavaScript 生态的框架。
 - 编程语言：JavaScript、TypeScript、NodeJs、HTML、CSS、Sass ~~C#、JAVA、 PHP、 C~~。
 - 数据库：MongoDB ~~MySQL、SQL Server、Oracle~~。
-- 应用软件：Git、SVN、微软三件套、PS、AE、AU、PR 等。
+- 应用软件：Git、SVN、Word、Excel、PowerPoint、PS、AE、AU、PR 等。
 - 操作系统：Windows、MacOS、Linux。
 
 <!-- # print-page-break3 { .print-page-break } -->
