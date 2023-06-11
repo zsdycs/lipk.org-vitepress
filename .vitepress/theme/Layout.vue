@@ -59,19 +59,14 @@ if (inBrowser) {
 </script>
 
 <template>
-  <template v-if="frontmatter.homePage">
-    <!-- 首页 -->
-    <Home />
-  </template>
-  <template v-else-if="frontmatter.listPage">
-    <!-- 列表页 -->
-    <List />
-  </template>
-  <template v-else-if="page.isNotFound">
-    <!-- 404页 -->
-    <NotFound />
-  </template>
-  <template v-else>
-    <BlogContent />
-  </template>
+  <!-- 首页 -->
+  <Home v-if="frontmatter.homePage" />
+  <!-- 列表页 -->
+  <List v-else-if="frontmatter.listPage" />
+  <!-- 404页 -->
+  <NotFound v-else-if="page.isNotFound" />
+  <!-- 博客内容页 -->
+  <BlogContent v-else-if="frontmatter.layout !== false" />
+  <!-- 仅显示内容 -->
+  <Content v-else />
 </template>
