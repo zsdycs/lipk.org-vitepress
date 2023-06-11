@@ -20,7 +20,7 @@ export default defineConfigWithTheme<CustomConfig>({
   srcDir: "./site",
   cacheDir: "./cache",
   lang: "zh-CN",
-  // cleanUrls: true,
+  cleanUrls: true,
   description: "李鹏坤的个人网站-lipk.org",
   themeConfig: {
     routes,
