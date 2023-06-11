@@ -20,7 +20,7 @@ function setComments() {
   if (comments?.value) {
     const script = document.createElement('script');
     script.src = 'https://beaudar.lipk.org/client.js';
-    script.setAttribute('repo', 'zsdycs/lipk.org');
+    script.setAttribute('repo', 'zsdycs/lipk.org-vitepress');
     script.setAttribute('issue-term', 'title');
     script.setAttribute('label', '💬 评论');
     script.setAttribute('theme', localStorage.getItem('page-theme-mode') || '');
