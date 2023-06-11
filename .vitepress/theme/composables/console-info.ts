@@ -3,7 +3,7 @@ import { inBrowser } from "vitepress";
 export const consoleInfo = () => {
   if (inBrowser) {
     console.info(
-      "\n%c 🎉 嗨~ 想看源代码？ %c \nGitHub仓库: https://github.com/zsdycs/lipk.org \n%c自主%c、%c跨界%c、%c终身学习%c。",
+      "\n%c 🎉 嗨~ 想看源代码？ %c \nGitHub仓库: https://github.com/zsdycs/lipk.org-vitepress \n%c自主%c、%c跨界%c、%c终身学习%c。",
       "color: #fff; padding: 5px 0; background: #29c75f; margin: 1em 0;",
       "display: block;margin-left: 0.5em; margin: 1em 0;",
       "color:#E24432; font-size: 16px; margin: 1em 0;",

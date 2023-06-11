@@ -1,8 +1,8 @@
 {
-  "name": "lipk.org-test",
+  "name": "lipk.org-vitepress",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zsdycs/lipk.org-test.git"
+    "url": "https://github.com/zsdycs/lipk.org-vitepress.git"
   },
   "scripts": {
     "make-routes": "cross-env NODE_ENV=production node ./make-routes/index.js",
