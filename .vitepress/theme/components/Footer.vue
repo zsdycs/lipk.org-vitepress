@@ -31,7 +31,7 @@ const hasEditInfo = computed(() => {
       <span>&copy;{{ theme.since }}-{{ nowYear }} {{ theme.author }}</span>
       <span v-html="SVG_STRING['version']"></span>
       <a class="svg-link" href="https://github.com/zsdycs" target="_blank" rel="noopener noreferrer"
-        title="zsdycs | Github">
+        title="zsdycs | GitHub">
         <span v-html="SVG_STRING['fa-github']"></span>
       </a>
       <a class="svg-link" href="https://www.travellings.cn/go.html" target="_blank" rel="noopener noreferrer"
@@ -82,7 +82,7 @@ const hasEditInfo = computed(() => {
       <span>&copy;{{ theme.since }}-{{ nowYear }} {{ theme.author }}</span>
       <span v-html="SVG_STRING['version']"></span>
       <a class="svg-link" href="https://github.com/zsdycs" target="_blank" rel="noopener noreferrer"
-        title="zsdycs | Github">
+        title="zsdycs | GitHub">
         <span v-html="SVG_STRING['fa-github']"></span>
       </a>
       <a class="svg-link" href="https://www.travellings.cn/go.html" target="_blank" rel="noopener noreferrer"

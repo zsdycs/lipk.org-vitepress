@@ -73,7 +73,7 @@ npm run dev
 
 ### 鸣谢
 
-1. [Github](http://github.com)🏆。
+1. [GitHub](http://github.com)🏆。
 2. [Yihui Xie](http://github.com/yihui)❤。
 3. [Utterances](http://github.com/utterance/utterances)🔮。
 

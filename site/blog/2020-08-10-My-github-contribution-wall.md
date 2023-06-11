@@ -1,14 +1,14 @@
 ---
-title: '我的 Github 绿墙'
+title: '我的 GitHub 绿墙'
 date: '2020-08-10'
 slug: 'my-github-contribution-wall'
 pictureView: [
   {
-    title: '别人的 Github 贡献墙照片',
+    title: '别人的 GitHub 贡献墙照片',
     src: '/images/2020-08-10-My-github-contribution-wall(1).jpg',
   },
   {
-    title: '我 Github 设置的邮箱',
+    title: '我 GitHub 设置的邮箱',
     src: '/images/2020-08-10-My-github-contribution-wall(2).jpg',
   },
   {
@@ -31,16 +31,16 @@ pictureView: [
 head:
   - - meta
     - name: description
-      content: 很多人都以为，是男人的话，都不喜欢被绿。其实不然，我就很喜欢绿我自己的 Github 贡献墙。
+      content: 很多人都以为，是男人的话，都不喜欢被绿。其实不然，我就很喜欢绿我自己的 GitHub 贡献墙。
 ---
 
 ## 我绿自己
 
-很多人都以为，是男人的话，都不喜欢被绿。其实不然，我就很喜欢绿我自己的 Github 贡献墙。
+很多人都以为，是男人的话，都不喜欢被绿。其实不然，我就很喜欢绿我自己的 GitHub 贡献墙。
 
-Github 贡献墙是这样的：
+GitHub 贡献墙是这样的：
 
-![别人的 Github 贡献墙照片](/images/2020-08-10-My-github-contribution-wall(1).jpg)
+![别人的 GitHub 贡献墙照片](/images/2020-08-10-My-github-contribution-wall(1).jpg)
 
 一面墙的时间跨度是一年，一块砖就是 1 天，墙高 7 天，也就是 1 周为以列。
 砖块的颜色越深，代表当天的贡献越多。贡献分为：issue、Code review、Commits 和 Pull requests 4 种。
@@ -51,11 +51,11 @@ Github 贡献墙是这样的：
 ## 整理绿墙
 
 写这篇博客的契机是昨天我把的绿墙整理了一遍，很多之前没有显示出来的“砖块”都探出了小脑袋瓜子。我是怎么整理的呢？
-简单说就是将提交记录中，提交者的邮箱，改成和 GitHub 中设置的邮箱一致，也就是：邮箱地址是 Github 提交归属者的依据。
+简单说就是将提交记录中，提交者的邮箱，改成和 GitHub 中设置的邮箱一致，也就是：邮箱地址是 GitHub 提交归属者的依据。
 
 所以我的任务就是把我 git 提交的邮箱，改为我 GitHub 设置的邮箱。
 
-![我 Github 设置的邮箱](/images/2020-08-10-My-github-contribution-wall(2).jpg)
+![我 GitHub 设置的邮箱](/images/2020-08-10-My-github-contribution-wall(2).jpg)
 
 要改邮箱的话，得看之前提交的记录里，邮箱都写得是什么。可以在 git 命令行用 `git log` 查看提交记录中的提交者邮箱信息。
 
@@ -65,7 +65,7 @@ Github 贡献墙是这样的：
 
 ![sourcetree 的截图](/images/2020-08-10-My-github-contribution-wall(4).jpg)
 
-接下来，就是修改历史的提交记录了，我找到了一篇 [为什么 Github 没有记录你的 Contributions](https://segmentfault.com/a/1190000004318632) 的文章。
+接下来，就是修改历史的提交记录了，我找到了一篇 [为什么 GitHub 没有记录你的 Contributions](https://segmentfault.com/a/1190000004318632) 的文章。
 这里面的脚本可以一用。但是他的这个步骤太繁琐，其实可以直接在 git 的命令行来执行的，无需再另外 clone。如果要重复使用这段代码，需要加一个 `--force`，即：
 
 ![git 命令行的截图](/images/2020-08-10-My-github-contribution-wall(5).jpg)
@@ -96,7 +96,7 @@ fi
 
 ![@zsdycs 在 GitHub 上的活动汇总](/images/2020-08-10-My-github-contribution-wall(6).jpg)
 
- 图片来自 [Github 活动汇总在线生成器](https://github-contributions.now.sh)。
+ 图片来自 [GitHub 活动汇总在线生成器](https://github-contributions.now.sh)。
 
 面对整理好的绿墙，她详细记录了我与她之间的点点滴滴。
 

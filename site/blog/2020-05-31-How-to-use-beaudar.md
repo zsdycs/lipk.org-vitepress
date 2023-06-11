@@ -12,7 +12,7 @@ head:
 
 被广泛使用的评论插件是 [Disqus](https://disqus.com/)，遗憾国外 UCG （用户自产内容）基本上都被墙了，国内还没看到有与其同样优秀的。
 
-我使用过 [Wildfire](https://wildfire.js.org) 🔥，UI 很不错，但是要用 [Firebase](https://firebase.google.com) ，在国内很不稳定，用了一段时间后发现使用 Github issue 的 [Utterances](https://github.com/utterance/utterances) 非常轻便快速，然后开始使用 Utterances。
+我使用过 [Wildfire](https://wildfire.js.org) 🔥，UI 很不错，但是要用 [Firebase](https://firebase.google.com) ，在国内很不稳定，用了一段时间后发现使用 GitHub issue 的 [Utterances](https://github.com/utterance/utterances) 非常轻便快速，然后开始使用 Utterances。
 当然类似的项目，国内有：
 
 - [Gitalk](https://github.com/gitalk/gitalk)

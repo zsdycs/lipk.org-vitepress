@@ -47,7 +47,7 @@ notEditInfo: true
 ## 开源项目（部分）
 
 - [zsdycs/lipk.org](https://github.com/zsdycs/lipk.org) 网站
-  - hugo 框架生成静态站点，通过 gulp 处理打包过程，改造 font-spider 进行字体抓取。SEO 优化，Bing、Google 搜索关键字“李鹏坤”，结果排名第一。
+  - Hugo 框架生成静态站点，通过 gulp 处理打包过程，改造 font-spider 进行字体抓取。SEO 优化，Bing、Google 搜索关键字“李鹏坤”，结果排名第一。
 - [beaudar/beaudar](https://github.com/beaudar/beaudar) 表达
   - 基于 GitHub issue 的轻量评论插件，基于 [Utterances](https://utteranc.es/) 开发，增加了“异常处理”等若干功能，获得了不少中文独立博客站长的青睐。
 - [zsdycs/ginpun](https://github.com/zsdycs/ginpun) 开源键盘
