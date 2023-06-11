@@ -21,6 +21,7 @@ export default defineConfigWithTheme<CustomConfig>({
   cacheDir: "./cache",
   lang: "zh-CN",
   cleanUrls: true,
+  description: "李鹏坤的个人网站-lipk.org",
   themeConfig: {
     routes,
     vitepressVersion: pkg.version,
