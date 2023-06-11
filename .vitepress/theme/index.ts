@@ -9,9 +9,6 @@ export const theme: Theme = {
     app,
     // app, router, siteData
   }) {
-    if (typeof document !== "undefined") {
-      document.body.innerHTML = "<main id='app'></main>";
-    }
     app.component("PageMode", PageMode);
   },
 };

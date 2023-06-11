@@ -31,11 +31,11 @@ export const head: HeadConfig[] = [
     { property: "og:type", content: `website` },
     // <meta property="og:type" content="website">
   ],
-  // [
-  //   "link",
-  //   { rel: "manifest", href: `/manifest.webmanifest` },
-  //   // <link rel="manifest" href="/manifest.webmanifest">
-  // ],
+  [
+    "link",
+    { rel: "manifest", href: `/manifest.webmanifest` },
+    // <link rel="manifest" href="/manifest.webmanifest">
+  ],
   [
     "link",
     {

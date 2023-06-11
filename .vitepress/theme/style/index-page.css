@@ -1,35 +1,35 @@
 /* 首页 */
-[theme='github-light'] {
+[theme="github-light"] {
   --main-index-bg-color: #fff;
   --article-index-bg-color: #fff;
   --article-index-button-bg-color: #fff;
 }
 
-[theme='github-dark'] {
+[theme="github-dark"] {
   --main-index-bg-color: #202020;
   --article-index-bg-color: #202020;
   --article-index-button-bg-color: #202020;
 }
 
-[theme='github-dark-orange'] {
+[theme="github-dark-orange"] {
   --main-index-bg-color: #2d2833;
   --article-index-bg-color: #2d2833;
   --article-index-button-bg-color: #2d2833;
 }
 
-[theme='dark-blue'] {
+[theme="dark-blue"] {
   --main-index-bg-color: #182030;
   --article-index-bg-color: #182030;
   --article-index-button-bg-color: #182030;
 }
 
-[theme='icy-dark'] {
+[theme="icy-dark"] {
   --main-index-bg-color: #06272c;
   --article-index-bg-color: #06272c;
   --article-index-button-bg-color: #06272c;
 }
 
-[theme='photon-dark'] {
+[theme="photon-dark"] {
   --main-index-bg-color: #2a2a2e;
   --article-index-bg-color: #2a2a2e;
   --article-index-button-bg-color: #2a2a2e;
@@ -54,10 +54,18 @@ html.home {
   background-color: var(--main-index-bg-color);
 }
 
-main.index {
+#app.index ~ * {
+  /* 保证首页内容处于中间位置 */
+  display: none;
+}
+
+#app.index {
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 60ch) minmax(1.2rem, 1fr);
+  grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 60ch) minmax(
+      1.2rem,
+      1fr
+    );
   grid-auto-rows: min-content;
   gap: 1rem;
   width: 100%;
@@ -66,7 +74,7 @@ main.index {
   /* transition: 1s ease; */
 }
 
-main.index > * {
+#app.index > * {
   grid-column: 2;
 }
 
@@ -91,7 +99,10 @@ main.index > * {
 }
 
 .index article button {
-  background: linear-gradient(var(--article-index-button-bg-color), var(--article-index-button-bg-color));
+  background: linear-gradient(
+    var(--article-index-button-bg-color),
+    var(--article-index-button-bg-color)
+  );
 }
 
 .index article a,
@@ -131,9 +142,9 @@ main.index > * {
 }
 
 @media only screen and (max-width: 668px) {
-  .index main {
+  #app.index {
     max-width: 100%;
-    padding: 0 1em;
+    /* padding: 0 1em; */
 
     --safe-top: env(safe-area-inset-top);
     --safe-bottom: env(safe-area-inset-bottom);
