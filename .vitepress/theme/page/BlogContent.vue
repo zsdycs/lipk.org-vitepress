@@ -16,13 +16,13 @@ const footerMode = "common" // 常规
 let footerComment = ref(true);
 let footerPostNav = ref(true);
 
-watch(() => route.path, setFooter, {
-  immediate: true,
-});
+// watch(() => route.path, setFooter, {
+//   immediate: true,
+// });
 
-watch(() => route.path, setRightQuotes, {
-  immediate: true,
-})
+// watch(() => route.path, setRightQuotes, {
+//   immediate: true,
+// })
 
 function setFooter() {
   if (frontmatter.value.notComment === true) {
@@ -42,16 +42,16 @@ function setFooter() {
 </script>
 
 <template>
-  <header class="masthead">
+  <!-- <header class="masthead">
     <Menu />
-  </header>
+  </header> -->
   <article class="main">
-    <header v-if="frontmatter.title" class="title">
+    <!-- <header v-if="frontmatter.title" class="title">
       <Meta :title="frontmatter.title" :blog="true" />
-    </header>
+    </header> -->
     <div class="archive">
       <Content />
     </div>
-    <Footer :mode="footerMode" :comment="footerComment" :postNav="footerPostNav" />
+    <!-- <Footer :mode="footerMode" :comment="footerComment" :postNav="footerPostNav" /> -->
   </article>
 </template>
