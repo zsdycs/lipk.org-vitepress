@@ -1,5 +1,5 @@
 // 常量
-import { type Menu } from "../../theme";
+import { type Menu } from "../types";
 
 export const MODE_TEXT: Record<string, string> = {
   "github-light": "浅色",

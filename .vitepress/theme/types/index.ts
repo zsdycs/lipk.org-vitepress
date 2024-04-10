@@ -1,5 +1,4 @@
 import { type UserConfig } from "vitepress";
-// import { type Routes } from "./theme/utils/app-routes.js";
 
 export interface EditLink {
   /**
@@ -8,7 +7,7 @@ export interface EditLink {
    * @example 'https://github.com/zsdycs/lipk.org-test/blob/master/site/:path'
    * @example ({ filePath }) => { ... }
    */
-  pattern: string | ((payload: PageData) => string);
+  pattern: string | ((payload: any) => string);
 
   /**
    * Custom text for edit link.

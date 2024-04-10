@@ -1,5 +1,8 @@
-const { existsSync, writeFileSync, mkdirSync, readFileSync } = require("fs");
-const Fontmin = require("./fontmin/index");
+import { existsSync, writeFileSync, mkdirSync, readFileSync } from "fs";
+import { createRequire } from "node:module";
+
+const dynamicImport = createRequire(import.meta.url);
+const Fontmin = dynamicImport("./fontmin/index");
 
 // 根据路由中的 pageFilePath 读取 md 文件的内容
 // 通过 md 内容抓取字体，字体的文件名使用 “fontName-base64(path).ttf” 的格式

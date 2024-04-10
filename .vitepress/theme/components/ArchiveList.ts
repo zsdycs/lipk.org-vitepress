@@ -1,6 +1,6 @@
 import { h, defineComponent } from "vue";
 import type { VNode } from "vue";
-import type { Routes } from "../../theme";
+import type { Routes } from "../types";
 import type { HeadConfig } from "vitepress";
 import { parseTime } from "../utils";
 

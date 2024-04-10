@@ -1,5 +1,5 @@
 import { type Route } from "vitepress";
-import { type Routes } from "../../theme";
+import { type Routes } from "../types";
 
 // 从 routes 中寻找 route 的所有子路由
 export const routePathList = (routes: Routes[], route: Route | string) => {

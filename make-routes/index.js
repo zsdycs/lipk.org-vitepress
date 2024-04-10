@@ -1,5 +1,5 @@
-const { generateRoutes } = require("./generate-routes");
-const { saveRoutes } = require("./save-routes");
+import { generateRoutes } from "./generate-routes.js";
+import { saveRoutes } from "./save-routes.js";
 
 let ignoreMDFiles = [];
 

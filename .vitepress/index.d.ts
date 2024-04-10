@@ -17,19 +17,7 @@ declare module "@theme/index" {
 }
 
 declare module "markdown-it-footnote";
-{
-  const plugin: MarkdownIt.PluginSimple;
-  export default plugin;
-}
 
 declare module "markdown-it-image-figures";
-{
-  const plugin: MarkdownIt.PluginSimple;
-  export default plugin;
-}
 
 declare module "markdown-it-task-lists";
-{
-  const plugin: MarkdownIt.PluginSimple;
-  export default plugin;
-}

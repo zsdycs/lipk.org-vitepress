@@ -1,6 +1,6 @@
 // 代码源自：https://blog.csdn.net/wang1006008051/article/details/103699669
-const { execSync } = require("child_process");
-const { existsSync, mkdirSync, writeFileSync } = require("fs");
+import { execSync } from "child_process";
+import { existsSync, mkdirSync, writeFileSync } from "fs";
 
 const FileName = "version-svg.ts"; // 生成的文件名称
 const FilePath = "./.vitepress/theme/composables/"; // 生成的目标位置

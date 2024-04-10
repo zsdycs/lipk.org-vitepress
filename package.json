@@ -1,5 +1,6 @@
 {
   "name": "lipk.org-vitepress",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/zsdycs/lipk.org-vitepress.git"
@@ -43,6 +44,6 @@
     "ttf2woff2": "5.0.0",
     "typescript": "5.0.4",
     "vinyl-fs": "3.0.3",
-    "vitepress": "1.0.0-beta.1"
+    "vitepress": "1.1.0"
   }
 }

@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { useData } from '../composables/data'
 import { routePathList } from '../composables/route-path';
-import type { Routes } from "../../theme";
+import type { Routes } from "../types";
 import { inBrowser, useRoute } from 'vitepress'
 import { watch, ref } from 'vue'
 import { useEventListener } from '../composables/event-listener'

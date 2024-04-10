@@ -1,6 +1,6 @@
-const { existsSync, mkdirSync, writeFileSync } = require("fs");
+import { existsSync, mkdirSync, writeFileSync } from "fs";
 
-const saveRoutes = (data) => {
+export const saveRoutes = (data) => {
   const { routesStr: routesData, filePath, fileName } = data;
   let routesStr = "";
 
@@ -18,6 +18,6 @@ const saveRoutes = (data) => {
   writeFileSync(`${filePath}/${fileName}`, routesStr);
 };
 
-module.exports = {
+export default {
   saveRoutes,
 };

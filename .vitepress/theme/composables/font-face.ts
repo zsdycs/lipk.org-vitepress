@@ -1,4 +1,4 @@
-import type { FontSource, PageFontSource } from "theme";
+import type { FontSource, PageFontSource } from "../types";
 import { ajaxGetBlob, ajaxGetJson, addBlobFontFace } from "../utils";
 
 // 页面和字体的映射列表

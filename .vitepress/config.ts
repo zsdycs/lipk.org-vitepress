@@ -1,13 +1,15 @@
 import { defineConfigWithTheme } from "vitepress";
-import type { CustomConfig, Routes } from "./theme";
+import type { CustomConfig, Routes } from "./theme/types";
 import { head } from "./theme/utils/head";
-import pkg from "vitepress/package.json";
+import { createRequire } from "node:module";
 import { readFileSync } from "fs";
 import { MENU } from "./theme/composables/constant";
 import footnotePlugin from "markdown-it-footnote";
 import imagePlugin from "markdown-it-image-figures";
 import taskListPlugin from "markdown-it-task-lists";
 
+const dynamicImport = createRequire(import.meta.url);
+const pkg = dynamicImport("vitepress/package.json");
 const RoutesJsonFilePath = "./routes.json";
 const routesJson = readFileSync(RoutesJsonFilePath, "utf-8");
 const routes = JSON.parse(routesJson) as Routes[];

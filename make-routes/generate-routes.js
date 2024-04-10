@@ -1,7 +1,7 @@
-const { sep, resolve } = require("path");
-const { globSync } = require("glob");
-const { readFileSync } = require("fs");
-const matter = require("gray-matter");
+import { sep, resolve } from "path";
+import { globSync } from "glob";
+import { readFileSync } from "fs";
+import matter from "gray-matter";
 
 const sliceIfEndsWith = (str, substr) => {
   if (str.endsWith(substr)) {
@@ -47,7 +47,7 @@ const getMdFiles = (ignoreMDFiles = []) => {
   return files;
 };
 
-const generateRoutes = (options = {}) => {
+export const generateRoutes = (options = {}) => {
   const { ignoreDirs, ignoreMDFiles, popDirs } = options || {};
   console.log("创建路由中……");
 
@@ -150,6 +150,6 @@ const generateRoutes = (options = {}) => {
   return routeList;
 };
 
-module.exports = {
+export default {
   generateRoutes,
 };

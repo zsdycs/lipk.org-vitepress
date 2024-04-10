@@ -1,5 +1,7 @@
 import { type HeadConfig } from "vitepress";
-import pkg from "vitepress/package.json";
+import { createRequire } from "node:module";
+const dynamicImport = createRequire(import.meta.url);
+const pkg = dynamicImport("vitepress/package.json");
 
 export const head: HeadConfig[] = [
   [
