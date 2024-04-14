@@ -9,7 +9,7 @@
     "make-routes": "cross-env NODE_ENV=production node ./make-routes/index.js",
     "make-dev-routes": "cross-env NODE_ENV=development node ./make-routes/index.js",
     "version": "node ./make-version/index.js",
-    "dev": "npm run make-dev-routes && npm run version && vitepress dev . --host",
+    "dev": "npm run make-dev-routes && npm run version && vitepress dev . --host --port 3000",
     "build:vp": "vitepress build .",
     "make-font": "node ./make-font/index.js",
     "build": "npm run make-routes && npm run make-font && npm run version && npm run build:vp",
