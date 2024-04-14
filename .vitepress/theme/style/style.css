@@ -220,6 +220,14 @@ div[class*="language-"] + div[class$="-api"] > div[class*="language-"] {
   transition: color 0.5s;
 }
 
+[color-scheme="dark"] [class*="language-"] code span {
+  color: var(--shiki-dark, inherit);
+}
+
+[color-scheme="light"] [class*="language-"] code span {
+  color: var(--shiki-light, inherit);
+}
+
 [class*="language-"] code .highlighted {
   background-color: rgba(0, 0, 0, 0.5);
   transition: background-color 0.5s;
@@ -295,7 +303,7 @@ div[class*="language-"].line-numbers-mode {
   bottom: 0;
   left: 0;
   z-index: 3;
-  border-right: 1px solid #000000;
+  border-right: 1px solid var(--code-line-numbers-color);
   padding-top: 20px;
   width: 32px;
   text-align: center;

@@ -24,6 +24,7 @@ export default defineConfigWithTheme<CustomConfig>({
   lang: "zh-CN",
   cleanUrls: true,
   description: "李鹏坤的个人网站-lipk.org",
+  appearance: false,
   themeConfig: {
     routes,
     vitepressVersion: pkg.version,
