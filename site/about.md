@@ -36,9 +36,10 @@ lipk.org 站点地图
   - [muyu.lipk.org](http://muyu.lipk.org) 电子木鱼
   - [beaudar.lipk.org](http://beaudar.lipk.org) 博客评论插件-表达
   - [beaudar-api.lipk.org](http://beaudar-api.lipk.org) 博客评论插件-表达-API
+  - [tldr.lipk.org](http://tldr.lipk.org) 白板，源于 [tldraw](https://github.com/tldraw/tldraw)
 - 实验服务
   - [react-demo-ts.lipk.org](http://react-demo-ts.lipk.org) 展示用 demo
   - [test.lipk.org](http://test.lipk.org) 测试使用
 - 私有服务
   - [frps.lipk.org](http://frps.lipk.org) 内网穿透
-  - [code-server.lipk.org](http://code-server.lipk.org) 在线 code
+  - [code.lipk.org](http://code.lipk.org) 在线 code，源于 [code-server](https://github.com/coder/code-server)
