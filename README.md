@@ -1,7 +1,7 @@
 ### 源代码说明
 
 - 构建程序：[vitepress](http://vitepress.dev) 版本 `1.1.0`。
-- 打包部署：[node](https://nodejs.org/zh-cn/download/releases/) 版本 [v18.16.0](https://nodejs.org/download/release/v18.16.0/)。
+- 打包部署：[node](https://nodejs.org/zh-cn/download/releases/) 版本 [v20.11.0](https://nodejs.org/download/release/v20.11.0/)。
 - 主题源自：[hugo-ivy](https://github.com/yihui/hugo-ivy)。
 - 目录结构：
 
