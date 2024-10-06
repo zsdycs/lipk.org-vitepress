@@ -1,7 +1,7 @@
 ### 源代码说明
 
-- 构建程序：[vitepress](http://vitepress.dev) 版本 `1.0.0-beta.1`。
-- 打包部署：[node](https://nodejs.org/zh-cn/download/releases/) 版本 [v16.x.x](https://nodejs.org/download/release/v16.16.0/)。
+- 构建程序：[vitepress](http://vitepress.dev) 版本 `1.1.0`。
+- 打包部署：[node](https://nodejs.org/zh-cn/download/releases/) 版本 [v18.16.0](https://nodejs.org/download/release/v18.16.0/)。
 - 主题源自：[hugo-ivy](https://github.com/yihui/hugo-ivy)。
 - 目录结构：
 
@@ -45,14 +45,14 @@ lipk.org-test
 
 ### 代码运行
 
-1. 下载安装符合版本的 [node v16.16.0](https://nodejs.org/download/release/v16.16.0/)。
+1. 下载安装符合版本的 [node v20.11.0](https://nodejs.org/download/release/v20.11.0/)。
 2. 运行 `npm install pnpm -g` 安装 pnpm
 
 命令行使用如下命令测试安装是否就绪：
 
 ```shell
 node --version
-# v16.16.0
+# v20.11.0
 ```
 
 2. 安装依赖软件

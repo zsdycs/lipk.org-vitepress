@@ -6,44 +6,33 @@
     "url": "https://github.com/zsdycs/lipk.org-vitepress.git"
   },
   "scripts": {
-    "make-routes": "cross-env NODE_ENV=production node ./make-routes/index.js",
-    "make-dev-routes": "cross-env NODE_ENV=development node ./make-routes/index.js",
-    "version": "node ./make-version/index.js",
-    "dev": "npm run make-dev-routes && npm run version && vitepress dev . --host --port 3000",
+    "test:make-version": "make-version",
+    "test:make-font": "make-font",
+    "install:make-font": "cd ./make-lib/make-font && npm install",
+    "install:make-routes": "cd ./make-lib/make-routes && npm install",
+    "preinstall": "npm run install:make-font && npm run install:make-routes",
+    "make-routes:pd": "cross-env NODE_ENV=production make-routes",
+    "make-routes:dev": "cross-env NODE_ENV=development make-routes",
+    "dev": "npm run make-routes:dev && make-version && vitepress dev . --host --port 3000",
     "build:vp": "vitepress build .",
-    "make-font": "node ./make-font/index.js",
-    "build": "npm run make-routes && npm run make-font && npm run version && npm run build:vp",
-    "preview": "npm run build && http-server --port 5173 ./dist",
-    "preview:vp": "npm run make-routes && vitepress preview ."
+    "build": "npm run make-routes:pd && make-font && make-version && npm run build:vp",
+    "preview:vp": "npm run make-routes:pd && vitepress preview .",
+    "preview": "npm run build && http-server --port 5173 ./dist"
   },
   "dependencies": {
     "vue": "3.4.21"
   },
   "devDependencies": {
     "@types/node": "20.2.5",
-    "b3b": "0.0.1",
-    "buffer-to-vinyl": "1.1.0",
-    "code-points": "2.0.0-1",
-    "concat-stream": "2.0.0",
     "cross-env": "7.0.3",
-    "fonteditor-core": "2.1.11",
-    "glob": "10.2.6",
-    "gray-matter": "4.0.3",
     "http-server": "14.1.1",
-    "is-otf": "0.1.2",
-    "is-svg": "4.2.1",
-    "is-ttf": "0.2.2",
-    "lodash": "4.17.21",
+    "make-font": "file:make-lib\\make-font",
+    "make-routes": "file:make-lib\\make-routes",
+    "make-version": "file:make-lib\\make-version",
     "markdown-it-footnote": "3.0.3",
     "markdown-it-image-figures": "2.1.1",
     "markdown-it-task-lists": "2.1.1",
-    "pako": "2.1.0",
-    "replace-ext": "2.0.0",
-    "stream-combiner": "0.2.2",
-    "through2": "4.0.2",
-    "ttf2woff2": "5.0.0",
     "typescript": "5.4.4",
-    "vinyl-fs": "3.0.3",
     "vitepress": "1.1.0"
   }
 }

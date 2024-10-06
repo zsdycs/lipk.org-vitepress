@@ -1,0 +1,19 @@
+{
+  "name": "make-routes",
+  "version": "1.0.0",
+  "description": "make-routes",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "make-routes": "index.js"
+  },
+  "scripts": {
+    "test": "node ./index.js"
+  },
+  "author": "zsdycs",
+  "license": "MIT",
+  "dependencies": {
+    "glob": "11.0.0",
+    "gray-matter": "4.0.3"
+  }
+}

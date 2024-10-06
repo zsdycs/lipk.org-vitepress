@@ -29,7 +29,7 @@ const monthList = [
 
 const date = new Date(execSync("git show -s --format=%cd").toString());
 const year = date.getUTCFullYear();
-const month = monthList[new Date().getUTCMonth()];
+const month = monthList[date.getUTCMonth()];
 const day =
   date.getUTCDate() >= 10
     ? date.getUTCDate()

@@ -1,0 +1,15 @@
+{
+  "name": "make-version",
+  "version": "1.0.0",
+  "description": "make-version",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "make-version": "index.js"
+  },
+  "scripts": {
+    "test": "node ./index.js"
+  },
+  "author": "zsdycs",
+  "license": "MIT"
+}
