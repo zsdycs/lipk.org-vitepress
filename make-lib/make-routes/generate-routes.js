@@ -1,4 +1,4 @@
-import { sep, resolve } from "path";
+import { sep } from "path";
 import { globSync } from "glob";
 import { readFileSync } from "fs";
 import matter from "gray-matter";
@@ -40,8 +40,14 @@ const getMdFiles = (ignoreMDFiles = []) => {
       "**/dist/**",
       ...ignoreMDFiles,
     ],
-  }).map((path) => {
-    return { path, originalPath: resolve(`./${path}`) };
+  }).map((pathData) => {
+    const pathSplitList = pathData.split(sep);
+    const path = pathSplitList.join("/");
+
+    return {
+      path: pathData,
+      originalPath: `./${path}`,
+    };
   });
 
   return files;
