@@ -169,10 +169,8 @@ for (let i = 0; i < routeList.length; i++) {
     const itemFontFile = fontSourceFileList[j];
     const { name: fontName, fontSourceFilePath } = itemFontFile;
 
-    const resultFileName = `${fontName}.${Buffer.from(
-      routePath,
-      "utf8"
-    ).toString("base64")}.ttf`;
+    const routePathKey = routePath.replace(/\//g, "-");
+    const resultFileName = `${fontName}.${routePathKey}.ttf`;
 
     // md 文件的内容
     const mdFileContent = readFileSync(pageFilePath, "utf-8");
