@@ -62,4 +62,5 @@ export interface PageFontSource extends Record<string, any> {
 export interface FontSource {
   fileName: string;
   name: string;
+  weight: string;
 }

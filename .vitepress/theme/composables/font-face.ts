@@ -1,5 +1,5 @@
 import type { FontSource, PageFontSource } from "../types";
-import { ajaxGetBlob, ajaxGetJson, addBlobFontFace } from "../utils";
+import { addFontFaceByUrl, ajaxGetJson } from "../utils";
 
 // 页面和字体的映射列表
 let pageFontSources: PageFontSource[] = [];
@@ -25,14 +25,10 @@ export const loadFont = async (routePath: string) => {
     // 加载每一个字体
     for (let i = 0; i < fontSources.length; i++) {
       const fontSource = fontSources[i];
-      const { name: fontName } = fontSource;
+      const { name: fontName, weight } = fontSource;
       const fontFileName = currentPageFontSource[fontName] as string;
-      // 添加 await 确保依次加载
-      await ajaxGetBlob(`/fontSource/${fontFileName}`).then((response) => {
-        if (response) {
-          addBlobFontFace(response);
-        }
-      });
+
+      addFontFaceByUrl(`/fontSource/${fontFileName}`, weight);
     }
   }
 
@@ -41,17 +37,12 @@ export const loadFont = async (routePath: string) => {
     const fullFontPromiseList = [];
     for (let i = 0; i < fontSources.length; i++) {
       const fontSource = fontSources[i];
-      const { fileName } = fontSource;
-      // 添加 await 确保依次加载
-      fullFontPromiseList.push(ajaxGetBlob(`/fullFontSource/${fileName}`));
+      const { fileName, weight } = fontSource;
+      fullFontPromiseList.push(
+        addFontFaceByUrl(`/fullFontSource/${fileName}`, weight)
+      );
     }
-    Promise.all(fullFontPromiseList).then((responseList) => {
-      for (let i = 0; i < responseList.length; i++) {
-        const itemResponse = responseList[i];
-        if (itemResponse) {
-          addBlobFontFace(itemResponse);
-        }
-      }
+    Promise.all(fullFontPromiseList).then(() => {
       isFullFontFileLoaded = true;
     });
   }

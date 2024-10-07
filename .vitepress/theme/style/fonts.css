@@ -38,11 +38,11 @@ a.footnote-backref {
 html,
 body {
   font-size: 100%;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 strong {
-  font-weight: bolder;
+  font-weight: 900;
 }
 
 button,
@@ -102,17 +102,17 @@ figure[data-type="image"] figcaption {
 
 #TableOfContents .secondaryUlChild {
   font-size: 15px;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 #TableOfContents .thirdUlChild {
   font-size: 10px;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 #TableOfContents .small {
   font-size: 12px;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 /* 首页 */

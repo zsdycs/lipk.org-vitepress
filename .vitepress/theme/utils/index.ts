@@ -132,23 +132,23 @@ interface ResponseTarget<T> extends EventTarget {
   response: T;
 }
 
-export const ajaxGetBlob = (url: string): Promise<Blob> => {
-  return new Promise((resolve) => {
-    if (!inBrowser) {
-      return;
-    }
-    const xhrSemiBold: XMLHttpRequest = new XMLHttpRequest();
-    xhrSemiBold.open("GET", url, true);
-    xhrSemiBold.responseType = "blob";
-    xhrSemiBold.send();
-    xhrSemiBold.onload = (event: ProgressEvent) => {
-      if (event?.currentTarget) {
-        const currentTarget = event.currentTarget as ResponseTarget<Blob>;
-        resolve(currentTarget?.response);
-      }
-    };
-  });
-};
+// export const ajaxGetBlob = (url: string): Promise<Blob> => {
+//   return new Promise((resolve) => {
+//     if (!inBrowser) {
+//       return;
+//     }
+//     const xhrSemiBold: XMLHttpRequest = new XMLHttpRequest();
+//     xhrSemiBold.open("GET", url, true);
+//     xhrSemiBold.responseType = "blob";
+//     xhrSemiBold.send();
+//     xhrSemiBold.onload = (event: ProgressEvent) => {
+//       if (event?.currentTarget) {
+//         const currentTarget = event.currentTarget as ResponseTarget<Blob>;
+//         resolve(currentTarget?.response);
+//       }
+//     };
+//   });
+// };
 
 export const ajaxGetJson = <T>(url: string): Promise<T> => {
   return new Promise((resolve) => {
@@ -168,17 +168,38 @@ export const ajaxGetJson = <T>(url: string): Promise<T> => {
   });
 };
 
-export const addBlobFontFace = (response: Blob) => {
+// export const addBlobFontFace = (response: Blob) => {
+//   if (!inBrowser) {
+//     return;
+//   }
+
+//   blobToBase64(response).then((base64) => {
+//     const lightFont = new FontFace("source-han-serif-sc", `url(${base64})`, {
+//       display: "swap",
+//       // weight: '100',
+//     });
+//     lightFont.load().then(() => {
+//       document.fonts.add(lightFont);
+//     });
+//   });
+// };
+
+export const addFontFaceByUrl = (
+  url: string,
+  weight: string
+): Promise<void> => {
   if (!inBrowser) {
-    return;
+    return Promise.resolve();
   }
-  blobToBase64(response).then((base64) => {
-    const lightFont = new FontFace("source-han-serif-sc", `url(${base64})`, {
+
+  return new Promise<void>((resolve) => {
+    const lightFont = new FontFace("source-han-serif-sc", `url(${url})`, {
       display: "swap",
-      // weight: '100',
+      weight: weight,
     });
     lightFont.load().then(() => {
       document.fonts.add(lightFont);
+      resolve();
     });
   });
 };

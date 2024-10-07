@@ -1,14 +1,17 @@
 [
   {
     "name": "SourceHanSerifCN-Light",
-    "fileName": "SourceHanSerifCN-Light.ttf"
-  },
-  {
-    "name": "SourceHanSerifCN-SemiBold",
-    "fileName": "SourceHanSerifCN-SemiBold.ttf"
+    "fileName": "SourceHanSerifCN-Light.ttf",
+    "weight": "100"
   },
   {
     "name": "SourceHanSerifCN-Medium",
-    "fileName": "SourceHanSerifCN-Medium.ttf"
+    "fileName": "SourceHanSerifCN-Medium.ttf",
+    "weight": "400"
+  },
+  {
+    "name": "SourceHanSerifCN-SemiBold",
+    "fileName": "SourceHanSerifCN-SemiBold.ttf",
+    "weight": "900"
   }
 ]
