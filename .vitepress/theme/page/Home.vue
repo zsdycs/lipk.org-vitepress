@@ -6,7 +6,7 @@ import Footer from '../components/Footer.vue'
 
 <template>
   <article>
-    <Content />
+    <Content data-allow-mismatch />
   </article>
   <Footer mode="home" />
 </template>
