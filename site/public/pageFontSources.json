@@ -6,6 +6,12 @@
     "SourceHanSerifCN-Medium": "SourceHanSerifCN-Medium.-.ttf"
   },
   {
+    "path": "/show-your-tongue-or-emptiness",
+    "SourceHanSerifCN-Light": "SourceHanSerifCN-Light.-show-your-tongue-or-emptiness.ttf",
+    "SourceHanSerifCN-SemiBold": "SourceHanSerifCN-SemiBold.-show-your-tongue-or-emptiness.ttf",
+    "SourceHanSerifCN-Medium": "SourceHanSerifCN-Medium.-show-your-tongue-or-emptiness.ttf"
+  },
+  {
     "path": "/resume",
     "SourceHanSerifCN-Light": "SourceHanSerifCN-Light.-resume.ttf",
     "SourceHanSerifCN-SemiBold": "SourceHanSerifCN-SemiBold.-resume.ttf",
@@ -466,11 +472,5 @@
     "SourceHanSerifCN-Light": "SourceHanSerifCN-Light.-blog-2019-01-26-Glad-you-came.ttf",
     "SourceHanSerifCN-SemiBold": "SourceHanSerifCN-SemiBold.-blog-2019-01-26-Glad-you-came.ttf",
     "SourceHanSerifCN-Medium": "SourceHanSerifCN-Medium.-blog-2019-01-26-Glad-you-came.ttf"
-  },
-  {
-    "path": "/blog/2018-12-20-Test",
-    "SourceHanSerifCN-Light": "SourceHanSerifCN-Light.-blog-2018-12-20-Test.ttf",
-    "SourceHanSerifCN-SemiBold": "SourceHanSerifCN-SemiBold.-blog-2018-12-20-Test.ttf",
-    "SourceHanSerifCN-Medium": "SourceHanSerifCN-Medium.-blog-2018-12-20-Test.ttf"
   }
 ]
