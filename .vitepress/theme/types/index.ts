@@ -64,3 +64,15 @@ export interface FontSource {
   name: string;
   weight: string;
 }
+
+type BeianInfo = {
+  number: string;
+  href: string;
+};
+
+type BeianData = {
+  beian?: BeianInfo;
+  icp?: BeianInfo;
+};
+
+export type FooterInfoConfigType = Record<string, BeianData>;
