@@ -8,6 +8,7 @@ import LastUpdated from "../components/LastUpdated.vue";
 import { computed, ref } from "vue";
 import { useEditLink } from "../composables/edit-link";
 import type { FooterInfoConfigType } from "../types";
+import { inBrowser } from "vitepress";
 
 const FooterInfoConfig: FooterInfoConfigType = {
   "lipk.org": {
@@ -43,7 +44,11 @@ const props = defineProps<{
 const { theme, frontmatter, page } = useData();
 const nowYear = new Date().getUTCFullYear();
 const editLink = useEditLink();
-const domain = ref(window.location.hostname);
+const domain = ref("");
+
+if (inBrowser) {
+  domain.value = window.location.hostname;
+}
 
 const hasEditInfo = computed(() => {
   return (
