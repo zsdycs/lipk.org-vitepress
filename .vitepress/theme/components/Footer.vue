@@ -148,14 +148,20 @@ const hasEditInfo = computed(() => {
       >
         <span v-html="SVG_STRING['travelling']"></span>
       </a>
-      <span class="beian">
-        <img src="/images/beian.png" alt="公网安备" width="17" height="17" />
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44200002444254"
-        >
-          粤公网安备 44200002444254 号
+      <span
+        class="beian"
+        v-for="(footerInfo, key, index) in FooterInfoConfig[domain]"
+        :key="index"
+      >
+        <img
+          v-if="key === 'beian'"
+          src="/images/beian.png"
+          alt="公网安备"
+          width="17"
+          height="17"
+        />
+        <a target="_blank" rel="noopener noreferrer" :href="footerInfo?.href">
+          {{ footerInfo?.number }}
         </a>
       </span>
     </div>
