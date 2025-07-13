@@ -1,6 +1,6 @@
 ---
 title: '“未来”这个词'
-date: '2025-07-12'
+date: '2025-07-13'
 slug: 'the-word-future'
 head:
   - - meta
