@@ -5,7 +5,7 @@ slug: 'growing-up-under-the-sun'
 head:
   - - meta
     - name: description
-      content:
+      content: “这根本就走不出去啊。”
 ---
 
 ## 一
