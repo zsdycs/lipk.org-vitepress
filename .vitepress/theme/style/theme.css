@@ -226,7 +226,11 @@ hr {
 
 blockquote {
   color: var(--blockquote-color);
-  border-left: 0.25em solid var(--blockquote-border-color);
+  border-left: 0.25em solid transparent;
+}
+
+blockquote:hover {
+  /* border-left-color: var(--blockquote-border-color); */
 }
 
 /* 文字形式
