@@ -41,7 +41,7 @@ fonteditor-core 只支持子集化 TTF 格式的字体资源，而思源宋体�
 
 由于我是提供 `./` 来获取页面的字体资源，所以像 `/`、`/about`、`/food`等，同级的页面都需要使用同一个字体包，所以按照这个需求，我改了一下 gulp-font-spider，也相当于是参考着自己写了一个。
 
-这个过程中还在 font-spider [添加](https://github.com/zsdycs/lipk.org/commit/9d1ac391d8952c8a10565013cab6ea92aea589b8#diff-d02f29ba76b3d50cbbbc8ad02c73dbce95b20c9c3c7368ec58cd32dcd4eb82c8) 了一个配置项 `extraFontFaceRule`，但考虑到 font-spider 很久没有更新了，就没有提交到 font-spider 的源库，fontmin 也都 copy 到自己的项目下玩了。
+这个过程中还在 font-spider [添加](https://github.com/zsdycs/lipk.org-hugo/commit/9d1ac391d8952c8a10565013cab6ea92aea589b8#diff-d02f29ba76b3d50cbbbc8ad02c73dbce95b20c9c3c7368ec58cd32dcd4eb82c8) 了一个配置项 `extraFontFaceRule`，但考虑到 font-spider 很久没有更新了，就没有提交到 font-spider 的源库，fontmin 也都 copy 到自己的项目下玩了。
 
 ### 静悄悄地加载字体
 

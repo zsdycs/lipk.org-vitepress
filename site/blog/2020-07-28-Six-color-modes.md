@@ -30,4 +30,4 @@ head:
 
 最终结果就是现在这个情况——Beaudar 和 lipk.org 像是一个整体一般，风格统一。
 
-实现的代码在这里 [mode.js](https://github.com/zsdycs/lipk.org/blob/master/static/js/mode.js)。
+实现的代码在这里 [mode.js](https://github.com/zsdycs/lipk.org-hugo/blob/master/static/js/mode.js)。

@@ -27,7 +27,7 @@ head:
 
 我使用的是“Issue 标题包含页面标题”的版本，另外还有五个模式任君选择。引用代码可以在线生成。也可以参考我下方给出的代码片段，在引用时，我增加了模式切换提示，及加载的状态。
 
-完整的代码片段在 [这里查看](https://github.com/zsdycs/lipk.org/blob/master/static/js/beaudar.js)。
+完整的代码片段在 [这里查看](https://github.com/zsdycs/lipk.org-hugo/blob/master/static/js/beaudar.js)。
 
 ```javascript
 /**
@@ -40,7 +40,7 @@ function addBeaudar() {
   var script = document.createElement('script');
   var beaudar = document.getElementById('beaudar');
   script.src = 'https://beaudar.lipk.org/client.js';
-  script.setAttribute('repo', 'zsdycs/lipk.org');
+  script.setAttribute('repo', 'zsdycs/lipk.org-hugo');
   script.setAttribute('issue-term', 'title');
   script.setAttribute('crossorigin', 'anonymous');
   if (window.localStorage.getItem('mode') === 'day') {
