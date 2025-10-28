@@ -6,7 +6,7 @@
 - 目录结构：
 
 ```markdown
-lipk.org-test
+lipk.org-vitepress
 │
 ├─ .github             # GitHub 配置文件夹
 │     └─ ......

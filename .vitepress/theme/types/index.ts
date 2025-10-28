@@ -4,7 +4,7 @@ export interface EditLink {
   /**
    * Pattern for edit link.
    *
-   * @example 'https://github.com/zsdycs/lipk.org-test/blob/master/site/:path'
+   * @example 'https://github.com/zsdycs/lipk.org-vitepress/blob/master/site/:path'
    * @example ({ filePath }) => { ... }
    */
   pattern: string | ((payload: any) => string);

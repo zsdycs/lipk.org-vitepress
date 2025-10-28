@@ -32,7 +32,8 @@ export default defineConfigWithTheme<CustomConfig>({
     author: "李鹏坤",
     slogan: "执手相看，对影成双",
     editLink: {
-      pattern: "https://github.com/zsdycs/lipk.org-test/blob/master/site/:path",
+      pattern:
+        "https://github.com/zsdycs/lipk.org-vitepress/blob/master/site/:path",
       text: "在 GitHub 编辑此页",
     },
     lastUpdatedText: "本页最后更新时间",
