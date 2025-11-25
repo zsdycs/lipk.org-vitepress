@@ -82,9 +82,9 @@ export const head: HeadConfig[] = [
     { rel: "shortcut icon", type: "image/x-icon", href: "/favicon.ico" },
     // <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   ],
-  [
-    "link",
-    { rel: "dns-prefetch", href: "//lipk.oss-accelerate.aliyuncs.com" },
-    // <link rel="dns-prefetch" href="//lipk.oss-accelerate.aliyuncs.com">
-  ],
+  // [
+  //   "link",
+  //   { rel: "dns-prefetch", href: "//lipk.oss-accelerate.aliyuncs.com" },
+  //   // <link rel="dns-prefetch" href="//lipk.oss-accelerate.aliyuncs.com">
+  // ],
 ];
