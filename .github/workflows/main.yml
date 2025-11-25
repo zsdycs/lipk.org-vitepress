@@ -27,7 +27,7 @@ jobs:
           npm run build
       - name: ssh-deploy-XJP
         uses: easingthemes/ssh-deploy@v5.1.0
-        env:
+        with:
           REMOTE_PORT: ${{ secrets.XJP_REMOTE_PORT }}
           SSH_PRIVATE_KEY: ${{ secrets.XJP_SSH_PRIVATE_KEY }}
           ARGS: "-avz --delete"
@@ -38,7 +38,7 @@ jobs:
           SCRIPT_BEFORE: ls
       - name: ssh-deploy-HZ
         uses: easingthemes/ssh-deploy@v5.1.0
-        env:
+        with:
           REMOTE_PORT: ${{ secrets.HZ_REMOTE_PORT }}
           SSH_PRIVATE_KEY: ${{ secrets.HZ_SSH_PRIVATE_KEY }}
           ARGS: "-avz --delete"
