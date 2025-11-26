@@ -17,7 +17,7 @@
     "build:vp": "vitepress build .",
     "build": "npm run make-routes:pd && make-font && make-version && npm run build:vp",
     "preview:vp": "npm run make-routes:pd && vitepress preview .",
-    "preview": "npm run build && http-server --port 5173 ./dist"
+    "preview": "npm run build && http-server --port 3000 ./dist"
   },
   "dependencies": {
     "photoswipe": "5.4.4",
