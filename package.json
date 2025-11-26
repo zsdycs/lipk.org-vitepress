@@ -20,6 +20,7 @@
     "preview": "npm run build && http-server --port 5173 ./dist"
   },
   "dependencies": {
+    "photoswipe": "5.4.4",
     "vue": "3.5.11"
   },
   "devDependencies": {
