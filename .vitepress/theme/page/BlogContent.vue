@@ -3,6 +3,7 @@
 import { useData } from "../composables/data";
 import Menu from "../components/Menu.vue";
 import Meta from "../components/Meta.vue";
+import TableOfContentsBar from "../components/TableOfContentsBar.vue";
 import Footer from "../components/Footer.vue";
 import { setRightQuotes } from "../composables/right-quote";
 import { watch, ref } from "vue";
@@ -81,13 +82,12 @@ function handlePictureView() {
   <header class="masthead">
     <Menu />
   </header>
+  <TableOfContentsBar v-if="frontmatter.tableOfContents" />
   <article class="main">
     <header v-if="frontmatter.title" class="title">
       <Meta :title="frontmatter.title" :blog="true" />
     </header>
-    <div class="archive">
-      <Content />
-    </div>
+    <Content class="archive" />
     <Footer
       :mode="footerMode"
       :comment="footerComment"

@@ -29,8 +29,6 @@ consoleInfo();
 // 加载字体
 loadFont(route.path);
 
-// 目录 TODO
-// 图片查看 TODO
 // 返回顶部 TODO
 
 watch(() => route.path, setHomeClass, {
