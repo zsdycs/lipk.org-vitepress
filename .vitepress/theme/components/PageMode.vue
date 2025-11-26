@@ -1,35 +1,37 @@
 <!-- 页面主题模式 -->
 <script setup lang="ts">
-import { ref } from 'vue'
-import { MODE_TEXT, MODE_ORDER } from '../composables/constant'
-import { addDarkmodeCSS } from '../composables/page-mode'
-import { inBrowser } from 'vitepress';
+import { ref, onMounted } from "vue";
+import { MODE_TEXT, MODE_ORDER } from "../composables/constant";
+import { addDarkmodeCSS } from "../composables/page-mode";
+import { inBrowser } from "vitepress";
 
-const modeText = ref('')
+const modeText = ref("");
 
 // body 背景 延迟载入
 // document.body.style.background = 'url(/images/geometry.png)';
 // document.body.style.backgroundRepeat = 'repeat';
 
-let modeLS: string | null = null;
-if (inBrowser) {
-  modeLS = localStorage.getItem('page-theme-mode')
-}
+onMounted(() => {
+  let modeLS: string | null = null;
+  if (inBrowser) {
+    modeLS = localStorage.getItem("page-theme-mode");
+  }
 
-if (modeLS) {
-  modeText.value = MODE_TEXT[modeLS];
-}
+  if (modeLS) {
+    modeText.value = MODE_TEXT[modeLS];
+  }
+});
 
 // 切换黑夜白天模式
 function modeChange() {
   if (!inBrowser) {
     return;
   }
-  const nowDarkmode = localStorage.getItem('page-theme-mode') || 'github-light';
-  const beaudar = document.querySelector<HTMLIFrameElement>('#beaudar iframe');
+  const nowDarkmode = localStorage.getItem("page-theme-mode") || "github-light";
+  const beaudar = document.querySelector<HTMLIFrameElement>("#beaudar iframe");
   const message = {
-    type: 'set-theme',
-    theme: 'github-light',
+    type: "set-theme",
+    theme: "github-light",
   };
   /**
    * 顺序：
@@ -41,17 +43,16 @@ function modeChange() {
    *       -> 'photon-dark'         // 暗黑
    */
   message.theme = MODE_ORDER[nowDarkmode];
-  localStorage.setItem('page-theme-mode', MODE_ORDER[nowDarkmode]);
+  localStorage.setItem("page-theme-mode", MODE_ORDER[nowDarkmode]);
   modeText.value = MODE_TEXT[MODE_ORDER[nowDarkmode]];
   addDarkmodeCSS(MODE_ORDER[nowDarkmode]);
   // 与 beaudar 通信
   if (beaudar?.contentWindow) {
-    beaudar.contentWindow.postMessage(message, 'https://beaudar.lipk.org');
+    beaudar.contentWindow.postMessage(message, "https://beaudar.lipk.org");
   }
-};
+}
 </script>
 
 <template>
   <button @click="modeChange">{{ modeText }}</button>
 </template>
-

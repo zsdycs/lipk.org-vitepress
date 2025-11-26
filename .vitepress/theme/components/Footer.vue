@@ -6,7 +6,7 @@ import { SVG_STRING } from "../composables/svg-resources";
 import PostNav from "../components/PostNav.vue";
 import Beaudar from "../components/Beaudar.vue";
 import LastUpdated from "../components/LastUpdated.vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useEditLink } from "../composables/edit-link";
 import type { FooterInfoConfigType } from "../types";
 import { inBrowser } from "vitepress";
@@ -48,9 +48,11 @@ const editLink = useEditLink();
 const domain = ref("");
 const hasEditInfo = useHasEditInfo();
 
-if (inBrowser) {
-  domain.value = window.location.hostname;
-}
+onMounted(() => {
+  if (inBrowser) {
+    domain.value = window.location.hostname;
+  }
+});
 </script>
 
 <template>
