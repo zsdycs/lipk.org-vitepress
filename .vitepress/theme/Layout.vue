@@ -16,6 +16,7 @@ import { throttle } from "./utils";
 import { getScrollDirection } from "./composables/get-scroll-direction";
 import { loadFont } from "./composables/font-face";
 import { printPage } from "./composables/print-page";
+import FixedButton from "./components/FixedButton.vue";
 
 const { frontmatter, page, theme } = useData();
 const route = useRoute();
@@ -67,4 +68,6 @@ if (inBrowser) {
   <BlogContent v-else-if="frontmatter.layout !== false" />
   <!-- 仅显示内容 -->
   <Content v-else />
+  <!-- 固定在页面边上的按钮 -->
+  <FixedButton v-if="!frontmatter.homePage" />
 </template>

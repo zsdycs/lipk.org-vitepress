@@ -1,11 +1,12 @@
 <!-- 页面底部 -->
 <script setup lang="ts">
 import { useData } from "../composables/data";
+import { useHasEditInfo } from "../composables/has-edit-info";
 import { SVG_STRING } from "../composables/svg-resources";
 import PostNav from "../components/PostNav.vue";
 import Beaudar from "../components/Beaudar.vue";
 import LastUpdated from "../components/LastUpdated.vue";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import { useEditLink } from "../composables/edit-link";
 import type { FooterInfoConfigType } from "../types";
 import { inBrowser } from "vitepress";
@@ -41,22 +42,15 @@ const props = defineProps<{
   postNav?: boolean; // 是否显示导航
 }>();
 
-const { theme, frontmatter, page } = useData();
+const { theme } = useData();
 const nowYear = new Date().getUTCFullYear();
 const editLink = useEditLink();
 const domain = ref("");
+const hasEditInfo = useHasEditInfo();
 
 if (inBrowser) {
   domain.value = window.location.hostname;
 }
-
-const hasEditInfo = computed(() => {
-  return (
-    theme.value.editLink &&
-    page.value.lastUpdated &&
-    !frontmatter.value.notEditInfo
-  );
-});
 </script>
 
 <template>

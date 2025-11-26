@@ -857,21 +857,26 @@ iframe.billibili {
   margin: 10px 0;
 }
 
-#fixed-button button {
-  width: 34px;
-  height: 34px;
-  letter-spacing: normal;
-  border-radius: 50%;
-}
+/* #fixed-button button {
+} */
 
 #fixed-button a {
   display: block;
-  width: 34px;
-  height: 34px;
   padding: 0;
   text-align: center;
+}
+
+#fixed-button a,
+#fixed-button button {
+  width: 35px;
+  height: 54px;
   letter-spacing: normal;
-  border-radius: 50%;
+  border-radius: 5px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #fixed-button .writeFixed a {
@@ -887,8 +892,8 @@ iframe.billibili {
 #fixed-button button .fa-svg,
 #fixed-button a .fa-svg {
   display: inline-block;
-  width: 13px;
-  height: 32px;
+  width: 16px;
+  height: 20px;
   fill: currentColor;
 }
 
