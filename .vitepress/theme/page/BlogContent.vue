@@ -7,6 +7,7 @@ import Footer from "../components/Footer.vue";
 import { setRightQuotes } from "../composables/right-quote";
 import { watch, ref } from "vue";
 import { useRoute } from "vitepress";
+import { inBrowser } from "vitepress";
 
 const { frontmatter } = useData();
 const route = useRoute();
@@ -44,7 +45,7 @@ function setFooter() {
 }
 
 function handlePictureView() {
-  if (frontmatter.value.pictureView) {
+  if (frontmatter.value.pictureView && inBrowser) {
     // @ts-ignore
     import("photoswipe/style.css");
     import("photoswipe/lightbox").then((mod) => {
