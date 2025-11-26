@@ -30,8 +30,6 @@ consoleInfo();
 // 加载字体
 loadFont(route.path);
 
-// 返回顶部 TODO
-
 watch(() => route.path, setHomeClass, {
   immediate: true,
 });
