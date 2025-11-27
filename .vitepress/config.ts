@@ -7,6 +7,13 @@ import { MENU } from "./theme/composables/constant";
 import footnotePlugin from "markdown-it-footnote";
 import imagePlugin from "markdown-it-image-figures";
 import taskListPlugin from "markdown-it-task-lists";
+import {
+  applyClassMutationToAppRoot,
+  applyClassMutationToHtml,
+  getAppClassMutation,
+  getHtmlClassMutation,
+  isHomeEntryFile,
+} from "./theme/utils/home-class";
 
 const dynamicImport = createRequire(import.meta.url);
 const pkg = dynamicImport("vitepress/package.json");
@@ -54,5 +61,16 @@ export default defineConfigWithTheme<CustomConfig>({
       //  任务列表
       md.use(taskListPlugin);
     },
+  },
+  transformHtml: (code, _id, ctx) => {
+    if (!ctx.pageData) {
+      return code;
+    }
+    const isHome = isHomeEntryFile(ctx.pageData.relativePath);
+    const htmlMutation = getHtmlClassMutation(isHome);
+    const appMutation = getAppClassMutation(isHome);
+
+    const withHtmlClass = applyClassMutationToHtml(code, htmlMutation);
+    return applyClassMutationToAppRoot(withHtmlClass, appMutation);
   },
 });
