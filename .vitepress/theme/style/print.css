@@ -85,6 +85,7 @@
 
   a {
     text-decoration: none;
+    border-bottom: 1px solid var(--a-color);
   }
 
   h1,
