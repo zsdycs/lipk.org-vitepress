@@ -72,9 +72,7 @@
   "editor.detectIndentation": false,
   // Columns at which to show vertical rulers
   "editor.lineNumbers": "on",
-  "editor.rulers": [
-    80
-  ],
+  "editor.rulers": [80],
   // The default character set encoding to use when reading and writing files.
   "files.encoding": "utf8",
   // The default end of line character.
@@ -88,11 +86,11 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "xlthu.Pangu-Markdown",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "css.validate": false,
   "editor.codeActionsOnSave": {
@@ -100,6 +98,6 @@
   },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-  },
+    "editor.formatOnSave": true
+  }
 }
