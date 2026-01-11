@@ -17,6 +17,7 @@ import { getScrollDirection } from "./composables/get-scroll-direction";
 import { loadFont } from "./composables/font-face";
 import { printPage } from "./composables/print-page";
 import FixedButton from "./components/FixedButton.vue";
+import Resume from "./page/Resume.vue";
 
 const { frontmatter, page, theme } = useData();
 const route = useRoute();
@@ -62,6 +63,8 @@ if (inBrowser) {
   <List v-else-if="frontmatter.listPage" />
   <!-- 404页 -->
   <NotFound v-else-if="page.isNotFound" />
+  <!-- 简历页 -->
+  <Resume v-else-if="frontmatter.resumePage" />
   <!-- 博客内容页 -->
   <BlogContent v-else-if="frontmatter.layout !== false" />
   <!-- 仅显示内容 -->

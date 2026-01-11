@@ -21,6 +21,7 @@
   --thead-bg-color: #f6f8fa;
   --table-border-color: #e1e4e8;
   --main-border-color: #e1e4e8;
+  --fieldset-border-color: #5d5d5d;
   --masthead-bg-color: #fff;
   --menu-button-bg-color: #fff;
   --fixed-btn-bg-color: #f6f8fa;
@@ -51,6 +52,7 @@
   --thead-bg-color: #202020;
   --table-border-color: #343434;
   --main-border-color: #343434;
+  --fieldset-border-color: #343434;
   --masthead-bg-color: #181818;
   --menu-button-bg-color: #181818;
   --fixed-btn-bg-color: #181818;
@@ -81,6 +83,7 @@
   --thead-bg-color: #222;
   --table-border-color: #5b5958;
   --main-border-color: #4e4c4b;
+  --fieldset-border-color: #4e4c4b;
   --masthead-bg-color: #2d2833;
   --menu-button-bg-color: #2d2833;
   --fixed-btn-bg-color: #222;
@@ -111,6 +114,7 @@
   --thead-bg-color: #14171c00;
   --table-border-color: #292c2f;
   --main-border-color: #1d1f21;
+  --fieldset-border-color: #1d1f21;
   --masthead-bg-color: #14171c;
   --menu-button-bg-color: #14171c;
   --fixed-btn-bg-color: #182030;
@@ -141,6 +145,7 @@
   --thead-bg-color: #182c30;
   --table-border-color: #145762;
   --main-border-color: #10444d;
+  --fieldset-border-color: #10444d;
   --masthead-bg-color: #021012;
   --menu-button-bg-color: #021012;
   --fixed-btn-bg-color: #06272c;
@@ -171,6 +176,7 @@
   --thead-bg-color: #2a2a2e;
   --table-border-color: #44444a;
   --main-border-color: #313136;
+  --fieldset-border-color: #313136;
   --masthead-bg-color: #232326;
   --menu-button-bg-color: #232326;
   --fixed-btn-bg-color: #182030;
@@ -264,6 +270,11 @@ button:focus-visible {
   color: var(--html-color) !important;
   background: var(--selection-bg-color) !important;
   outline: none;
+}
+
+fieldset {
+  border: none;
+  border-top: 1px dashed var(--fieldset-border-color);
 }
 
 .menu button {

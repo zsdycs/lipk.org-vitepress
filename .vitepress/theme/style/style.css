@@ -521,6 +521,14 @@ button {
   border: none;
 }
 
+fieldset {
+  padding-left: 0px;
+}
+
+fieldset legend {
+  font-weight: 900;
+}
+
 /* 交互元素
   <details> <summary> <menuitem> <menu>
  */
