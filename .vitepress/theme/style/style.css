@@ -110,7 +110,7 @@ blockquote {
 
 ol,
 ul {
-  padding: 0 0 0 20px;
+  padding: 0 0 0 40px;
 }
 
 li {
@@ -130,6 +130,11 @@ li {
   margin-right: 10px;
   margin-left: 10px;
   list-style: none;
+}
+
+ul.none-list-style-type {
+  list-style-type: none;
+  padding-left: 20px;
 }
 
 .masthead .menu li li::before {
@@ -261,12 +266,16 @@ div[class*="language-"] + div[class$="-api"] > div[class*="language-"] {
 [class*="language-"] .has-focused-lines .line:not(.has-focus) {
   filter: blur(0.095rem);
   opacity: 0.4;
-  transition: filter 0.35s, opacity 0.35s;
+  transition:
+    filter 0.35s,
+    opacity 0.35s;
 }
 
 [class*="language-"] .has-focused-lines .line:not(.has-focus) {
   opacity: 0.7;
-  transition: filter 0.35s, opacity 0.35s;
+  transition:
+    filter 0.35s,
+    opacity 0.35s;
 }
 
 [class*="language-"]:hover .has-focused-lines .line:not(.has-focus) {
@@ -310,7 +319,9 @@ div[class*="language-"].line-numbers-mode {
   line-height: 1.7;
   font-size: var(--code-font-size);
   color: #6c6c70;
-  transition: border-color 0.5s, color 0.5s;
+  transition:
+    border-color 0.5s,
+    color 0.5s;
 }
 
 [class*="language-"] > button.copy {
@@ -331,7 +342,10 @@ div[class*="language-"].line-numbers-mode {
   background-position: 50%;
   background-size: 20px;
   background-repeat: no-repeat;
-  transition: border-color 0.25s, background-color 0.25s, opacity 0.25s;
+  transition:
+    border-color 0.25s,
+    background-color 0.25s,
+    opacity 0.25s;
 }
 
 [class*="language-"]:hover > button.copy,
@@ -383,7 +397,9 @@ div[class*="language-"].line-numbers-mode {
   font-family: var(--font-family-mono);
   font-weight: 400;
   color: #6c6c70;
-  transition: color 0.4s, opacity 0.4s;
+  transition:
+    color 0.4s,
+    opacity 0.4s;
 }
 
 [class*="language-"]:hover > button.copy + span.lang,
@@ -529,6 +545,10 @@ fieldset legend {
   font-weight: 900;
 }
 
+fieldset h3:first-child {
+  margin-top: 30px;
+}
+
 /* 交互元素
   <details> <summary> <menuitem> <menu>
  */
@@ -552,7 +572,9 @@ fieldset legend {
   font-weight: 400;
   user-select: none;
   opacity: 0;
-  transition: color 0.25s, opacity 0.25s;
+  transition:
+    color 0.25s,
+    opacity 0.25s;
 }
 
 h1:hover .header-anchor,
