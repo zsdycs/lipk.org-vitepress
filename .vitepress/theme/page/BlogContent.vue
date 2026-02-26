@@ -30,6 +30,10 @@ watch(() => route.path, handlePictureView, {
   immediate: true,
 });
 
+watch(() => route.path, revertArticleStyle, {
+  immediate: true,
+});
+
 function setFooter() {
   if (frontmatter.value.notComment === true) {
     // 不带有评论
@@ -76,6 +80,13 @@ function handlePictureView() {
     });
   }
 }
+
+function revertArticleStyle() {
+  if (!frontmatter.value.tableOfContents) {
+    const main = document.querySelector(".main") as HTMLElement;
+    if (main) main.style.borderRight = "0px";
+  }
+}
 </script>
 
 <template>
@@ -88,10 +99,6 @@ function handlePictureView() {
       <Meta :title="frontmatter.title" :blog="true" />
     </header>
     <Content class="archive" />
-    <Footer
-      :mode="footerMode"
-      :comment="footerComment"
-      :postNav="footerPostNav"
-    />
+    <Footer :mode="footerMode" :comment="footerComment" :postNav="footerPostNav" />
   </article>
 </template>
