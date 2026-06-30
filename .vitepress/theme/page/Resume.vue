@@ -81,7 +81,7 @@ function handlePictureView() {
   <header class="masthead">
     <Menu />
   </header>
-  <article class="main font-WRYH">
+  <article class="main font-WRYH" :data-pagefind-body="frontmatter.search !== false ? '' : undefined">
     <header v-if="frontmatter.title" class="title">
       <Meta :title="frontmatter.title" :blog="false" :notShowBeginning="true" />
     </header>

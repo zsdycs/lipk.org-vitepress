@@ -54,7 +54,7 @@ html.home {
   background-color: var(--main-index-bg-color);
 }
 
-#app.index ~ * {
+#app.index ~ *:not(.search-modal-overlay) {
   /* 保证首页内容处于中间位置 */
   display: none;
 }

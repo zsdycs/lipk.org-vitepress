@@ -11,6 +11,7 @@ html {
   box-sizing: border-box;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  scrollbar-gutter: stable;
 }
 
 *,
@@ -919,6 +920,12 @@ iframe.billibili {
   color: #ff655b;
 }
 
+.fa-svg > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 #fixed-button button .fa-svg,
 #fixed-button a .fa-svg {
   display: inline-block;
@@ -1090,3 +1097,297 @@ iframe.billibili {
 }
 
 /* 媒体 */
+
+/* 全文搜索弹框 */
+.search-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.25s ease;
+}
+
+.search-modal {
+  width: min(560px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.search-modal__search-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  background-color: var(--html-bg-color, #fff);
+  color: var(--html-color, #000);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid var(--main-border-color);
+}
+
+.search-modal__search-row:has(.search-modal__input-box:focus-within) {
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.22);
+}
+
+.search-modal__input-box {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  background: transparent;
+  color: inherit;
+}
+
+.search-modal__search-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  opacity: 0.6;
+}
+
+.search-modal__input {
+  flex: 1;
+  min-width: 0;
+  height: 56px;
+  padding: 0 12px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-size: 18px;
+  line-height: 56px;
+}
+
+.search-modal__input::placeholder {
+  color: var(--html-color, #000);
+  opacity: 0.4;
+}
+
+.search-modal__clear {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--fixed-btn-bg-color, #f6f8fa);
+  color: var(--html-color, #000);
+  cursor: pointer;
+  opacity: 0.7;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.search-modal__clear:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  color: var(--a-color);
+}
+
+.search-modal__clear .fa-svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+.search-modal__close {
+  flex-shrink: 0;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 56px;
+  padding: 0 14px;
+  border: none;
+  border-left: 1px solid var(--main-border-color);
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition:
+    opacity 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.search-modal__close:hover {
+  opacity: 1;
+  background-color: var(--list-bg-color, #efefef);
+  color: var(--a-color);
+}
+
+.search-modal__close .fa-svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+.search-modal__close .label-text {
+  margin-top: 0;
+}
+
+/* 有输入时：搜索框上移，结果列表出现 */
+.search-modal.has-results {
+  align-items: stretch;
+  transform: translateY(0);
+}
+
+.search-modal.has-results .search-modal__search-row {
+  position: sticky;
+  top: 0;
+}
+
+.search-modal__results {
+  width: 100%;
+  max-height: min(480px, calc(100vh - 220px));
+  overflow-y: auto;
+  border-radius: 8px;
+  background-color: var(--html-bg-color, #fff);
+  color: var(--html-color, #000);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.search-modal__status {
+  padding: 24px;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.search-modal__status--error {
+  color: #ff655b;
+  opacity: 1;
+}
+
+.search-modal__result-list {
+  margin: 0;
+  padding: 8px 0;
+  list-style: none;
+}
+
+.search-modal__result-item {
+  margin: 0;
+  padding: 0;
+}
+
+.search-modal__result-link {
+  display: block;
+  padding: 12px 16px;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.search-modal__result-link:hover {
+  background-color: var(--list-bg-color, #efefef);
+  border-bottom: none;
+}
+
+.search-modal__result-link:hover .search-modal__result-title {
+  border-bottom: 1px solid var(--a-color);
+  margin-bottom: 3px;
+}
+
+.search-modal__result-title {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+  display: inline-block;
+  color: var(--a-color, #d59500);
+}
+
+.search-modal__result-excerpt {
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.search-modal__result-excerpt mark {
+  color: var(--html-color);
+  background: var(--selection-bg-color);
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* Vue Transition */
+.search-modal-enter-from,
+.search-modal-leave-to {
+  opacity: 0;
+}
+
+.search-modal-enter-from .search-modal,
+.search-modal-leave-to .search-modal {
+  transform: scale(0.96) translateY(10px);
+}
+
+.search-results-enter-from,
+.search-results-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.search-results-enter-active,
+.search-results-leave-active {
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 545px) {
+  .search-modal-overlay {
+    padding: 0;
+    align-items: flex-start;
+  }
+
+  .search-modal {
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    gap: 0;
+  }
+
+  .search-modal__search-row {
+    border-radius: 0;
+  }
+
+  .search-modal__close {
+    display: none;
+  }
+
+  .search-modal.has-results {
+    margin-top: 0;
+  }
+
+  .search-modal__results {
+    max-height: calc(100vh - 56px);
+    border-radius: 0;
+    box-shadow: none;
+    flex: 1;
+  }
+}

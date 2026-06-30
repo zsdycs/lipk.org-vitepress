@@ -82,10 +82,11 @@ function handlePictureView() {
 }
 
 function revertArticleStyle() {
-  if (!frontmatter.value.tableOfContents) {
-    const main = document.querySelector(".main") as HTMLElement;
-    if (main) main.style.borderRight = "0px";
+  if (!inBrowser || frontmatter.value.tableOfContents) {
+    return;
   }
+  const main = document.querySelector(".main") as HTMLElement | null;
+  if (main) main.style.borderRight = "0px";
 }
 </script>
 
@@ -94,7 +95,7 @@ function revertArticleStyle() {
     <Menu />
   </header>
   <TableOfContentsBar v-if="frontmatter.tableOfContents" />
-  <article class="main">
+  <article class="main" :data-pagefind-body="frontmatter.search !== false ? '' : undefined">
     <header v-if="frontmatter.title" class="title">
       <Meta :title="frontmatter.title" :blog="true" />
     </header>

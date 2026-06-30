@@ -25,7 +25,7 @@ if (frontmatter.value.notComment === false) {
   <header class="masthead">
     <Menu />
   </header>
-  <article class="main">
+  <article class="main" :data-pagefind-body="frontmatter.search !== false ? '' : undefined">
     <header v-if="frontmatter.title" class="title">
       <Meta :title="frontmatter.title" />
     </header>

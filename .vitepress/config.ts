@@ -4,6 +4,7 @@ import { head } from "./theme/utils/head";
 import { createRequire } from "node:module";
 import { readFileSync } from "fs";
 import { MENU } from "./theme/composables/constant";
+import { pagefindDevPlugin } from "./plugins/pagefind-dev";
 import footnotePlugin from "markdown-it-footnote";
 import imagePlugin from "markdown-it-image-figures";
 import taskListPlugin from "markdown-it-task-lists";
@@ -72,5 +73,13 @@ export default defineConfigWithTheme<CustomConfig>({
 
     const withHtmlClass = applyClassMutationToHtml(code, htmlMutation);
     return applyClassMutationToAppRoot(withHtmlClass, appMutation);
+  },
+  vite: {
+    plugins: [pagefindDevPlugin()],
+    build: {
+      rollupOptions: {
+        external: ["/pagefind/pagefind.js"],
+      },
+    },
   },
 });

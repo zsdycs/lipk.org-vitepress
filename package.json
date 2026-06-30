@@ -15,6 +15,8 @@
     "make-routes:dev": "cross-env NODE_ENV=development make-routes",
     "dev": "npm run make-routes:dev && make-version && vitepress dev . --host --port 3000",
     "build:vp": "vitepress build .",
+    "build:pagefind-zh": "node .vitepress/plugins/build-zh-search.mjs dist site/public/pagefind-zh.json",
+    "build:pagefind": "npm run build:pagefind-zh && pagefind --site dist --output-path site/public/pagefind",
     "build": "npm run make-routes:pd && make-font && make-version && npm run build:vp",
     "preview:vp": "npm run make-routes:pd && vitepress preview .",
     "preview": "npm run build && http-server --port 3000 ./dist"
@@ -33,7 +35,9 @@
     "markdown-it-footnote": "3.0.3",
     "markdown-it-image-figures": "2.1.1",
     "markdown-it-task-lists": "2.1.1",
+    "pagefind": "1.5.2",
     "typescript": "5.4.4",
+    "vite": "5.4.8",
     "vitepress": "1.1.0"
   }
 }

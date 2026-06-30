@@ -54,5 +54,10 @@ function modeChange() {
 </script>
 
 <template>
-  <button @click="modeChange">{{ modeText }}</button>
+  <ClientOnly>
+    <button @click="modeChange">{{ modeText }}</button>
+    <template #fallback>
+      <button>浅色</button>
+    </template>
+  </ClientOnly>
 </template>

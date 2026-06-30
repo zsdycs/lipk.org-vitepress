@@ -4,5 +4,8 @@
 **/site/public/fontSource
 **/site/public/pageFontSources.json
 **/.temp
+.pagefind-dev-*
 routes.json
+**/.pagefind-dev-fonts-*
 **/composables/version-svg.ts
+.playwright-mcp/

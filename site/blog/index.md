@@ -4,4 +4,5 @@ title: '博客'
 notComment: true
 listPage: true
 notEditInfo: true
+search: false
 ---

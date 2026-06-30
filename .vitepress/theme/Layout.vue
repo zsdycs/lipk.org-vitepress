@@ -18,6 +18,7 @@ import { loadFont } from "./composables/font-face";
 import { printPage } from "./composables/print-page";
 import FixedButton from "./components/FixedButton.vue";
 import Resume from "./page/Resume.vue";
+import SearchModal from "./components/SearchModal.vue";
 
 const { frontmatter, page, theme } = useData();
 const route = useRoute();
@@ -71,4 +72,6 @@ if (inBrowser) {
   <Content v-else />
   <!-- 固定在页面边上的按钮 -->
   <FixedButton v-if="!frontmatter.homePage" />
+  <!-- 全文搜索弹框 -->
+  <SearchModal />
 </template>
