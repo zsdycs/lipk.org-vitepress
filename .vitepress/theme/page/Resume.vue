@@ -81,11 +81,14 @@ function handlePictureView() {
   <header class="masthead">
     <Menu />
   </header>
-  <article class="main font-WRYH" :data-pagefind-body="frontmatter.search !== false ? '' : undefined">
+  <article class="main font-WRYH">
     <header v-if="frontmatter.title" class="title">
       <Meta :title="frontmatter.title" :blog="false" :notShowBeginning="true" />
     </header>
-    <Content class="archive" />
+    <div class="archive" :data-pagefind-body="frontmatter.search !== false ? '' : undefined">
+      <span v-if="frontmatter.title" data-pagefind-meta="title" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">{{ frontmatter.title }}</span>
+      <Content />
+    </div>
     <Footer
       :mode="footerMode"
       :comment="footerComment"

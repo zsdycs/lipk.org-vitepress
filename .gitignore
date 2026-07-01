@@ -3,6 +3,8 @@
 **/node_modules
 **/site/public/fontSource
 **/site/public/pageFontSources.json
+**/site/public/pagefind
+**/site/public/pagefind-zh.json
 **/.temp
 .pagefind-dev-*
 routes.json

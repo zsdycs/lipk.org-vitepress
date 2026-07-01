@@ -1161,6 +1161,7 @@ iframe.billibili {
 .search-modal__input {
   flex: 1;
   min-width: 0;
+  width: 100%;
   height: 56px;
   padding: 0 12px;
   border: none;
@@ -1264,8 +1265,9 @@ iframe.billibili {
 
 .search-modal__results {
   width: 100%;
-  max-height: min(480px, calc(100vh - 220px));
+  max-height: min(480px, calc(100vh - 58px - 16px));
   overflow-y: auto;
+  overflow-x: hidden;
   border-radius: 8px;
   background-color: var(--html-bg-color, #fff);
   color: var(--html-color, #000);
@@ -1359,35 +1361,8 @@ iframe.billibili {
 }
 
 /* 移动端适配 */
-@media screen and (max-width: 545px) {
+@media screen and (max-width: 600px) {
   .search-modal-overlay {
     padding: 0;
-    align-items: flex-start;
-  }
-
-  .search-modal {
-    width: 100%;
-    min-height: 100vh;
-    border-radius: 0;
-    gap: 0;
-  }
-
-  .search-modal__search-row {
-    border-radius: 0;
-  }
-
-  .search-modal__close {
-    display: none;
-  }
-
-  .search-modal.has-results {
-    margin-top: 0;
-  }
-
-  .search-modal__results {
-    max-height: calc(100vh - 56px);
-    border-radius: 0;
-    box-shadow: none;
-    flex: 1;
   }
 }

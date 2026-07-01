@@ -25,11 +25,12 @@ if (frontmatter.value.notComment === false) {
   <header class="masthead">
     <Menu />
   </header>
-  <article class="main" :data-pagefind-body="frontmatter.search !== false ? '' : undefined">
+  <article class="main">
     <header v-if="frontmatter.title" class="title">
       <Meta :title="frontmatter.title" />
     </header>
-    <div class="archive">
+    <div class="archive" :data-pagefind-body="frontmatter.search !== false ? '' : undefined">
+      <span v-if="frontmatter.title" data-pagefind-meta="title" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">{{ frontmatter.title }}</span>
       <ArchiveList :list="routePathList(theme.routes, route)" />
     </div>
     <Footer :mode="footerMode" :comment="footerComment" />

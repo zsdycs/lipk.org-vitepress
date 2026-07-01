@@ -7,8 +7,8 @@ const { frontmatter } = useData()
 </script>
 
 <template>
-  <article :data-pagefind-body="frontmatter.search !== false ? '' : undefined">
-    <Content class="archive" />
+  <article>
+    <Content class="archive" :data-pagefind-body="frontmatter.search !== false ? '' : undefined" />
   </article>
   <Footer mode="home" />
 </template>

@@ -10,6 +10,11 @@ import fsSync from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { buildZhSearch } from "./build-zh-search.mjs";
+import { cleanupPagefindUi } from "./cleanup-pagefind-ui.mjs";
+import {
+  PAGEFIND_ROOT_SELECTOR,
+  PAGEFIND_EXCLUDE_SELECTORS,
+} from "./pagefind-options.mjs";
 
 function log(...args) {
   // Log to stderr so the parent plugin captures it in the error message.
@@ -127,7 +132,13 @@ async function main() {
       await new Promise((resolve, reject) => {
         const proc = spawn(
           "npx",
-          ["pagefind", "--site", buildDir, "--output-path", tmpIndexDir],
+          [
+            "pagefind",
+            "--site", buildDir,
+            "--output-path", tmpIndexDir,
+            "--root-selector", PAGEFIND_ROOT_SELECTOR,
+            "--exclude-selectors", PAGEFIND_EXCLUDE_SELECTORS,
+          ],
           {
             cwd: tempRoot,
             shell: process.platform === "win32",
@@ -147,6 +158,7 @@ async function main() {
 
       fsSync.rmSync(indexDir, { recursive: true, force: true });
       fsSync.renameSync(tmpIndexDir, indexDir);
+      cleanupPagefindUi(indexDir);
     } catch (err) {
       fsSync.rmSync(tmpIndexDir, { recursive: true, force: true });
       throw err;

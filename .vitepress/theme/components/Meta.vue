@@ -15,8 +15,8 @@ const { theme, frontmatter } = useData();
 
 <template>
   <!-- 文章头 标题 作者 / yyyyMMdd -->
-  <h1 v-if="props.title">{{ props.title }}</h1>
-  <h1 v-if="props.subtitle">
+  <h1 v-if="props.title" data-pagefind-meta="title">{{ props.title }}</h1>
+  <h1 v-if="props.subtitle" data-pagefind-meta="title">
     <span class="subtitle">{{ subtitle }}</span>
   </h1>
   <h3 v-if="props.blog && theme.author && frontmatter.date">
