@@ -11,6 +11,7 @@ import os from "node:os";
 import path from "node:path";
 import { buildZhSearch } from "./build-zh-search.mjs";
 import { cleanupPagefindUi } from "./cleanup-pagefind-ui.mjs";
+import { writePagefindManifest } from "./write-pagefind-manifest.mjs";
 import {
   PAGEFIND_ROOT_SELECTOR,
   PAGEFIND_EXCLUDE_SELECTORS,
@@ -159,6 +160,7 @@ async function main() {
       fsSync.rmSync(indexDir, { recursive: true, force: true });
       fsSync.renameSync(tmpIndexDir, indexDir);
       cleanupPagefindUi(indexDir);
+      writePagefindManifest(indexDir);
     } catch (err) {
       fsSync.rmSync(tmpIndexDir, { recursive: true, force: true });
       throw err;

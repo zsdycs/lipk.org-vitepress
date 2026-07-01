@@ -16,6 +16,7 @@ import path from "node:path";
 import { spawn } from "node:child_process";
 import { buildZhSearch } from "./build-zh-search.mjs";
 import { cleanupPagefindUi } from "./cleanup-pagefind-ui.mjs";
+import { writePagefindManifest } from "./write-pagefind-manifest.mjs";
 import {
   PAGEFIND_ROOT_SELECTOR,
   PAGEFIND_EXCLUDE_SELECTORS,
@@ -72,6 +73,9 @@ async function main() {
 
   // 3. Remove Pagefind UI bundles that are not used by the custom search modal.
   cleanupPagefindUi(outputDir);
+
+  // 4. Write a manifest so the client can preload every index fragment.
+  writePagefindManifest(outputDir);
 
   console.log("[build-search] 搜索索引生成完成");
 }

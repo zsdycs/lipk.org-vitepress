@@ -16,9 +16,15 @@ import { throttle } from "./utils";
 import { getScrollDirection } from "./composables/get-scroll-direction";
 import { loadFont } from "./composables/font-face";
 import { printPage } from "./composables/print-page";
+import { preloadSearch } from "./composables/pagefind";
 import FixedButton from "./components/FixedButton.vue";
 import Resume from "./page/Resume.vue";
 import SearchModal from "./components/SearchModal.vue";
+
+// 页面加载完成后在后台静默预加载搜索索引
+if (inBrowser) {
+  preloadSearch();
+}
 
 const { frontmatter, page, theme } = useData();
 const route = useRoute();

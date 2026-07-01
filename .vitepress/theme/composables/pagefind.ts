@@ -12,9 +12,31 @@ interface ZhFallbackPage {
   text: string;
 }
 
+interface PrefetchAsset {
+  href: string;
+  as: string;
+}
+
+interface PagefindManifest {
+  index?: string[];
+  fragment?: string[];
+}
+
 let pagefindInstance: any = null;
 let loadPromise: Promise<any> | null = null;
 let zhFallbackPromise: Promise<ZhFallbackPage[]> | null = null;
+
+let preloadStarted = false;
+let preloadTimer: number | null = null;
+let indexManifestPreloaded = false;
+
+const CORE_PREFETCH_ASSETS: PrefetchAsset[] = [
+  { href: "/pagefind/pagefind.js", as: "script" },
+  { href: "/pagefind/pagefind-worker.js", as: "script" },
+  { href: "/pagefind/pagefind-entry.json", as: "fetch" },
+  { href: "/pagefind/wasm.unknown.pagefind", as: "fetch" },
+  { href: "/pagefind-zh.json", as: "fetch" },
+];
 
 export async function loadPagefind(): Promise<any | null> {
   if (!inBrowser) {
@@ -45,7 +67,10 @@ export async function loadPagefind(): Promise<any | null> {
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.warn("[Pagefind] 加载搜索索引失败，请确认已执行构建命令生成索引。", err);
+      console.warn(
+        "[Pagefind] 加载搜索索引失败，请确认已执行构建命令生成索引。",
+        err,
+      );
       return null;
     });
   return loadPromise;
@@ -80,7 +105,7 @@ function makeExcerpt(text: string, query: string, length = 60): string {
     prefix +
     snippet.replace(
       new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g"),
-      "<mark>$&</mark>"
+      "<mark>$&</mark>",
     ) +
     suffix
   );
@@ -90,12 +115,13 @@ export async function searchPagefind(query: string): Promise<{
   results: SearchResult[];
   timings: any;
 }> {
+  const trimmedQuery = query.trim();
   const pf = await loadPagefind();
   const pfResults: SearchResult[] = [];
   let timings: any;
 
   if (pf) {
-    const response = await pf.search(query);
+    const response = await pf.search(trimmedQuery);
     timings = response.timings;
     const mapped = await Promise.all(
       response.results.map(async (item: any) => {
@@ -105,7 +131,7 @@ export async function searchPagefind(query: string): Promise<{
           title: data.meta?.title || data.title || "无标题",
           excerpt: data.excerpt,
         };
-      })
+      }),
     );
     pfResults.push(...mapped);
   }
@@ -114,20 +140,100 @@ export async function searchPagefind(query: string): Promise<{
   // Pagefind's Intl.Segmenter can split common words into single characters
   // at query time while indexing them as whole words, causing exact-word
   // matches to be missed.
-  if (containsCjk(query)) {
+  if (containsCjk(trimmedQuery)) {
     const pages = await loadZhFallback();
     const seen = new Set(pfResults.map((r) => r.url));
     for (const page of pages) {
       if (seen.has(page.url)) continue;
-      if (!page.text.includes(query)) continue;
+      if (!page.text.includes(trimmedQuery)) continue;
       seen.add(page.url);
       pfResults.push({
         url: page.url,
         title: page.title || "无标题",
-        excerpt: makeExcerpt(page.text, query),
+        excerpt: makeExcerpt(page.text, trimmedQuery),
       });
     }
   }
 
   return { results: pfResults, timings };
+}
+
+function addPrefetchLinks(assets: PrefetchAsset[]) {
+  if (!inBrowser || typeof document === "undefined") return;
+
+  for (const { href, as } of assets) {
+    if (document.querySelector(`link[rel="prefetch"][href="${href}"]`)) {
+      continue;
+    }
+    const link = document.createElement("link");
+    link.rel = "prefetch";
+    link.href = href;
+    link.as = as;
+    document.head.appendChild(link);
+  }
+}
+
+async function preloadAllIndexFiles(): Promise<void> {
+  if (!inBrowser || indexManifestPreloaded) return;
+
+  try {
+    const res = await fetch("/pagefind/pagefind-manifest.json");
+    if (!res.ok) return;
+    const manifest = (await res.json()) as PagefindManifest;
+
+    const assets: PrefetchAsset[] = [];
+    if (Array.isArray(manifest.index)) {
+      for (const file of manifest.index) {
+        assets.push({ href: `/pagefind/index/${file}`, as: "fetch" });
+      }
+    }
+    if (Array.isArray(manifest.fragment)) {
+      for (const file of manifest.fragment) {
+        assets.push({ href: `/pagefind/fragment/${file}`, as: "fetch" });
+      }
+    }
+
+    addPrefetchLinks(assets);
+    indexManifestPreloaded = true;
+  } catch {
+    // 开发模式或清单缺失时静默跳过
+  }
+}
+
+/**
+ * 在页面加载完成后后台静默预加载所有搜索资源。
+ * 核心运行时资源立即提示浏览器预取；完整的索引片段清单在空闲时读取并预取。
+ */
+export function preloadSearch(): void {
+  if (!inBrowser || preloadStarted) return;
+  preloadStarted = true;
+
+  // 立即提示浏览器预取核心运行时资源
+  addPrefetchLinks(CORE_PREFETCH_ASSETS);
+
+  // 尽快获取索引片段清单并注入 prefetch 链接
+  preloadAllIndexFiles().catch(() => {});
+
+  // 在空闲时再初始化 Pagefind 运行时和中文回退索引
+  const run = () => {
+    loadPagefind().catch(() => {});
+    loadZhFallback().catch(() => {});
+  };
+
+  if (typeof requestIdleCallback === "function") {
+    requestIdleCallback(run, { timeout: 3000 });
+  } else {
+    preloadTimer = window.setTimeout(run, 1200);
+  }
+}
+
+/**
+ * 取消尚未执行的预加载任务（例如页面即将销毁时）。
+ */
+export function cancelPreloadSearch(): void {
+  if (preloadTimer !== null) {
+    clearTimeout(preloadTimer);
+    preloadTimer = null;
+  }
+  preloadStarted = false;
 }
