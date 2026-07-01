@@ -8,8 +8,8 @@
 //
 // Defaults:
 //   buildDir  -> dist
-//   outputDir -> site/public/pagefind
-//   zhOutput  -> site/public/pagefind-zh.json
+//   outputDir -> dist/pagefind
+//   zhOutput  -> dist/pagefind-zh.json
 
 import fs from "node:fs";
 import path from "node:path";
@@ -53,10 +53,10 @@ async function runPagefind(siteDir, outputDir) {
 async function main() {
   const root = process.cwd();
   const buildDir = path.resolve(root, process.argv[2] || "dist");
-  const outputDir = path.resolve(root, process.argv[3] || "site/public/pagefind");
+  const outputDir = path.resolve(root, process.argv[3] || "dist/pagefind");
   const zhOutput = path.resolve(
     root,
-    process.argv[4] || "site/public/pagefind-zh.json"
+    process.argv[4] || "dist/pagefind-zh.json"
   );
 
   if (!fs.existsSync(buildDir)) {
