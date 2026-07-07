@@ -15,7 +15,6 @@
       "dom",
       "dom.iterable"
     ],
-    "baseUrl": ".",
     "declaration": true
   },
   "include": [
