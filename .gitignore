@@ -2,6 +2,9 @@
 **/dist
 **/node_modules
 **/site/public/fontSource
+**/site/public/fontGroups.json
+**/site/public/globalFontSources.json
+**/site/public/fontSources.json
 **/site/public/pageFontSources.json
 **/site/public/pagefind
 **/site/public/pagefind-zh.json

@@ -2,12 +2,13 @@ import { generateRoutes } from "./generate-routes.js";
 import { saveRoutes } from "./save-routes.js";
 
 let ignoreMDFiles = [];
+const FONT_DEBUG_PAGE_PATTERN = "**/site/blog/2018-12-20-Test.md";
 
 // 环境 NODE_ENV = development || production
 if (process.env.NODE_ENV === "development") {
   ignoreMDFiles = [];
 } else if (process.env.NODE_ENV === "production") {
-  ignoreMDFiles = ["**/2018-12-20-Test.md"];
+  ignoreMDFiles = [FONT_DEBUG_PAGE_PATTERN];
 }
 
 const routes = generateRoutes({

@@ -1,13 +1,16 @@
 :root {
-  --font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco,
-    Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-family-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
   --code-font-size: 14px;
+  --font-family-source-han-serif-sc:
+    "source-han-serif-sc", Palatino, "Palatino Linotype", "Palatino LT STD",
+    "Latin Modern Roman", serif;
 }
 
 body,
 button {
-  font-family: Palatino, "Palatino Linotype", "Palatino LT STD",
-    "Latin Modern Roman", "Source Han Serif CN", serif;
+  font-family: var(--font-family-source-han-serif-sc);
 }
 
 a.footnote-backref {
@@ -25,7 +28,9 @@ a.footnote-backref {
 
 #eof,
 .split-line {
-  font-family: Microsoft Yahei, sans-serif;
+  font-family:
+    Microsoft Yahei,
+    sans-serif;
 }
 
 #TableOfContents {
@@ -33,8 +38,9 @@ a.footnote-backref {
 }
 
 .font-WRYH {
-  font-family: "Microsoft Yahei", Palatino, "Palatino Linotype",
-    "Palatino LT STD", "Latin Modern Roman", "Source Han Serif CN", serif;
+  font-family:
+    "Microsoft Yahei", Palatino, "Palatino Linotype", "Palatino LT STD",
+    "Latin Modern Roman", "Source Han Serif CN", serif;
 }
 
 /* font-size */

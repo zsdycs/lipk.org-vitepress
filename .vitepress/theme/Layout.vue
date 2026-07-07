@@ -14,7 +14,11 @@ import { consoleInfo } from "./composables/console-info";
 import { useEventListener } from "./composables/event-listener";
 import { throttle } from "./utils";
 import { getScrollDirection } from "./composables/get-scroll-direction";
-import { loadFont } from "./composables/font-face";
+import {
+  loadFont,
+  applyFontFamilyToElements,
+  getCurrentFontFamily,
+} from "./composables/font-face";
 import { printPage } from "./composables/print-page";
 import { preloadSearch } from "./composables/pagefind";
 import FixedButton from "./components/FixedButton.vue";
@@ -35,8 +39,6 @@ setInitialMode();
 registerSW();
 // 控制台信息
 consoleInfo();
-// 加载字体
-loadFont(route.path);
 
 watch(() => route.path, setHomeClass, {
   immediate: true,
@@ -44,12 +46,18 @@ watch(() => route.path, setHomeClass, {
 
 watch(
   () => route.path,
-  () => {
+  async () => {
     printPage({
       path: route.path,
       frontmatter,
       theme,
     });
+
+    // 路由切换时补加载当前已选字体的该页面子集
+    await loadFont(route.path);
+
+    // 路由切换后应用当前选中的字体
+    applyFontFamilyToElements(getCurrentFontFamily());
   },
   {
     immediate: true,

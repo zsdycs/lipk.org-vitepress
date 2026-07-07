@@ -9,7 +9,7 @@ import { inBrowser } from "vitepress";
 export const isTextExceedElementWidth = (
   content: string,
   width: string | number,
-  fontSize: string | number
+  fontSize: string | number,
 ): boolean => {
   if (!inBrowser) {
     return false;
@@ -38,7 +38,7 @@ export const isTextExceedElementWidth = (
  */
 export const parseTime = (
   time: Date | string | number,
-  cFormat: string
+  cFormat: string,
 ): string | null => {
   if (!time) {
     return null;
@@ -186,21 +186,29 @@ export const ajaxGetJson = <T>(url: string): Promise<T> => {
 
 export const addFontFaceByUrl = (
   url: string,
-  weight: string
+  weight: string,
+  familyName = "source-han-serif-sc",
 ): Promise<void> => {
   if (!inBrowser) {
     return Promise.resolve();
   }
 
-  return new Promise<void>((resolve) => {
-    const lightFont = new FontFace("source-han-serif-sc", `url(${url})`, {
+  return new Promise<void>((resolve, reject) => {
+    const fontFace = new FontFace(familyName, `url(${url})`, {
       display: "swap",
       weight: weight,
     });
-    lightFont.load().then(() => {
-      document.fonts.add(lightFont);
-      resolve();
-    });
+    fontFace
+      .load()
+      .then(() => {
+        document.fonts.add(fontFace);
+        resolve();
+      })
+      .catch((err) => {
+        console.error(`字体加载失败: ${familyName} ${weight} ${url}`, err);
+        // 即使单个字重失败也继续，避免整个切换流程卡住
+        resolve();
+      });
   });
 };
 

@@ -62,7 +62,20 @@ export interface PageFontSource extends Record<string, any> {
 export interface FontSource {
   fileName: string;
   name: string;
+  displayName: string;
+  familyName: string;
   weight: string;
+  fontIndex: number | null;
+  isVariableFont: boolean;
+  groupIndex: number;
+  weightIndex: number;
+}
+
+export interface FontGroup {
+  familyName: string;
+  displayName: string;
+  isVariableFont: boolean;
+  weights: string[];
 }
 
 type BeianInfo = {
