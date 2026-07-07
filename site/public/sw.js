@@ -1,167 +1,218 @@
-const options = {
-  workboxURL:
-    'https://storage.googleapis.com/workbox-cdn/releases/6.1.1/workbox-sw.js',
-  config: {
-    debug: false,
-  },
-  cacheOptions: {
-    cacheId: 'lipk.org-cache',
-    directoryIndex: '/',
-    revision: 'X2d1tbJf1olY',
-  },
-  clientsClaim: true,
-  skipWaiting: true,
-  cleanupOutdatedCaches: true,
-  offlineAnalytics: false,
-  preCaching: [
-    {
-      revision: 'X2d1tbJf1olY',
-      url: '/?standalone=true',
-    },
-  ],
-  runtimeCaching: [
-    {
-      urlPattern: '/_lipk.org/',
-      handler: 'CacheFirst',
-      method: 'GET',
-      strategyPlugins: [],
-    },
-    {
-      urlPattern: '/',
-      handler: 'NetworkFirst',
-      method: 'GET',
-      strategyPlugins: [],
-    },
-  ],
-  offlinePage: null,
-  pagesURLPattern: '/',
-  offlineStrategy: 'NetworkFirst',
-};
+// Custom service worker for lipk.org
+// No external dependencies / no Google CDNs.
 
-importScripts(options.workboxURL);
+const CORE_CACHE_NAME = "lipk-core-v1";
+const PAGEFIND_CACHE_PREFIX = "lipk-pagefind-";
 
-const getProp = (obj, prop) => {
-  return prop.split('.').reduce((p, c) => p[c], obj);
-};
+const PAGEFIND_CORE_ASSETS = [
+  "/pagefind/pagefind.js",
+  "/pagefind/pagefind-worker.js",
+  "/pagefind/pagefind-entry.json",
+  "/pagefind/wasm.unknown.pagefind",
+  "/pagefind/pagefind-manifest.json",
+  "/pagefind-zh.json",
+];
 
-const initWorkbox = (workbox, options) => {
-  if (options.config) {
-    // Set workbox config
-    workbox.setConfig(options.config);
+let currentPagefindCacheName = "";
+
+/**
+ * Put a single request/response pair into the given cache.
+ */
+async function putInCache(cache, request, response) {
+  if (response && response.ok) {
+    await cache.put(request, response.clone());
   }
-
-  if (options.cacheNames) {
-    // Set workbox cache names
-    workbox.core.setCacheNameDetails(options.cacheNames);
-  }
-
-  if (options.clientsClaim) {
-    // Start controlling any existing clients as soon as it activates
-    workbox.core.clientsClaim();
-  }
-
-  if (options.skipWaiting) {
-    workbox.core.skipWaiting();
-  }
-
-  if (options.cleanupOutdatedCaches) {
-    workbox.precaching.cleanupOutdatedCaches();
-  }
-
-  if (options.offlineAnalytics) {
-    // Enable offline Google Analytics tracking
-    workbox.googleAnalytics.initialize();
-  }
-};
-
-const workboxExtensions = (workbox, options) => {};
-
-const precacheAssets = (workbox, options) => {
-  if (options.preCaching.length) {
-    workbox.precaching.precacheAndRoute(
-      options.preCaching,
-      options.cacheOptions,
-    );
-  }
-};
-
-const cachingExtensions = (workbox, options) => {};
-
-const runtimeCaching = (workbox, options) => {
-  const requestInterceptor = {
-    requestWillFetch({ request }) {
-      if (request.cache === 'only-if-cached' && request.mode === 'no-cors') {
-        return new Request(request.url, {
-          ...request,
-          cache: 'default',
-          mode: 'no-cors',
-        });
-      }
-      return request;
-    },
-    fetchDidFail(ctx) {
-      ctx.error.message =
-        '[workbox] Network request for ' +
-        ctx.request.url +
-        ' threw an error: ' +
-        ctx.error.message;
-      console.error(ctx.error, 'Details:', ctx);
-    },
-    handlerDidError(ctx) {
-      ctx.error.message =
-        `[workbox] Network handler threw an error: ` + ctx.error.message;
-      console.error(ctx.error, 'Details:', ctx);
-      return null;
-    },
-  };
-
-  for (const entry of options.runtimeCaching) {
-    const urlPattern = new RegExp(entry.urlPattern);
-    const method = entry.method || 'GET';
-
-    const plugins = (entry.strategyPlugins || []).map(
-      (p) => new (getProp(workbox, p.use))(...p.config),
-    );
-
-    plugins.unshift(requestInterceptor);
-
-    const strategyOptions = {
-      ...entry.strategyOptions,
-      plugins,
-    };
-
-    const strategy = new workbox.strategies[entry.handler](strategyOptions);
-
-    workbox.routing.registerRoute(urlPattern, strategy, method);
-  }
-};
-
-const offlinePage = (workbox, options) => {
-  if (options.offlinePage) {
-    // Register router handler for offlinePage
-    workbox.routing.registerRoute(
-      new RegExp(options.pagesURLPattern),
-      ({ request, event }) => {
-        const strategy = new workbox.strategies[options.offlineStrategy]();
-        return strategy
-          .handle({
-            request,
-            event,
-          })
-          .catch(() => caches.match(options.offlinePage));
-      },
-    );
-  }
-};
-
-const routingExtensions = (workbox, options) => {};
-
-if (workbox) {
-  initWorkbox(workbox, options);
-  workboxExtensions(workbox, options);
-  precacheAssets(workbox, options);
-  cachingExtensions(workbox, options);
-  runtimeCaching(workbox, options);
-  offlinePage(workbox, options);
-  routingExtensions(workbox, options);
+  return response;
 }
+
+/**
+ * Fetch a URL and cache it. Failures are silently ignored.
+ */
+async function fetchAndCache(cache, url) {
+  try {
+    const response = await fetch(url);
+    await putInCache(cache, url, response);
+  } catch {
+    // ignore individual failures so the rest can still be cached
+  }
+}
+
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    (async () => {
+      // 1. Use the Pagefind language hash as the cache version so a new index
+      //    automatically gets a fresh cache and old caches are cleaned up.
+      try {
+        const entryResponse = await fetch("/pagefind/pagefind-entry.json", {
+          cache: "no-cache",
+        });
+        if (entryResponse.ok) {
+          const entry = await entryResponse.json();
+          const langHash = entry?.languages?.["zh-cn"]?.hash || "unknown";
+          currentPagefindCacheName = `${PAGEFIND_CACHE_PREFIX}${langHash}`;
+        }
+      } catch {
+        currentPagefindCacheName = `${PAGEFIND_CACHE_PREFIX}unknown`;
+      }
+
+      // 2. Discover all Pagefind index fragments from the manifest and cache them.
+      try {
+        const manifestResponse = await fetch("/pagefind/pagefind-manifest.json", {
+          cache: "no-cache",
+        });
+        if (manifestResponse.ok) {
+          const manifest = await manifestResponse.json();
+          const pfCache = await caches.open(currentPagefindCacheName);
+
+          const indexFiles = Array.isArray(manifest.index)
+            ? manifest.index.map((file) => `/pagefind/index/${file}`)
+            : [];
+          const fragmentFiles = Array.isArray(manifest.fragment)
+            ? manifest.fragment.map((file) => `/pagefind/fragment/${file}`)
+            : [];
+
+          // Cache core assets and every index/fragment file individually so a
+          // single 404 does not abort the whole batch.
+          const pagefindUrls = [
+            ...PAGEFIND_CORE_ASSETS,
+            ...indexFiles,
+            ...fragmentFiles,
+          ];
+          await Promise.all(pagefindUrls.map((url) => fetchAndCache(pfCache, url)));
+        }
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.error("[SW] Failed to prefetch Pagefind index:", err);
+      }
+
+      // 2. Cache a minimal app shell.
+      const coreCache = await caches.open(CORE_CACHE_NAME);
+      await Promise.all(
+        ["/", "/?standalone=true"].map((url) => fetchAndCache(coreCache, url))
+      );
+
+      await self.skipWaiting();
+    })()
+  );
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    (async () => {
+      const keys = await caches.keys();
+      await Promise.all(
+        keys.map((key) => {
+          // Keep the core cache.
+          if (key === CORE_CACHE_NAME) return;
+          // Keep the currently active Pagefind cache.
+          if (
+            key.startsWith(PAGEFIND_CACHE_PREFIX) &&
+            key === currentPagefindCacheName
+          ) {
+            return;
+          }
+          // If we do not know the current Pagefind cache (e.g. the worker was
+          // restarted without a new install), keep the existing ones to avoid
+          // deleting live caches.
+          if (
+            key.startsWith(PAGEFIND_CACHE_PREFIX) &&
+            !currentPagefindCacheName
+          ) {
+            return;
+          }
+          return caches.delete(key);
+        })
+      );
+      await self.clients.claim();
+    })()
+  );
+});
+
+function isPagefindRequest(pathname) {
+  return pathname.startsWith("/pagefind/") || pathname === "/pagefind-zh.json";
+}
+
+async function resolvePagefindCacheName() {
+  if (currentPagefindCacheName) return currentPagefindCacheName;
+  const keys = await caches.keys();
+  const pagefindKeys = keys.filter((key) => key.startsWith(PAGEFIND_CACHE_PREFIX));
+  currentPagefindCacheName =
+    pagefindKeys[pagefindKeys.length - 1] || `${PAGEFIND_CACHE_PREFIX}unknown`;
+  return currentPagefindCacheName;
+}
+
+async function pagefindCacheFirst(request) {
+  const cacheName = await resolvePagefindCacheName();
+  const cache = await caches.open(cacheName);
+
+  // Pagefind adds timestamps/query params to some requests; normalize the URL
+  // so all variations share one cache entry.
+  const cacheUrl = new URL(request.url);
+  cacheUrl.search = "";
+  const cacheRequest = new Request(cacheUrl.toString(), request);
+
+  const cached = await cache.match(cacheRequest);
+  if (cached) return cached;
+
+  try {
+    const response = await fetch(request);
+    await putInCache(cache, cacheRequest, response);
+    return response;
+  } catch {
+    return new Response("Offline", {
+      status: 503,
+      statusText: "Service Unavailable",
+    });
+  }
+}
+
+async function networkFirst(request) {
+  const cache = await caches.open(CORE_CACHE_NAME);
+  try {
+    const response = await fetch(request);
+    await putInCache(cache, request, response);
+    return response;
+  } catch {
+    const cached = await cache.match(request);
+    if (cached) return cached;
+    return new Response("Offline", {
+      status: 503,
+      statusText: "Service Unavailable",
+    });
+  }
+}
+
+async function staleWhileRevalidate(request) {
+  const cache = await caches.open(CORE_CACHE_NAME);
+  const cached = await cache.match(request);
+
+  const fetchPromise = fetch(request)
+    .then((response) => putInCache(cache, request, response))
+    .catch(() => cached);
+
+  return cached || fetchPromise;
+}
+
+self.addEventListener("fetch", (event) => {
+  const { request } = event;
+  if (request.method !== "GET") return;
+
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+
+  // Pagefind assets: always serve from cache first.
+  if (isPagefindRequest(url.pathname)) {
+    event.respondWith(pagefindCacheFirst(request));
+    return;
+  }
+
+  // HTML navigation: try network first, fallback to cache.
+  if (request.mode === "navigate" || request.destination === "document") {
+    event.respondWith(networkFirst(request));
+    return;
+  }
+
+  // Other static assets (JS/CSS/fonts/images): serve cached version while
+  // refreshing in the background.
+  event.respondWith(staleWhileRevalidate(request));
+});

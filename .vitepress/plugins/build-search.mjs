@@ -77,6 +77,21 @@ async function main() {
   // 4. Write a manifest so the client can preload every index fragment.
   writePagefindManifest(outputDir);
 
+  // 5. Bump the service worker build timestamp so browsers treat it as a new
+  //    version and refresh the Pagefind cache on next visit.
+  const distSwPath = path.join(buildDir, "sw.js");
+  if (fs.existsSync(distSwPath)) {
+    const swContent = fs.readFileSync(distSwPath, "utf-8");
+    const buildTime = new Date().toISOString();
+    fs.writeFileSync(
+      distSwPath,
+      `// Build time: ${buildTime}\n${swContent.replace(
+        /^\/\/ Build time: .*\n/,
+        ""
+      )}`
+    );
+  }
+
   console.log("[build-search] 搜索索引生成完成");
 }
 
