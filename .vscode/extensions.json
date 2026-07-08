@@ -1,9 +1,13 @@
 {
   "recommendations": [
+    "Vue.volar",
     "jinliming2.vscode-go-template",
     "streetsidesoftware.code-spell-checker",
     "yzhang.markdown-all-in-one",
     "xlthu.pangu-markdown",
     "esbenp.prettier-vscode"
+  ],
+  "unwantedRecommendations": [
+    "octref.vetur"
   ]
 }
