@@ -94,7 +94,7 @@ function setPostNavRoute() {
     <!-- @keydown -->
     <span class="nav-prev">
       <span v-if="lastRoute">
-        ← <a ref="prevLink" :href="lastRoute.path" title="单击可前进(键盘左箭头)">{{ lastTitle }}</a>
+        ← <a ref="prevLink" :href="lastRoute.path" title="单击可后退(键盘左箭头)">{{ lastTitle }}</a>
       </span>
     </span>
     <span class="nav-next">

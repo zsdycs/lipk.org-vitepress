@@ -290,12 +290,8 @@ export const registerFontSwitchShortcut = () => {
   hasRegisteredShortcut = true;
 
   document.addEventListener("keydown", (event) => {
-    // Ctrl/Cmd + Shift + F
-    if (
-      (event.ctrlKey || event.metaKey) &&
-      event.shiftKey &&
-      event.key.toLowerCase() === "f"
-    ) {
+    // 点击 A 键 切换字体
+    if (event.key.toLowerCase() === "a") {
       event.preventDefault();
       if (event.repeat || getIsSwitchingFont()) return;
       void switchToNextFontFamily();

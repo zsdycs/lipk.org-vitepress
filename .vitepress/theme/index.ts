@@ -21,16 +21,24 @@ export const theme: Theme = {
     if (typeof window !== "undefined") {
       const { open } = useSearchModal();
       document.addEventListener("keydown", (e: KeyboardEvent) => {
-        if (e.key === "f" && (e.ctrlKey || e.metaKey) && !e.shiftKey) {
+        if (e.key.toLowerCase() === "f") {
           e.preventDefault();
           open();
         }
       });
 
-      // 注册字体切换快捷键 Ctrl/Cmd + Shift + F
+      // 注册字体切换快捷键 A
       registerFontSwitchShortcut();
       // 应用用户上次选择的字体
       applyFontFamilyToElements(getCurrentFontFamily());
+
+      // 全局注册返回顶部快捷键 ↑
+      document.addEventListener("keydown", (e: KeyboardEvent) => {
+        if (e.key === "ArrowUp") {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      });
     }
   },
 };
