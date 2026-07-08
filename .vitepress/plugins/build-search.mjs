@@ -28,16 +28,20 @@ async function runPagefind(siteDir, outputDir) {
       "npx",
       [
         "pagefind",
-        "--site", siteDir,
-        "--output-path", outputDir,
-        "--root-selector", PAGEFIND_ROOT_SELECTOR,
-        "--exclude-selectors", PAGEFIND_EXCLUDE_SELECTORS,
+        "--site",
+        siteDir,
+        "--output-path",
+        outputDir,
+        "--root-selector",
+        PAGEFIND_ROOT_SELECTOR,
+        "--exclude-selectors",
+        PAGEFIND_EXCLUDE_SELECTORS,
       ],
       {
         cwd: process.cwd(),
         shell: process.platform === "win32",
         stdio: "inherit",
-      }
+      },
     );
 
     proc.on("close", (code) => {
@@ -57,7 +61,7 @@ async function main() {
   const outputDir = path.resolve(root, process.argv[3] || "dist/pagefind");
   const zhOutput = path.resolve(
     root,
-    process.argv[4] || "dist/pagefind-zh.json"
+    process.argv[4] || "dist/pagefind-zh.json",
   );
 
   if (!fs.existsSync(buildDir)) {
@@ -83,12 +87,12 @@ async function main() {
   if (fs.existsSync(distSwPath)) {
     const swContent = fs.readFileSync(distSwPath, "utf-8");
     const buildTime = new Date().toISOString();
+    const buildId = Date.now().toString(36);
     fs.writeFileSync(
       distSwPath,
-      `// Build time: ${buildTime}\n${swContent.replace(
-        /^\/\/ Build time: .*\n/,
-        ""
-      )}`
+      `// Build time: ${buildTime}\n${swContent
+        .replace(/^\/\/ Build time: .*\n/, "")
+        .replace(/__LIPK_SW_BUILD_ID__/g, buildId)}`,
     );
   }
 

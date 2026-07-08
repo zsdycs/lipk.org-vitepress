@@ -24,6 +24,7 @@ import { preloadSearch } from "./composables/pagefind";
 import FixedButton from "./components/FixedButton.vue";
 import Resume from "./page/Resume.vue";
 import SearchModal from "./components/SearchModal.vue";
+import UpdateNotice from "./components/UpdateNotice.vue";
 
 // 页面加载完成后在后台静默预加载搜索索引
 if (inBrowser) {
@@ -86,6 +87,8 @@ if (inBrowser) {
   <Content v-else />
   <!-- 固定在页面边上的按钮 -->
   <FixedButton v-if="!frontmatter.homePage" />
+  <!-- PWA 更新通知 -->
+  <UpdateNotice />
   <!-- 全文搜索弹框 -->
   <SearchModal />
 </template>

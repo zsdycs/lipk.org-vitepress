@@ -1,8 +1,9 @@
 // Custom service worker for lipk.org
 // No external dependencies / no Google CDNs.
 
-const CORE_CACHE_NAME = "lipk-core-v1";
-const PAGEFIND_CACHE_PREFIX = "lipk-pagefind-";
+const SW_BUILD_ID = "__LIPK_SW_BUILD_ID__";
+const CORE_CACHE_NAME = `lipk-core-${SW_BUILD_ID}`;
+const PAGEFIND_CACHE_PREFIX = `lipk-pagefind-${SW_BUILD_ID}-`;
 
 const PAGEFIND_CORE_ASSETS = [
   "/pagefind/pagefind.js",
@@ -57,9 +58,12 @@ self.addEventListener("install", (event) => {
 
       // 2. Discover all Pagefind index fragments from the manifest and cache them.
       try {
-        const manifestResponse = await fetch("/pagefind/pagefind-manifest.json", {
-          cache: "no-cache",
-        });
+        const manifestResponse = await fetch(
+          "/pagefind/pagefind-manifest.json",
+          {
+            cache: "no-cache",
+          },
+        );
         if (manifestResponse.ok) {
           const manifest = await manifestResponse.json();
           const pfCache = await caches.open(currentPagefindCacheName);
@@ -78,7 +82,9 @@ self.addEventListener("install", (event) => {
             ...indexFiles,
             ...fragmentFiles,
           ];
-          await Promise.all(pagefindUrls.map((url) => fetchAndCache(pfCache, url)));
+          await Promise.all(
+            pagefindUrls.map((url) => fetchAndCache(pfCache, url)),
+          );
         }
       } catch (err) {
         // eslint-disable-next-line no-console
@@ -88,12 +94,16 @@ self.addEventListener("install", (event) => {
       // 2. Cache a minimal app shell.
       const coreCache = await caches.open(CORE_CACHE_NAME);
       await Promise.all(
-        ["/", "/?standalone=true"].map((url) => fetchAndCache(coreCache, url))
+        ["/", "/?standalone=true"].map((url) => fetchAndCache(coreCache, url)),
       );
-
-      await self.skipWaiting();
-    })()
+    })(),
   );
+});
+
+self.addEventListener("message", (event) => {
+  if (event.data?.type === "SKIP_WAITING") {
+    void self.skipWaiting();
+  }
 });
 
 self.addEventListener("activate", (event) => {
@@ -121,10 +131,10 @@ self.addEventListener("activate", (event) => {
             return;
           }
           return caches.delete(key);
-        })
+        }),
       );
       await self.clients.claim();
-    })()
+    })(),
   );
 });
 
@@ -132,10 +142,21 @@ function isPagefindRequest(pathname) {
   return pathname.startsWith("/pagefind/") || pathname === "/pagefind-zh.json";
 }
 
+function isStaticAssetRequest(request) {
+  if (["script", "style", "font", "image"].includes(request.destination)) {
+    return true;
+  }
+
+  const url = new URL(request.url);
+  return url.pathname.endsWith(".json");
+}
+
 async function resolvePagefindCacheName() {
   if (currentPagefindCacheName) return currentPagefindCacheName;
   const keys = await caches.keys();
-  const pagefindKeys = keys.filter((key) => key.startsWith(PAGEFIND_CACHE_PREFIX));
+  const pagefindKeys = keys.filter((key) =>
+    key.startsWith(PAGEFIND_CACHE_PREFIX),
+  );
   currentPagefindCacheName =
     pagefindKeys[pagefindKeys.length - 1] || `${PAGEFIND_CACHE_PREFIX}unknown`;
   return currentPagefindCacheName;
@@ -182,15 +203,23 @@ async function networkFirst(request) {
   }
 }
 
-async function staleWhileRevalidate(request) {
+async function staticAssetCacheFirst(request) {
   const cache = await caches.open(CORE_CACHE_NAME);
   const cached = await cache.match(request);
+  if (cached) {
+    return cached;
+  }
 
-  const fetchPromise = fetch(request)
-    .then((response) => putInCache(cache, request, response))
-    .catch(() => cached);
-
-  return cached || fetchPromise;
+  try {
+    const response = await fetch(request, { cache: "no-cache" });
+    await putInCache(cache, request, response);
+    return response;
+  } catch {
+    return new Response("Offline", {
+      status: 503,
+      statusText: "Service Unavailable",
+    });
+  }
 }
 
 self.addEventListener("fetch", (event) => {
@@ -212,7 +241,13 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Other static assets (JS/CSS/fonts/images): serve cached version while
-  // refreshing in the background.
-  event.respondWith(staleWhileRevalidate(request));
+  // Static assets (JS/CSS/fonts/images/json): cache within the current build.
+  // A new build gets a new cache namespace, and old caches are removed after
+  // the user accepts the update and the new worker activates.
+  if (isStaticAssetRequest(request)) {
+    event.respondWith(staticAssetCacheFirst(request));
+    return;
+  }
+
+  event.respondWith(networkFirst(request));
 });

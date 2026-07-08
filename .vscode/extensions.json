@@ -7,7 +7,5 @@
     "xlthu.pangu-markdown",
     "esbenp.prettier-vscode"
   ],
-  "unwantedRecommendations": [
-    "octref.vetur"
-  ]
+  "unwantedRecommendations": ["octref.vetur"]
 }
