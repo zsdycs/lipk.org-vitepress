@@ -494,9 +494,7 @@ onUnmounted(() => {
                       <path d="M3.2 8.6 6.4 11.6 12.8 4.6" />
                     </svg>
                   </span>
-                  <span class="ev-txt"
-                    ><span class="ev-txt-line">{{ it.text }}</span></span
-                  >
+                  <span class="ev-txt"><span class="ev-txt-line">{{ it.text }}</span></span>
                 </button>
               </li>
             </ul>
@@ -524,9 +522,7 @@ onUnmounted(() => {
                       <path d="M3.2 8.6 6.4 11.6 12.8 4.6" />
                     </svg>
                   </span>
-                  <span class="ev-txt"
-                    ><span class="ev-txt-line">{{ it.text }}</span></span
-                  >
+                  <span class="ev-txt"><span class="ev-txt-line">{{ it.text }}</span></span>
                 </button>
               </li>
             </ul>
@@ -649,7 +645,7 @@ onUnmounted(() => {
   display: block;
   height: 100%;
   border-radius: 99px;
-  background: var(--ev-accent);
+  background: var(--ev-done);
   transition: width 0.5s cubic-bezier(0.22, 0.68, 0.32, 1);
 }
 
@@ -701,13 +697,12 @@ onUnmounted(() => {
   background: var(--ev-card-bg);
   border: 1px solid var(--ev-border);
   border-radius: 20px;
-  box-shadow: var(--ev-shadow);
   padding: 20px 22px 16px;
   opacity: 0.55;
   transform: scale(0.965);
   transform-origin: center top;
   transition: opacity 0.45s ease, transform 0.45s ease, filter 0.45s ease,
-    border-color 0.4s ease, box-shadow 0.4s ease;
+    border-color 0.4s ease;
 }
 
 .ev-card.active {
@@ -1072,15 +1067,22 @@ onUnmounted(() => {
     padding: 16px 16px 12px;
   }
 
+  .ev-header {
+    margin-bottom: 12px;
+  }
+
   .ev-overline {
     font-size: 11px;
     letter-spacing: 2px;
+    margin-block-start: 6px !important;
+    margin-block-end: 6px !important;
   }
 
   .ev-arrow {
     width: 32px;
     height: 32px;
     opacity: 0.6;
+    display: none;
   }
 
   .ev-arrow.prev {
@@ -1113,6 +1115,13 @@ onUnmounted(() => {
   .ev-position,
   .ev-guide {
     display: none;
+  }
+}
+</style>
+<style>
+@media screen and (max-width: 1220px) {
+  .main {
+    padding: 40px 0px 10px;
   }
 }
 </style>

@@ -5,6 +5,7 @@ slug: "26th-national-day-celebration"
 notPostNav: true
 notEditInfo: true
 notComment: true
+notFixedBtn: true
 ---
 
 <script setup>

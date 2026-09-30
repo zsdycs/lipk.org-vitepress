@@ -19,7 +19,7 @@ const handleSwitchFont = () => {
 </script>
 
 <template>
-  <div id="fixed-button" v-if="!frontmatter.homePage">
+  <div id="fixed-button" v-if="!frontmatter.homePage && !frontmatter.notFixedBtn">
     <div class="btn-box writeFixed" v-if="hasEditInfo">
       <a :href="editLink.url" title="编辑本页" target="_blank">
         <span class="fa-svg" v-html="SVG_STRING['fa-pencil']"></span>
