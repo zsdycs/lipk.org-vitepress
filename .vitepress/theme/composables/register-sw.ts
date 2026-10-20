@@ -42,6 +42,15 @@ export const registerSW = () => {
     return;
   }
 
+  // 开发环境不要注册 Service Worker。
+  // 它会把 Vite 的模块脚本以 cache-first 缓存，代码更新后仍命中旧模块，
+  // 导致模块/Vue 实例不一致（resolveComponent 只能在 render()/setup()
+  // 中使用的警告、组件渲染不出来）。开发环境由 dev-sw-cleanup 插件
+  // 提供自注销的 /sw.js 来清理历史遗留的注册。
+  if (import.meta.env.DEV) {
+    return;
+  }
+
   if (!swRegistrationPromise) {
     bindReloadOnControllerChange();
     swRegistrationPromise = navigator.serviceWorker.register("/sw.js", {

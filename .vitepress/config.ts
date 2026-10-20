@@ -5,6 +5,7 @@ import { createRequire } from "node:module";
 import { readFileSync } from "fs";
 import { MENU } from "./theme/composables/constant";
 import { pagefindDevPlugin } from "./plugins/pagefind-dev";
+import { devSwCleanupPlugin } from "./plugins/dev-sw-cleanup";
 import footnotePlugin from "markdown-it-footnote";
 import imagePlugin from "markdown-it-image-figures";
 import taskListPlugin from "markdown-it-task-lists";
@@ -75,7 +76,7 @@ export default defineConfigWithTheme<CustomConfig>({
     return applyClassMutationToAppRoot(withHtmlClass, appMutation);
   },
   vite: {
-    plugins: [pagefindDevPlugin()],
+    plugins: [pagefindDevPlugin(), devSwCleanupPlugin()],
     build: {
       rollupOptions: {
         external: ["/pagefind/pagefind.js"],

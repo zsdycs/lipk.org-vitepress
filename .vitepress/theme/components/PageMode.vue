@@ -17,9 +17,13 @@ onMounted(() => {
     modeLS = localStorage.getItem("page-theme-mode");
   }
 
-  if (modeLS) {
-    modeText.value = MODE_TEXT[modeLS];
-  }
+  // 若本地尚无记录，则回退到当前实际生效的主题，避免按钮文字为空
+  const currentMode =
+    modeLS ||
+    (inBrowser ? document.documentElement.getAttribute("theme") : null) ||
+    "github-light";
+
+  modeText.value = MODE_TEXT[currentMode] || MODE_TEXT["github-light"];
 });
 
 // 切换黑夜白天模式
