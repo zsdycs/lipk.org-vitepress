@@ -444,7 +444,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="event-page" :class="{ dark: isDark, ready }">
+  <div class="event-page-26th-national-day-celebration" :class="{ dark: isDark, ready }">
     <!-- 头部 -->
     <header class="ev-header">
       <p class="ev-overline">{{ EVENT.subtitle }}</p>
@@ -582,7 +582,7 @@ onUnmounted(() => {
 
 <style scoped>
 /* ============ 主题变量（浅色默认，深色跟随站点 theme 属性） ============ */
-.event-page {
+.event-page-26th-national-day-celebration {
   --ev-accent: #e5484d;
   --ev-accent-soft: rgba(229, 72, 77, 0.1);
   --ev-done: #16a34a;
@@ -597,7 +597,7 @@ onUnmounted(() => {
   color: var(--ev-text);
 }
 
-.event-page.dark {
+.event-page-26th-national-day-celebration.dark {
   --ev-accent: #f27078;
   --ev-accent-soft: rgba(242, 112, 120, 0.16);
   --ev-done: #4ade80;
@@ -1118,9 +1118,14 @@ onUnmounted(() => {
   }
 }
 </style>
+<!--
+  .main 是主题 BlogContent 的外层容器（.vitepress/theme/page/BlogContent.vue），
+  属于全局布局，不能直接改。这里用 :has(.event-page-26th-national-day-celebration) 把覆盖限定在本组件挂载时
+  （即 26th-national-day-celebration 活动页），避免污染其他页面的 .main 内边距。
+-->
 <style>
 @media screen and (max-width: 1220px) {
-  .main {
+  .main:has(.event-page-26th-national-day-celebration) {
     padding: 40px 0px 10px;
   }
 }
